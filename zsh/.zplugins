@@ -13,5 +13,5 @@ eval "$(starship init zsh)"
 source <(fzf --zsh)
 
 # export "ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" 2> /dev/null
-# source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 2> /dev/null
-source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 2> /dev/null
+# source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
