@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+
+FONT_FACE="JetBrainsMono Nerd Font"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+ITEM_DIR="$HOME/.config/sketchybar/items"
+
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
+source "$HOME/.config/sketchybar/colors.sh"
+
+sketchybar --bar \
+    height=32 \
+    color=0x00000000 \
+    sticky=on \
+    padding_left=23 \
+    padding_right=23 \
+    notch_width=188 \
+    display=main
+
+# Alternatiive background colors
+# label.color=0xffffffff
+# background.color=0x9924273a
+sketchybar --default \
+    background.color=0x66494d64 \
+    background.corner_radius=5 \
+    background.padding_right=5 \
+    background.height=26 \
+    icon.font="$FONT_FACE:Medium:15.0" \
+    icon.padding_left=5 \
+    icon.padding_right=5 \
+    label.font="$FONT_FACE:Medium:12.0" \
+    label.color=0xffcad3f5 \
+    label.y_offset=0 \
+    label.padding_left=0 \
+    label.padding_right=5
+
+source "$ITEM_DIR/static_icon.sh"
+source "$ITEM_DIR/spaces.sh"
+
+source "$ITEM_DIR/moon.sh"
+source "$ITEM_DIR/weather.sh"
+source "$ITEM_DIR/spotify.sh"
+
+source "$ITEM_DIR/clock.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/ram.sh"
+
+source "$ITEM_DIR/space_updater.sh"
+
+##### Finalizing Setup #####
+sketchybar --update
+sketchybar --trigger space_change 
+sketchybar --trigger volume_change

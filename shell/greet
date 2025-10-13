@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# === Pokemon ===
+# chance for shinys ( 1 / shiny )
+shiny=10
+
+greet(){
+  case $1 in
+    "pokemon")
+      shift
+      handlepokemon $@
+      ;;
+    "cow")
+      shift
+      cowfortune $@
+      ;;
+    "dt")
+      shift
+      handlecolorscript $@
+      ;;
+    *)
+      printf "unsupported greeting %s" "$1"
+      ;;
+  esac
+}
+
+cowfortune(){
+  fortune | cowsay
+}
+
+handlecolorscript(){
+  colorscript -r
+}
+
+handlepokemon(){
+  out="$(pokemon-colorscripts -r)"
+  POKEMON="$(printf "%s" "$out" | head -n 1 | cut -d' ' -f1)"
+
+  if [[ $((1 + $RANDOM % $shiny)) ==  1 ]]; then
+    pokemon-colorscripts -n "$POKEMON" --no-title -s
+    printf "\033[95m%s\e[0m\n" "you found a shiny ${POKEMON}!"
+    POKEMON="$POKEMON (shiny)"
+  else
+    pokemon-colorscripts -n "$POKEMON" --no-title $@
+  fi
+}
+
+greet pokemon

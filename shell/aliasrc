@@ -1,0 +1,180 @@
+#!/bin/sh
+
+# === Editor Aliases ===
+
+export PAGER="less -R --use-color -Dd+r -Du+b"
+export EDITOR="vim"
+if command -v nvim >/dev/null; then
+  export EDITOR="nvim"
+  export PAGER="nvim +Man!"
+fi
+
+alias vim="$EDITOR"
+
+# === File & Project Navigation ===
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+fcd() {
+  cd "$(find . -type d | fzf)"
+}
+
+e() {
+  if [ -n "$1" ]; then
+    file=$(fd --type file . "$1" | fzf --preview="bat -n --color=always {}")
+  else
+    file=$(fd --type file | fzf --preview="bat -n --color=always {}")
+  fi
+  [ -n "$file" ] && "$EDITOR" "$file"
+}
+
+getpath() {
+  find . -type f | fzf | sed 's|^\./||' | tr -d '\n' | wl-copy
+}
+
+# === Git and SSH ===
+
+rssh() {
+  host=$(grep ^Host ~/.ssh/config | awk '{print $2}' | fzf)
+  ssh "$host"
+}
+
+ussh() {
+  if [ $# -eq 2 ]; then
+    ssh -o "User=$1" "$2"
+  else
+    ssh "$@"
+  fi
+}
+
+# === File Utilities ===
+
+share() {
+  local file="$1"
+
+  # If no argument given, prompt via fzf
+  if [ -z "$file" ]; then
+    file="$(find "$HOME/.local/bin" -type f | fzf)"
+  fi
+
+  # Upload if valid file
+  if [ -f "$file" ]; then
+    local link
+    link=$(curl -fsS -F "file=@$file" https://paste.rs)
+    echo "$link" | pbcopy
+    echo "$link"
+  else
+    echo "Invalid file: '$file'" >&2
+    return 1
+  fi
+}
+
+command -v aerospace >/dev/null && \
+windows(){
+  echo "---"
+  while IFS="<"; read -r id title name; do
+    printf "id:%d\ntitle:%s\nname:%s\n---\n" "$id" "$title" "$name"
+  done < <(aerospace list-windows --all --format "%{window-id}<%{window-title}<%{app-name}")
+}
+
+command -v aerospace >/dev/null && \
+focuswin(){
+  # Declare arrays
+  declare -a ids
+  declare -a titles
+  declare -a names
+
+  # Read window data
+  while IFS='<' read -r id title name; do
+    # Skip empty lines
+    [[ -z "$id" || -z "$title" || -z "$name" ]] && continue
+    ids+=("$id")
+    titles+=("$title")
+    names+=("$name")
+  done < <(aerospace list-windows --all --format "%{window-id}<%{window-title}<%{app-name}" 2>/dev/null)
+
+  # Check if any windows were found
+  if [[ ${#ids[@]} -eq 0 ]]; then
+    echo "No windows found."
+    exit 1
+  fi
+
+  # Create fzf list: "Name | Title"
+  fzf_list=()
+  for i in "${!names[@]}"; do
+    fzf_list+=("${names[$i]} | ${titles[$i]}")
+  done
+
+  # Use fzf to select
+  selected=$(printf '%s\n' "${fzf_list[@]}" | fzf --height=40% --reverse --prompt="Select window: ")
+
+  # Check if user canceled
+  if [[ -z "$selected" ]]; then
+    echo "No selection made."
+    exit 0
+  fi
+
+  # Find the matching index
+  selected_index=-1
+  for i in "${!fzf_list[@]}"; do
+    if [[ "${fzf_list[i]}" == "$selected" ]]; then
+      selected_index=$i
+      break
+    fi
+  done
+
+  # Validate index
+  if [[ $selected_index -eq -1 ]]; then
+    echo "Error: Could not find selected window."
+    exit 1
+  fi
+
+  # Output the ID
+  echo "Selected window ID: ${ids[selected_index]}"
+}
+
+# === Greetings ===
+command -v pokemon-colorscripts >/dev/null && \
+pokemon(){
+  pokemon-colorscripts $@ --no-title -n "$(pokemon-colorscripts -l | fzf)"
+}
+
+c(){
+  clear && greet pokemon
+}
+
+# === Aliases ===
+
+# Safe file ops
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias mkd="mkdir -pv"
+alias less="less -r"
+
+# Colorized output
+alias ls="eza --group-directories-first"
+alias ll="eza -l --group-directories-first"
+alias la="eza -Ga --group-directories-first"
+alias lla="eza -la --group-directories-first"
+alias lt="eza -lT --group-directories-first"
+alias lta="eza -lTa --group-directories-first"
+
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+
+# Git & Shortcuts
+alias g="git"
+alias lg="lazygit"
+alias gitc="git clone"
+alias ka="killall"
+alias v="$EDITOR"
+
+# FZF helper
+alias pf='fzf --preview="bat -n --color=always {}"'
+
+# yt-dlp presets
+alias yt-dlp-mp4="yt-dlp -S res,ext:mp4:m4a"

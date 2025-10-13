@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# === Basic Environment ===
+export TERM="xterm-256color"
+
+# === History Settings ===
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILE="${XDG_CONFIG_HOME:-$HOME/.cache}/zsh/history"
+export HIST_STAMPS="dd/mm/yyyy"
+export LESSHISTFILE="${XDG_CONFIG_HOME:-$HOME/.cache}/less/history"
+
+
+# === UI Config ===
+[ -f "${HOME}/.cache/wal/colors.sh" ] && source "${HOME}/.cache/wal/colors.sh"
+autoload -U colors && colors
+setopt autocd interactive_comments
+unsetopt PROMPT_SUBST BEEP
+
+# Completion refinements
+autoload -U compinit
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+compinit
+_comp_options+=(globdots) # Show dotfiles on tab complete
+
+# === Tools and Paths ===
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export FZF_DEFAULT_OPTS="--history-size=20000"
+export GOPATH="$HOME/.go"
+
+export LOCAL_ENDPOINT="http://localhost:11434"
+
+# Append bin paths
+for bin in \
+  "$HOME/.local/bin" \
+  "$HOME/.cargo/bin" \
+  "$HOME/.deno/bin" \
+  "$HOME/.go/bin" \
+  "/usr/local/go/bin" \
+  "$HOME/.jenv/bin" \
+  "$HOME/.config/tmux/plugins/tmux-session-wizard/bin" \
+  "$HOME/.config/brew/scripts" \
+  "/opt/homebrew/opt/dotnet@6/bin"
+do
+  [ -d "$bin" ] && export PATH="$PATH:$bin"
+done
+
+
+# === Optional sourced scripts ===
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/greet" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/greet"
+

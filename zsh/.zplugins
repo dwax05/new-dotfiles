@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# === Plugins ===
+# (cat ~/.cache/wal/sequences &)
+eval "$(jenv init -)"
+eval "$(zoxide init zsh --cmd cd)"
+eval "$(starship init zsh)"
+# eval "$(direnv hook zsh)"
+# source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+# source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" 2> /dev/null
+# source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" 2> /dev/null
+
+source <(fzf --zsh)
+
+# export "ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters" 2> /dev/null
+# source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 2> /dev/null
+source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
