@@ -1,0 +1,36 @@
+# Theme
+window-theme = dark
+# theme = catppuccin-mocha
+config-file = ?~/.cache/wal/colors-ghostty
+config-file = ?binds
+
+# custom-shader = ?shaders/just-snow.glsl
+
+# Fonts
+# font-family = "Symbols Nerd Font Mono"
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 16
+font-thicken = false
+
+# Mouse, Cursor & Clipboard
+cursor-style = bar
+copy-on-select = true
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+# Window appearance
+bold-is-bright = true
+window-padding-y = 4
+window-padding-x = 6
+resize-overlay = never
+background-opacity = 0.80
+window-decoration = true
+background-blur-radius = 60
+window-padding-balance = true
+macos-window-shadow = false
+macos-titlebar-style = tabs
+# window-theme=ghostty
+
+# general
+confirm-close-surface = false
+auto-update = check
