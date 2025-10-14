@@ -1,0 +1,13 @@
+/*
+!.gitignore
+!LICENSE
+!README.md
+!.config/aerospace/
+!.config/ghossty/
+!.config/hammerspoon/
+!.config/nvim/
+!.config/shell/
+!.config/sketchybar/
+!.config/tmux/
+!.config/wal/
+!.config/zsh/

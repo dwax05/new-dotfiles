@@ -1,0 +1,1 @@
+/Users/dylanwax/.cache/wal/colors-sketchybar.sh

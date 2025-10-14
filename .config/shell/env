@@ -33,6 +33,7 @@ export LOCAL_ENDPOINT="http://localhost:11434"
 
 # Append bin paths
 for bin in \
+  "/opt/homebrew/bin" \
   "$HOME/.local/bin" \
   "$HOME/.cargo/bin" \
   "$HOME/.deno/bin" \
