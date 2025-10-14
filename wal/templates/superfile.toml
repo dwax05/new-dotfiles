@@ -1,0 +1,55 @@
+# ========= Border =========
+file_panel_border = "{color8}"
+sidebar_border = "{background}"
+footer_border = "{color8}"
+
+# ========= Border Active =========
+file_panel_border_active = "{color3}"
+sidebar_border_active = "{color3}"
+footer_border_active = "{color3}"
+modal_border_active = "{color8}"
+
+# ========= Background (bg) =========
+full_screen_bg = "{background}"
+file_panel_bg = "{background}"
+sidebar_bg = "{background}"
+footer_bg = "{background}"
+modal_bg = "{background}"
+
+# ========= Foreground (fg) =========
+full_screen_fg = "{foreground}"
+file_panel_fg = "{foreground}"
+sidebar_fg = "{foreground}"
+footer_fg = "{foreground}"
+modal_fg = "{foreground}"
+
+# ========= Special Color =========
+cursor = "{cursor}"
+correct = "{color2}"
+error = "{color1}"
+hint = "{color4}"
+cancel = "{color8}"
+gradient_color = ["{color2}", "{color1}"]
+
+# ========= File Panel Special Items =========
+file_panel_top_directory_icon = "{color2}"
+file_panel_top_path = "{color4}"
+file_panel_item_selected_fg = "{color5}"
+file_panel_item_selected_bg = "{background}"
+
+# ========= Sidebar Special Items =========
+sidebar_title = "{color1}"
+sidebar_item_selected_fg = "{color3}"
+sidebar_item_selected_bg = "{background}"
+sidebar_divider = "{color8}"
+
+# ========= Modal Special Items =========
+modal_cancel_fg = "{foreground}"
+modal_cancel_bg = "{color8}"
+
+modal_confirm_fg = "{foreground}"
+modal_confirm_bg = "{color1}"
+
+# ========= Help Menu =========
+help_menu_hotkey = "{color2}"
+help_menu_title = "{color1}"

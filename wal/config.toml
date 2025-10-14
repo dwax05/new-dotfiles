@@ -1,0 +1,16 @@
+[config.pywalfox]
+input-path="$HOME/.config/wal/templates/pywalfox-colors.json"
+output-path="$HOME/.cache/wal/pywalfox-colors.json"
+post_hook="pywalfox update"
+
+[config.appflowy]
+input-path="$HOME/.config/wal/templates/colors-appflowy"
+ouput-path="$HOME/.cache/wal/colors-appflowy.json"
+
+[config.superfile]
+input-path="$HOME/.config/wal/templates/superfile.toml"
+ouput-path="$HOME/.cache/wal/colors-superfile.json"
+
+[config.discord]
+input-path="$HOME/.config/wal/templates/colors-discord.css"
+ouput-path="$HOME/.cache/wal/colors-discord.css"
