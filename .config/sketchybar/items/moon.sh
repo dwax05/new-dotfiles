@@ -10,5 +10,5 @@ sketchybar --add item weather.moon q \
     icon.padding_right=3 \
     label.drawing=off \
     update_freq=1800 \
-    script="$PLUGIN_DIR/weather.sh" \
+    script="$PLUGIN_DIR/moon.sh" \
     --subscribe weather.moon mouse.clicked

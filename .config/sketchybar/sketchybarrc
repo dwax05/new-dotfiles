@@ -39,7 +39,7 @@ source "$ITEM_DIR/static_icon.sh"
 source "$ITEM_DIR/spaces.sh"
 
 source "$ITEM_DIR/moon.sh"
-source "$ITEM_DIR/weather.sh"
+# source "$ITEM_DIR/weather.sh"
 source "$ITEM_DIR/spotify.sh"
 
 source "$ITEM_DIR/clock.sh"
