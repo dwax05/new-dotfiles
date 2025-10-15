@@ -1,22 +1,22 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Add workspace change event and bracket
 sketchybar --add event aerospace_workspace_change
 
-monitors=$(aerospace list-monitors --format %{monitor-id})
 spaces=""
+workspaces=$(aerospace list-workspaces --all)
+read -d' ' -a spaces <<< "${workspaces}"
 
-for monitor in $monitors; do
-  workspace=$(aerospace list-workspaces --monitor "$monitor")
-  spaces="$spaces $workspace"
-done
+if [[ -n "${spaces[0]}" ]]; then
+    # Remove the first element and store it temporarily
+    first_element="${spaces[0]}"
+    # Shift all elements left by one (remove the first element)
+    spaces=("${spaces[@]:1}")
+    # Append the saved first element to the end
+    spaces+=("$first_element")
+fi
 
-sorted=$(echo "$spaces" | tr ' ' '\n' | sort -V)
-final_sorted=$(echo "$sorted" | grep -v "^0$" | tr '\n' ' ')$(echo "$sorted" | grep "^0$" | tr '\n' ' ')
-
-IFS=' ' read -ra items <<< "$final_sorted"
-
-for sid in "${items[@]}"; do
+for sid in ${spaces[@]}; do
   item="space.$sid"
 
   sketchybar --add item "$item" left \
