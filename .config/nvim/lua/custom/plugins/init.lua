@@ -7,6 +7,7 @@ vim.o.softtabstop = 2
 vim.o.tabstop = 2
 vim.o.et = true
 vim.o.swapfile = false
+vim.o.termguicolors = true
 
 -- autochdir alternative
 -- vim.api.nvim_create_autocmd("BufEnter", {
