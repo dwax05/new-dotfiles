@@ -7,7 +7,7 @@ local obj = {}
 
 -- Metadata
 obj.name = "FileWallpaper"
-obj.version = "1.0"
+obj.version = "1.1"
 obj.author = "dylanwax"
 obj.homepage = "https://github.com/dwax05/FileWallpaper.spoon"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
@@ -22,26 +22,37 @@ local function log(msg)
 	print("[FileWallpaper] " .. msg)
 end
 
---- Reads wallpaper path from the cache file
+-- Debounce timer to avoid duplicate triggers when the file is written multiple times
+local debounceTimer = nil
+local debounceMs = 300
+
 local function readWallpaperPath()
-	local file = io.open(wallpaperFile, "r")
-	if not file then
-		log("Cache file not found")
+	local f = io.open(wallpaperFile, "r")
+	if not f then
+		log("Cache file not found: " .. wallpaperFile)
+		return nil
+	end
+	local path = f:read("*l")
+	f:close()
+
+	if not path or path == "" then
+		log("Empty path in cache file")
 		return nil
 	end
 
-	local path = file:read("*l")
-	file:close()
-
-	if not hs.fs.attributes(path) then
-		log("Invalid path: " .. path)
-		return nil
+	-- Expand ~ if someone writes that
+	if path:sub(1, 1) == "~" then
+		path = os.getenv("HOME") .. path:sub(2)
 	end
 
+	local attr = hs.fs.attributes(path)
+	if not attr or attr.mode ~= "file" then
+		log("Invalid path: " .. tostring(path))
+		return nil
+	end
 	return path
 end
 
---- Runs pywal script with the wallpaper path
 local function runPywal(path)
 	if not hs.fs.attributes(pywalScript) then
 		log("pywal script not found: " .. pywalScript)
@@ -61,53 +72,69 @@ local function runPywal(path)
 	end
 end
 
---- Applies the wallpaper
 local function applyWallpaper(path)
+	if not path then
+		return
+	end
 	local fileURL = "file://" .. path
-	local success = true
+	local allOK = true
 
-	for _, screen in ipairs(hs.screen.allScreens()) do
-		local screen = hs.screen.mainScreen()
-		local result = screen:desktopImageURL(fileURL)
-		if not result then
-			log("Failed to update wallpaper for screen " .. screen)
-			success = false
+	for _, s in ipairs(hs.screen.allScreens()) do
+		-- Only set if different to avoid expensive no-ops
+		local current = s:desktopImageURL()
+		if current ~= fileURL then
+			local ok = s:desktopImageURL(fileURL)
+			if not ok then
+				log("Failed to update wallpaper for a screen")
+				allOK = false
+			end
 		end
 	end
 
-	if success then
+	if allOK then
 		log("Wallpaper applied: " .. path)
 		runPywal(path)
 	else
-		log("Failed to update wallpaper")
+		log("One or more screens failed to update wallpaper")
 	end
 end
 
---- Checks and updates wallpaper if needed
-local function pollWallpaper()
+local function handleChange()
 	local current = readWallpaperPath()
-	if current ~= lastWallpaper then
+	if current and current ~= lastWallpaper then
 		lastWallpaper = current
 		applyWallpaper(current)
+	else
+		-- Either nil (bad path) or same as before; do nothing
 	end
 end
 
---- Spoon initializer
+-- Watch the directory containing the file (pathwatcher watches dirs, not files)
+local watcher = nil
 function obj:init()
 	log("Initialized FileWallpaper spoon")
+	local dir = wallpaperFile:match("(.*/)")
+	watcher = hs.pathwatcher.new(dir, function(changes)
+		-- Trigger only when the target file is among the changed paths
+		for _, p in ipairs(changes) do
+			if p == wallpaperFile then
+				if debounceTimer then
+					debounceTimer:stop()
+				end
+				debounceTimer = hs.timer.doAfter(debounceMs / 1000, handleChange)
+				break
+			end
+		end
+	end)
 end
 
---- Spoon start function
 function obj:start()
-	if obj.timer then
-		obj.timer:stop()
+	if watcher then
+		watcher:start()
 	end
-
-	obj.timer = hs.timer.doEvery(pollInterval, pollWallpaper)
-	obj.timer:start()
-	pollWallpaper() -- run once immediately
-
-	log("Started polling for wallpaper file changes every " .. pollInterval .. "s")
+	-- Prime once on start
+	handleChange()
+	log("Watching " .. wallpaperFile .. " for changes")
 end
 
 return obj
