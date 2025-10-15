@@ -14,7 +14,9 @@ done
 sorted=$(echo "$spaces" | tr ' ' '\n' | sort -V)
 final_sorted=$(echo "$sorted" | grep -v "^0$" | tr '\n' ' ')$(echo "$sorted" | grep "^0$" | tr '\n' ' ')
 
-for sid in ${final_sorted}; do
+IFS=' ' read -ra items <<< "$final_sorted"
+
+for sid in "${items[@]}"; do
   item="space.$sid"
 
   sketchybar --add item "$item" left \
