@@ -103,6 +103,7 @@ ctrl-alt-shift-j = 'join-with down'
 ctrl-alt-shift-k = 'join-with up'
 ctrl-alt-shift-l = 'join-with right'
 
+alt-f = 'fullscreen'
 alt-shift-f = 'layout floating tiling'
 
 #################################
