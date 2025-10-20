@@ -34,19 +34,11 @@ getpath() {
   find . -type f | fzf | sed 's|^\./||' | tr -d '\n' | wl-copy
 }
 
-# === Git and SSH ===
+# === SSH ===
 
-rssh() {
+sshl() {
   host=$(grep ^Host ~/.ssh/config | awk '{print $2}' | fzf)
   ssh "$host"
-}
-
-ussh() {
-  if [ $# -eq 2 ]; then
-    ssh -o "User=$1" "$2"
-  else
-    ssh "$@"
-  fi
 }
 
 # === File Utilities ===
