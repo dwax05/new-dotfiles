@@ -33,18 +33,18 @@ export LOCAL_ENDPOINT="http://localhost:11434"
 
 # Append bin paths
 for bin in \
-  "/opt/homebrew/bin" \
   "$HOME/.local/bin" \
   "$HOME/.cargo/bin" \
   "$HOME/.deno/bin" \
   "$HOME/.go/bin" \
-  "/usr/local/go/bin" \
   "$HOME/.jenv/bin" \
   "$HOME/.config/tmux/plugins/tmux-session-wizard/bin" \
   "$HOME/.config/brew/scripts" \
+  "/opt/homebrew/bin" \
+  "/opt/homebrew/Cellar/python@3.14/3.14.0/bin" \
   "/opt/homebrew/opt/dotnet@6/bin"
 do
-  [ -d "$bin" ] && export PATH="$PATH:$bin"
+  [ -d "$bin" ] && export PATH="$bin:$PATH"
 done
 
 
