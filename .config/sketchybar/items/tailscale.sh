@@ -8,6 +8,7 @@ sketchybar --add item tailscale right \
     icon.padding_right=8 \
     icon.padding_left=8 \
     label.drawing=false \
-    script="$PLUGIN_DIR/tailscale.sh"
+    click_script="$PLUGIN_DIR/tailscale.sh -t" \
+    script="$PLUGIN_DIR/tailscale.sh -q"
 
 sketchybar --subscribe tailscale wifi_change
