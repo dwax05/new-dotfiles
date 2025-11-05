@@ -5,6 +5,7 @@ sketchybar --add event aerospace_workspace_change
 
 spaces=""
 workspaces=$(aerospace list-workspaces --all)
+echo $workspaces > ~/.cache/tmpspaces
 read -d' ' -a spaces <<< "${workspaces}"
 
 if [[ -n "${spaces[0]}" ]]; then
@@ -35,6 +36,4 @@ for sid in ${spaces[@]}; do
     label.shadow.drawing=off \
     click_script="aerospace workspace $sid" \
     script="$PLUGIN_DIR/aerospace.sh $sid"
-
-  sketchybar --set aerospace_bracket "$item"
 done
