@@ -1,0 +1,9 @@
+2025-10-23 17:36:48,608 DEBUG    root            Loaded Command Group: ['gcloud', 'builds']
+2025-10-23 17:36:48,609 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'get_default_service_account']
+2025-10-23 17:36:48,609 DEBUG    root            Running [gcloud.builds.get-default-service-account] with arguments: []
+2025-10-23 17:36:48,624 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudbuild.googleapis.com:443
+2025-10-23 17:36:48,844 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/global/defaultServiceAccount?alt=json HTTP/1.1" 200 None
+2025-10-23 17:36:48,847 DEBUG    root            Chosen display Format:value(serviceAccountEmail.segment(3))
+2025-10-23 17:36:48,848 INFO     root            Display format: "value(serviceAccountEmail.segment(3))"
+2025-10-23 17:36:48,880 INFO     ___FILE_ONLY___ 559719091527-compute@developer.gserviceaccount.com
+

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+PACKAGES_FILE="$HOME/.config/brew/packages"
+
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null
+then
+    echo "Homebrew is not installed. Please install it first."
+    exit 1
+fi
+
+{
+    brew list --formulae
+    brew list --casks
+} | xargs -n1 > $PACKAGES_FILE
+
+# Sort the packages file
+sort -o $PACKAGES_FILE $PACKAGES_FILE
+
+echo "Successfully logged Homebrew Packages"

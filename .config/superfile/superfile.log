@@ -1,0 +1,234 @@
+time=2025-07-23T17:56:22.994-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T17:56:22.995-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:02:42.702-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:02:42.702-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:02:46.004-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:46.388-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:46.543-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:46.924-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:47.074-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:47.373-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:48.173-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:48.232-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:48.324-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:48.385-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:49.374-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:49.529-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:50.222-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:50.373-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:50.665-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:02:55.279-04:00 level=ERROR msg="Command execution failed" retCode=127 error="exit status 127" output="/bin/sh: q: command not found\n"
+time=2025-07-23T18:03:18.280-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:03:18.281-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:03:19.074-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:19.225-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:19.525-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:23.951-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:24.101-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:26.911-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:27.062-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:27.824-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:27.977-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:28.513-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:28.666-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:30.624-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:30.775-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:31.630-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:31.781-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:33.500-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:33.652-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:34.011-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:34.563-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:35.118-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:35.184-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:35.279-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:35.741-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:37.543-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:37.696-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:38.390-04:00 level=ERROR msg="Error render directory preview" error="open /Users/dylanwax/Library/Application Support/AddressBook: operation not permitted"
+time=2025-07-23T18:03:39.071-04:00 level=ERROR msg="Error while return folder element function" error="open /Users/dylanwax/Library/Application Support/AddressBook: operation not permitted"
+time=2025-07-23T18:03:39.970-04:00 level=ERROR msg="Error while return folder element function" error="open /Users/dylanwax/Library/Application Support/AddressBook: operation not permitted"
+time=2025-07-23T18:03:41.841-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:03:41.841-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:03:43.652-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:44.550-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:44.765-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:45.279-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:03:59.332-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:03:59.332-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:04:20.910-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:21.060-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:21.442-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:22.302-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:27.835-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:27.990-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:28.535-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:28.688-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:30.809-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:30.961-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:34.767-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:35.623-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:36.676-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:36.899-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:36.908-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.004-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.012-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.533-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.654-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.663-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.799-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:37.809-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.014-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.024-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.153-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.470-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.545-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:38.831-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:04:39.075-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:15.387-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:17.235-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:17.323-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:20.331-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:21.389-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:22.775-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:22.844-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:23.288-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:08:25.491-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:09:14.579-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:09:14.670-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:09:15.424-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:09:15.433-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:09:16.385-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:09:16.386-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:09:40.756-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:09:40.757-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:09:51.027-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:09:51.027-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:10:23.240-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:10:23.241-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:10:53.257-04:00 level=ERROR msg="Error get file info" error="stat /Users/dylanwax/.config/nvim.old: no such file or directory"
+time=2025-07-23T18:10:53.258-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/.config/nvim.old: no such file or directory"
+time=2025-07-23T18:10:53.263-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/.config/nvim.old: no such file or directory"
+time=2025-07-23T18:11:04.339-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/.config/tmux.bak: no such file or directory"
+time=2025-07-23T18:11:04.344-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/.config/tmux.bak: no such file or directory"
+time=2025-07-23T18:11:32.165-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:36.987-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:37.139-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:40.126-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:40.279-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:45.168-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:45.319-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:45.367-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:56.028-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:11:56.183-04:00 level=ERROR msg="Max lines reached" maxLines=35
+time=2025-07-23T18:12:41.397-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:12:41.398-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:12:56.002-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:56.152-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:56.458-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:56.610-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:56.801-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:57.353-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:58.321-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:58.546-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:58.782-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:59.200-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:59.232-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:59.267-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:59.302-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:12:59.541-04:00 level=ERROR msg="Error render directory preview" error="open /Users/Guest: permission denied"
+time=2025-07-23T18:13:30.622-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:13:30.622-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:14:09.737-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:14:09.737-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:15:47.397-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:15:47.398-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:15:57.301-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:15:57.301-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:16:04.857-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:16:04.857-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:16:17.789-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:16:17.790-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:34.755-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:34.755-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:41.766-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:41.767-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:49.277-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:17:49.278-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:18:00.293-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/Developer/cs1/pa3.cpy: no such file or directory"
+time=2025-07-23T18:18:00.297-04:00 level=ERROR msg="Clipboard render function get item state " error="stat /Users/dylanwax/Developer/cs1/pa3.cpy: no such file or directory"
+time=2025-07-23T18:19:06.037-04:00 level=ERROR msg="Command execution failed" retCode=127 error="exit status 127" output="/bin/sh: config: command not found\n"
+time=2025-07-23T18:19:07.303-04:00 level=ERROR msg="Command execution failed" retCode=127 error="exit status 127" output="/bin/sh: q: command not found\n"
+time=2025-07-23T18:19:08.216-04:00 level=ERROR msg="Command execution failed" retCode=127 error="exit status 127" output="/bin/sh: q: command not found\n"
+time=2025-07-23T18:20:14.961-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:20:14.962-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:20:33.916-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:20:33.916-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:20:41.507-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:20:41.508-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:21:57.900-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:21:57.901-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:00.445-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:00.445-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:10.622-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:10.622-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:39.209-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:22:39.209-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:23:56.290-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:23:56.291-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:38:10.118-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:38:10.119-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:38:16.645-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T18:38:16.646-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:32:50.929-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:32:50.929-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:36:56.392-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:36:56.393-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:37:00.515-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:00.851-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:16.944-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:17.706-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:19.737-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:37:19.737-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-23T19:37:31.150-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:32.727-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:33.602-04:00 level=ERROR msg="exif error" error=EOF
+time=2025-07-23T19:37:34.791-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:37.517-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:38.765-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:39.471-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:42.443-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:42.609-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:42.981-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:43.789-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:44.713-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:45.699-04:00 level=ERROR msg="exif error" error=EOF
+time=2025-07-23T19:37:46.785-04:00 level=ERROR msg="exif error" error=EOF
+time=2025-07-23T19:37:47.528-04:00 level=ERROR msg="exif error" error=EOF
+time=2025-07-23T19:37:49.226-04:00 level=ERROR msg="exif error" error="exif: failed to find exif intro marker"
+time=2025-07-23T19:37:49.434-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-23T19:37:50.810-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-24T03:19:01.397-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-24T03:19:01.398-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-24T03:19:26.401-04:00 level=ERROR msg="Error get file info" error="stat /Users/dylanwax/llmTests: no such file or directory"
+time=2025-07-24T03:36:07.149-04:00 level=ERROR msg="Error get file info" error="stat /Users/dylanwax/llmtests/alienlexicon/qwen3.py: no such file or directory"
+time=2025-07-25T16:21:23.376-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T16:21:23.377-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T20:59:06.131-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T20:59:06.132-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:00:38.725-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:00:38.725-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:00:50.244-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:50.467-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:50.670-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:54.403-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:55.688-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:55.924-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:00:56.225-04:00 level=ERROR msg="exif orientation error" error="exif: tag \"Orientation\" is not present"
+time=2025-07-25T21:02:32.208-04:00 level=ERROR msg="Error get file info" error="stat /Users/dylanwax/Pictures/Screenshot 2025-07-17 at 11.01.46\u202fPM.jpg: no such file or directory"
+time=2025-07-25T21:04:47.353-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:04:47.354-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:06:04.064-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-07-25T21:06:04.065-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43
+time=2025-09-15T20:20:53.960-04:00 level=INFO msg="Successfully detected terminal cell size via ioctl" pixels_per_column=20 pixels_per_row=43
+time=2025-09-15T20:20:53.960-04:00 level=INFO msg="Terminal cell size detection" pixels_per_column=20 pixels_per_row=43

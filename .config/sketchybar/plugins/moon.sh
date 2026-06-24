@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 IP=$(curl -s https://ipinfo.io/ip)
 LOCATION_JSON=$(curl -s https://ipinfo.io/$IP/json)
@@ -13,7 +13,7 @@ WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION_ESCAPED?format=j1")
 
 # Fallback if empty
 if [ -z $WEATHER_JSON ]; then
-    sketchybar --set $NAME icon=
+    sketchybar --set $NAME icon=
     return
 fi
 
@@ -55,7 +55,7 @@ case ${MOON_PHASE} in
   *)
     ICON_EMOJI="🌗"
     ICON_ANSI=""
-    ''
+    ;;
 esac
 
 sketchybar --set $NAME icon=$ICON_ANSI

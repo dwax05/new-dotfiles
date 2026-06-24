@@ -1,0 +1,4 @@
+#/bin/sh
+
+defaults write com.apple.screencapture type jpg
+defaults write com.apple.Dock showhidden -bool TRUE # && killall Dock

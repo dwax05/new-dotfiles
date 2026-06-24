@@ -1,0 +1,111 @@
+2025-10-23 17:30:16,142 DEBUG    root            Loaded Command Group: ['gcloud', 'components']
+2025-10-23 17:30:16,144 DEBUG    root            Loaded Command Group: ['gcloud', 'components', 'install']
+2025-10-23 17:30:16,144 DEBUG    root            Running [gcloud.components.install] with arguments: [--compile-python: "True", --quiet: "True", COMPONENT-IDS:4: "['gsutil', 'core', 'bq', 'gcloud-crc32c']"]
+2025-10-23 17:30:16,161 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): dl.google.com:443
+2025-10-23 17:30:16,344 DEBUG    urllib3.connectionpool https://dl.google.com:443 "GET /dl/cloudsdk/channels/rapid/components-v544.0.0.json HTTP/1.1" 200 233157
+2025-10-23 17:30:16,404 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,405 INFO     ___FILE_ONLY___ 
+Your current Google Cloud CLI version is: 544.0.0
+
+2025-10-23 17:30:16,405 INFO     ___FILE_ONLY___ Installing components from version: 544.0.0
+
+2025-10-23 17:30:16,405 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,405 DEBUG    root            Chosen display Format:table[box,title="These components will be removed."](details.display_name:label=Name:align=left,version.version_string:label=Version:align=right,data.size.size(zero="",min=1048576):label=Size:align=right)
+2025-10-23 17:30:16,406 DEBUG    root            Chosen display Format:table[box,title="These components will be updated."](details.display_name:label=Name:align=left,version.version_string:label=Version:align=right,data.size.size(zero="",min=1048576):label=Size:align=right)
+2025-10-23 17:30:16,406 DEBUG    root            Chosen display Format:table[box,title="These components will be installed."](details.display_name:label=Name:align=left,version.version_string:label=Version:align=right,data.size.size(zero="",min=1048576):label=Size:align=right)
+2025-10-23 17:30:16,433 INFO     ___FILE_ONLY___ ┌────────────────────────────────────────────────────────────────────┐
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │                These components will be installed.                 │
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ ├─────────────────────────────────────────────┬────────────┬─────────┤
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │                     Name                    │  Version   │   Size  │
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ ├─────────────────────────────────────────────┼────────────┼─────────┤
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │ 
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ gcloud cli dependencies (Platform Specific)
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___  
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │ 
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 2021.04.16
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___  
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │ 
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ < 1 MiB
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___  
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ │
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ └─────────────────────────────────────────────┴────────────┴─────────┘
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,434 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:16,435 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): dl.google.com:443
+2025-10-23 17:30:16,589 DEBUG    urllib3.connectionpool https://dl.google.com:443 "GET /dl/cloudsdk/channels/rapid/RELEASE_NOTES HTTP/1.1" 200 1506053
+2025-10-23 17:30:17,104 INFO     ___FILE_ONLY___ For the latest full release notes, please visit:
+  https://cloud.google.com/sdk/release_notes
+
+
+2025-10-23 17:30:17,104 INFO     ___FILE_ONLY___ Performing in place update...
+
+
+2025-10-23 17:30:17,105 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2025-10-23 17:30:17,105 INFO     ___FILE_ONLY___ ╠═ Downloading: gcloud cli dependencies (Platform Specific) ═╣
+
+2025-10-23 17:30:17,105 INFO     ___FILE_ONLY___ ╚
+2025-10-23 17:30:17,106 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): dl.google.com:443
+2025-10-23 17:30:17,308 DEBUG    urllib3.connectionpool https://dl.google.com:443 "GET /dl/cloudsdk/channels/rapid/components/google-cloud-sdk-gcloud-deps-darwin-x86_64-20210416153011.tar.gz HTTP/1.1" 200 105
+2025-10-23 17:30:17,309 INFO     ___FILE_ONLY___ ════════════════════════════════════════════════════════════
+2025-10-23 17:30:17,310 INFO     ___FILE_ONLY___ ╝
+
+2025-10-23 17:30:17,311 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2025-10-23 17:30:17,311 INFO     ___FILE_ONLY___ ╠═ Installing: gcloud cli dependencies (Platform Specific)  ═╣
+
+2025-10-23 17:30:17,311 INFO     ___FILE_ONLY___ ╚
+2025-10-23 17:30:17,312 INFO     ___FILE_ONLY___ ════════════════════════════════════════════════════════════
+2025-10-23 17:30:17,313 INFO     ___FILE_ONLY___ ╝
+
+2025-10-23 17:30:17,320 DEBUG    root            Updating notification cache...
+2025-10-23 17:30:17,321 INFO     ___FILE_ONLY___ 
+
+2025-10-23 17:30:17,321 INFO     ___FILE_ONLY___ Performing post processing steps...
+2025-10-23 17:30:17,321 DEBUG    root            Executing command: ['/opt/homebrew/share/google-cloud-sdk/bin/gcloud', 'components', 'post-process']
+2025-10-23 17:30:20,918 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:20,919 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:21,128 INFO     root            descriptor_list: [{'universeDomain': 'googleapis.com', 'universeShortName': '', 'authenticationDomain': 'auth.cloud.google.com', 'projectPrefix': '', 'cloudWebDomain': 'cloud.google.com', 'documentationDomain': 'cloud.google.com', 'version': '1.0.0', 'state': 'primary', 'artifactRegistryDomain': 'pkg.dev'}]
+2025-10-23 17:30:21,130 DEBUG    root            Loaded Command Group: ['gcloud']
+2025-10-23 17:30:21,136 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2025-10-23 17:30:21,137 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'virtualenv']
+2025-10-23 17:30:21,148 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'virtualenv', 'create']
+2025-10-23 17:30:21,149 DEBUG    root            Running [gcloud.config.virtualenv.create] with arguments: [--python-to-use: "/opt/homebrew/bin/python3.12"]
+2025-10-23 17:30:21,149 INFO     ___FILE_ONLY___ Creating virtualenv...
+
+2025-10-23 17:30:21,149 DEBUG    root            Executing command: ['/opt/homebrew/bin/python3.12', '-m', 'venv', '/Users/dylanwax/.config/gcloud/virtenv']
+2025-10-23 17:30:22,439 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:22,439 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:22,439 INFO     ___FILE_ONLY___ Installing modules...
+
+2025-10-23 17:30:22,439 DEBUG    root            Executing command: ['/Users/dylanwax/.config/gcloud/virtenv/bin/pip3', 'install', '--log', '/Users/dylanwax/.config/gcloud/virtenv/install_module.log', '-q', '--disable-pip-version-check', 'crcmod', 'grpcio', 'pyopenssl==24.2.1', 'google_crc32c', 'certifi', 'https://github.com/googleapis/enterprise-certificate-proxy/releases/download/v0.3.6/cryptography-42.0.7-cp39-abi3-macosx_10_12_universal2.whl', 'setuptools']
+2025-10-23 17:30:28,317 DEBUG    root            Chosen display Format:default
+2025-10-23 17:30:28,318 INFO     root            Display format: "default"
+2025-10-23 17:30:28,320 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'virtualenv', 'enable']
+2025-10-23 17:30:28,320 DEBUG    root            Running [gcloud.config.virtualenv.enable] with arguments: []
+2025-10-23 17:30:28,321 INFO     ___FILE_ONLY___ Virtual env enabled.
+
+2025-10-23 17:30:28,321 DEBUG    root            Chosen display Format:default
+2025-10-23 17:30:28,321 INFO     root            Display format: "default"
+2025-10-23 17:30:28,321 INFO     ___FILE_ONLY___ 
+Update done!
+
+
+2025-10-23 17:30:28,323 DEBUG    root            Chosen display Format:none
+2025-10-23 17:30:28,323 INFO     root            Display format: "none"

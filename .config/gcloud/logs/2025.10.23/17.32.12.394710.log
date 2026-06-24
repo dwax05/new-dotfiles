@@ -1,0 +1,105 @@
+2025-10-23 17:32:12,395 DEBUG    root            Loaded Command Group: ['gcloud', 'run']
+2025-10-23 17:32:12,848 DEBUG    root            Loaded Command Group: ['gcloud', 'run', 'deploy']
+2025-10-23 17:32:12,853 DEBUG    root            Running [gcloud.run.deploy] with arguments: [--labels: "OrderedDict({'created-by': 'adk'})", --port: "8000", --project: "tutorial-475120", --source: "/var/folders/zp/xl8qny5x5mlbq5gmdwpjgb4c0000gn/T/cloud_run_deploy_src/20251023_173211", --verbosity: "info", SERVICE: "adk-default-service-name"]
+2025-10-23 17:32:12,864 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:13,449 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/artifactregistry.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:13,500 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:13,864 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/cloudbuild.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:13,890 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:14,281 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/run.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:17,101 INFO     ___FILE_ONLY___ Enabling APIs on project [tutorial-475120]...
+
+2025-10-23 17:32:17,112 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:17,781 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "POST /v1/projects/tutorial-475120/services:batchEnable?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:17,790 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:17,998 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:20,929 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:21,132 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:23,963 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:24,136 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:26,831 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:27,115 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:30,612 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-23 17:32:30,830 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:30,839 INFO     ___FILE_ONLY___ Operation "operations/acf.p2-559719091527-c6c955af-8bf4-444c-8b19-456e796b1697" finished successfully.
+
+2025-10-23 17:32:30,849 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): run.googleapis.com:443
+2025-10-23 17:32:31,815 DEBUG    urllib3.connectionpool https://run.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations?alt=json&pageSize=100 HTTP/1.1" 200 None
+2025-10-23 17:32:44,626 INFO     ___FILE_ONLY___ To make this the default region, run `gcloud config set run/region us-east1`.
+
+
+2025-10-23 17:32:44,639 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): us-east1-run.googleapis.com:443
+2025-10-23 17:32:45,177 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "GET /apis/serving.knative.dev/v1/namespaces/tutorial-475120/services/adk-default-service-name?alt=json HTTP/1.1" 404 None
+2025-10-23 17:32:45,179 DEBUG    root            Existing source_bucket: None
+2025-10-23 17:32:45,195 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): artifactregistry.googleapis.com:443
+2025-10-23 17:32:45,628 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/repositories/cloud-run-source-deploy?alt=json HTTP/1.1" 404 None
+2025-10-23 17:32:51,213 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudbuild.googleapis.com:443
+2025-10-23 17:32:51,636 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/defaultServiceAccount?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:51,650 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): iam.googleapis.com:443
+2025-10-23 17:32:52,128 DEBUG    urllib3.connectionpool https://iam.googleapis.com:443 "GET /v1/projects/-/serviceAccounts/559719091527-compute@developer.gserviceaccount.com?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:52,315 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/services/adk-default-service-name:testIamPermissions?alt=json HTTP/1.1" 200 None
+2025-10-23 17:32:56,711 INFO     ___FILE_ONLY___ Building using Dockerfile and deploying container to Cloud Run service [[1madk-default-service-name[m] in project [[1mtutorial-475120[m] region [[1mus-east1[m]
+
+2025-10-23 17:32:56,712 INFO     ___FILE_ONLY___ Building and deploying new service...
+2025-10-23 17:32:56,723 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): artifactregistry.googleapis.com:443
+2025-10-23 17:32:56,959 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/repositories?alt=json&repositoryId=cloud-run-source-deploy HTTP/1.1" 200 None
+2025-10-23 17:32:56,972 INFO     ___FILE_ONLY___ 
+2025-10-23 17:32:57,981 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): artifactregistry.googleapis.com:443
+2025-10-23 17:32:58,171 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/a6da5599-260d-4e45-90dd-3d3f7a48f226?alt=json HTTP/1.1" 200 None
+2025-10-23 17:33:01,125 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/a6da5599-260d-4e45-90dd-3d3f7a48f226?alt=json HTTP/1.1" 200 None
+2025-10-23 17:33:05,000 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/a6da5599-260d-4e45-90dd-3d3f7a48f226?alt=json HTTP/1.1" 200 None
+2025-10-23 17:33:09,112 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/a6da5599-260d-4e45-90dd-3d3f7a48f226?alt=json HTTP/1.1" 200 None
+2025-10-23 17:33:09,322 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/repositories/cloud-run-source-deploy?alt=json HTTP/1.1" 200 None
+2025-10-23 17:33:09,340 DEBUG    root            Creating bucket run-sources-tutorial-475120-us-east1 in region us-east1
+2025-10-23 17:33:09,341 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-10-23 17:33:09,554 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "GET /storage/v1/b/run-sources-tutorial-475120-us-east1?alt=json HTTP/1.1" 404 247
+2025-10-23 17:33:10,161 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "POST /storage/v1/b?alt=json&enableObjectRetention=False&project=tutorial-475120 HTTP/1.1" 200 1213
+2025-10-23 17:33:10,165 DEBUG    root            Uploading source to gs://run-sources-tutorial-475120-us-east1/services/adk-default-service-name/1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip
+2025-10-23 17:33:10,167 INFO     root            Not using ignore file.
+2025-10-23 17:33:10,175 INFO     root            Uploading [/var/folders/zp/xl8qny5x5mlbq5gmdwpjgb4c0000gn/T/tmp8pah00r_/file.zip] to [run-sources-tutorial-475120-us-east1/services/adk-default-service-name/1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip]
+2025-10-23 17:33:10,477 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "POST /upload/storage/v1/b/run-sources-tutorial-475120-us-east1/o?alt=json&name=services%2Fadk-default-service-name%2F1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip&uploadType=multipart HTTP/1.1" 200 1199
+2025-10-23 17:33:10,497 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): us-east1-run.googleapis.com:443
+2025-10-23 17:33:11,204 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v2/projects/tutorial-475120/locations/us-east1/builds:submit?alt=json HTTP/1.1" 403 None
+2025-10-23 17:33:11,236 DEBUG    root            (gcloud.run.deploy) PERMISSION_DENIED: Build failed because the default service account is missing required IAM permissions. Follow the instructions at https://cloud.google.com/build/docs/cloud-build-service-account-updates#get_the_current_default_service_account_for_a_project to get the default service account for your project, and see https://cloud.google.com/run/docs/configuring/services/build-service-account for more details. could not resolve source: Get "https://storage.googleapis.com/storage/v1/b/run-sources-tutorial-475120-us-east1/o/services%2Fadk-default-service-name%2F1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip?alt=json&prettyPrint=false": generic::permission_denied: IAM permission denied for service account 559719091527-compute@developer.gserviceaccount.com. . This command is authenticated as djwax12@gmail.com which is the active account specified by the [core/account] property.
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 944, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 955, in Run
+    resources = command_instance.Run(args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/run/deploy.py", line 1009, in Run
+    service = _ReleaseService(changes)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/run/deploy.py", line 972, in _ReleaseService
+    return operations.ReleaseService(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/command_lib/run/serverless_operations.py", line 973, in ReleaseService
+    ) = deployer.CreateImage(
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/command_lib/run/sourcedeploys/deployer.py", line 105, in CreateImage
+    response_dict, build_log_url, base_image_from_build = _SubmitBuild(
+                                                          ^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/command_lib/run/sourcedeploys/deployer.py", line 440, in _SubmitBuild
+    build_response = run_client.projects_locations_builds.Submit(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/googlecloudsdk/generated_clients/apis/run/v2/run_v2_client.py", line 74, in Submit
+    return self._RunMethod(
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 747, in _RunMethod
+    return self.ProcessHttpResponse(method_config, http_response, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 753, in ProcessHttpResponse
+    self.__ProcessHttpResponse(method_config, http_response, request))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 612, in __ProcessHttpResponse
+    raise exceptions.HttpError.FromResponse(
+apitools.base.py.exceptions.HttpForbiddenError: HttpError accessing <https://us-east1-run.googleapis.com/v2/projects/tutorial-475120/locations/us-east1/builds:submit?alt=json>: response: <{'vary': 'Origin, X-Origin, Referer', 'content-type': 'application/json; charset=UTF-8', 'content-encoding': 'gzip', 'date': 'Thu, 23 Oct 2025 21:33:11 GMT', 'server': 'ESF', 'x-xss-protection': '0', 'x-frame-options': 'SAMEORIGIN', 'x-content-type-options': 'nosniff', 'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'transfer-encoding': 'chunked', 'status': 403}>, content <{
+  "error": {
+    "code": 403,
+    "message": "Build failed because the default service account is missing required IAM permissions. Follow the instructions at https://cloud.google.com/build/docs/cloud-build-service-account-updates#get_the_current_default_service_account_for_a_project to get the default service account for your project, and see https://cloud.google.com/run/docs/configuring/services/build-service-account for more details. could not resolve source: Get \"https://storage.googleapis.com/storage/v1/b/run-sources-tutorial-475120-us-east1/o/services%2Fadk-default-service-name%2F1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip?alt=json&prettyPrint=false\": generic::permission_denied: IAM permission denied for service account 559719091527-compute@developer.gserviceaccount.com. .",
+    "status": "PERMISSION_DENIED"
+  }
+}
+>
+2025-10-23 17:33:11,240 ERROR    root            (gcloud.run.deploy) PERMISSION_DENIED: Build failed because the default service account is missing required IAM permissions. Follow the instructions at https://cloud.google.com/build/docs/cloud-build-service-account-updates#get_the_current_default_service_account_for_a_project to get the default service account for your project, and see https://cloud.google.com/run/docs/configuring/services/build-service-account for more details. could not resolve source: Get "https://storage.googleapis.com/storage/v1/b/run-sources-tutorial-475120-us-east1/o/services%2Fadk-default-service-name%2F1761255190.165272-3ba67f30f68d46fbb0fcb456a066a613.zip?alt=json&prettyPrint=false": generic::permission_denied: IAM permission denied for service account 559719091527-compute@developer.gserviceaccount.com. . This command is authenticated as djwax12@gmail.com which is the active account specified by the [core/account] property.

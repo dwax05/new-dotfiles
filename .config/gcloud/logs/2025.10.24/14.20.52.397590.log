@@ -1,0 +1,70 @@
+2025-10-24 14:20:52,398 DEBUG    root            Loaded Command Group: ['gcloud', 'run']
+2025-10-24 14:20:52,584 DEBUG    root            Loaded Command Group: ['gcloud', 'run', 'deploy']
+2025-10-24 14:20:52,591 DEBUG    root            Running [gcloud.run.deploy] with arguments: [--labels: "OrderedDict({'created-by': 'adk'})", --port: "8000", --project: "tutorial-475120", --source: "/var/folders/zp/xl8qny5x5mlbq5gmdwpjgb4c0000gn/T/cloud_run_deploy_src/20251024_142051", --verbosity: "info", SERVICE: "adk-default-service-name"]
+2025-10-24 14:20:52,600 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2025-10-24 14:20:52,605 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-10-24 14:20:52,711 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-10-24 14:20:52,719 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-24 14:20:53,112 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/artifactregistry.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:53,160 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-24 14:20:53,540 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/cloudbuild.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:53,563 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): serviceusage.googleapis.com:443
+2025-10-24 14:20:53,962 DEBUG    urllib3.connectionpool https://serviceusage.googleapis.com:443 "GET /v1/projects/tutorial-475120/services/run.googleapis.com?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:53,993 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): run.googleapis.com:443
+2025-10-24 14:20:54,320 DEBUG    urllib3.connectionpool https://run.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations?alt=json&pageSize=100 HTTP/1.1" 200 None
+2025-10-24 14:20:57,661 INFO     ___FILE_ONLY___ To make this the default region, run `gcloud config set run/region us-east1`.
+
+
+2025-10-24 14:20:57,678 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): us-east1-run.googleapis.com:443
+2025-10-24 14:20:57,913 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "GET /apis/serving.knative.dev/v1/namespaces/tutorial-475120/services/adk-default-service-name?alt=json HTTP/1.1" 404 None
+2025-10-24 14:20:57,916 DEBUG    root            Existing source_bucket: None
+2025-10-24 14:20:57,937 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): artifactregistry.googleapis.com:443
+2025-10-24 14:20:58,168 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/repositories/cloud-run-source-deploy?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:58,199 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudbuild.googleapis.com:443
+2025-10-24 14:20:58,486 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/defaultServiceAccount?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:58,500 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): iam.googleapis.com:443
+2025-10-24 14:20:58,828 DEBUG    urllib3.connectionpool https://iam.googleapis.com:443 "GET /v1/projects/-/serviceAccounts/559719091527-compute@developer.gserviceaccount.com?alt=json HTTP/1.1" 200 None
+2025-10-24 14:20:58,975 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/services/adk-default-service-name:testIamPermissions?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:06,389 INFO     ___FILE_ONLY___ Building using Dockerfile and deploying container to Cloud Run service [[1madk-default-service-name[m] in project [[1mtutorial-475120[m] region [[1mus-east1[m]
+
+2025-10-24 14:21:06,390 INFO     ___FILE_ONLY___ Building and deploying new service...
+2025-10-24 14:21:06,408 DEBUG    root            Creating bucket run-sources-tutorial-475120-us-east1 in region us-east1
+2025-10-24 14:21:06,410 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-10-24 14:21:06,539 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "GET /storage/v1/b/run-sources-tutorial-475120-us-east1?alt=json HTTP/1.1" 200 1213
+2025-10-24 14:21:06,711 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "GET /storage/v1/b?alt=json&maxResults=1000&prefix=run-sources-tutorial-475120-us-east1&project=tutorial-475120 HTTP/1.1" 200 1443
+2025-10-24 14:21:06,714 DEBUG    root            Uploading source to gs://run-sources-tutorial-475120-us-east1/services/adk-default-service-name/1761330066.714515-9141c297cc0148ed956217e63002d6f6.zip
+2025-10-24 14:21:06,720 INFO     root            Not using ignore file.
+2025-10-24 14:21:06,725 INFO     root            Uploading [/var/folders/zp/xl8qny5x5mlbq5gmdwpjgb4c0000gn/T/tmpxp443abl/file.zip] to [run-sources-tutorial-475120-us-east1/services/adk-default-service-name/1761330066.714515-9141c297cc0148ed956217e63002d6f6.zip]
+2025-10-24 14:21:06,858 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "POST /upload/storage/v1/b/run-sources-tutorial-475120-us-east1/o?alt=json&name=services%2Fadk-default-service-name%2F1761330066.714515-9141c297cc0148ed956217e63002d6f6.zip&uploadType=multipart HTTP/1.1" 200 1199
+2025-10-24 14:21:06,884 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): us-east1-run.googleapis.com:443
+2025-10-24 14:21:08,195 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v2/projects/tutorial-475120/locations/us-east1/builds:submit?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:08,213 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudbuild.googleapis.com:443
+2025-10-24 14:21:08,474 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:11,453 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:15,290 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:20,234 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:26,734 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:35,123 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:21:46,531 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:22:02,319 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:22:24,078 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:22:53,922 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:36,230 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/operations/226ae23a-f380-43c4-bc8d-197355ee73bd?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:36,485 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /apis/serving.knative.dev/v1/namespaces/tutorial-475120/services?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:36,490 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): run.googleapis.com:443
+2025-10-24 14:23:36,753 DEBUG    urllib3.connectionpool https://run.googleapis.com:443 "GET /v1/projects/tutorial-475120/locations/us-east1/services/adk-default-service-name:getIamPolicy?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:37,389 DEBUG    urllib3.connectionpool https://run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/services/adk-default-service-name:setIamPolicy?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:46,435 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:23:57,789 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:24:10,157 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:24:23,674 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:24:38,829 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:24:56,286 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:25:12,416 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:25:12,512 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:25:12,603 DEBUG    urllib3.connectionpool https://us-east1-run.googleapis.com:443 "POST /v1/projects/tutorial-475120/locations/us-east1/operations/16b1ea28-d8db-4da6-b845-5e4efd23c52e:wait?alt=json HTTP/1.1" 200 None
+2025-10-24 14:25:12,678 INFO     ___FILE_ONLY___ Service [[1madk-default-service-name[m] revision [[1madk-default-service-name-00001-cfs[m] has been deployed and is serving [1m100[m percent of traffic.
+Service URL: [1mhttps://adk-default-service-name-559719091527.us-east1.run.app[m
+
+2025-10-24 14:25:12,679 DEBUG    root            Chosen display Format:none
+2025-10-24 14:25:12,680 INFO     root            Display format: "none"

@@ -4,6 +4,8 @@ window-theme = dark
 config-file = ?~/.cache/wal/colors-ghostty
 config-file = ?binds
 
+custom-shader = ?shaders/cursor_warp.glsl
+
 # Fonts
 # font-family = "Symbols Nerd Font Mono"
 font-family = "JetBrainsMono Nerd Font Mono"

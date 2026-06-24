@@ -1,0 +1,18 @@
+2025-10-23 17:30:58,913 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2025-10-23 17:30:58,914 ERROR    root            (gcloud.auth) Command name argument expected.
+2025-10-23 17:30:58,915 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'git_helper']
+2025-10-23 17:30:58,922 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'print_identity_token']
+2025-10-23 17:30:58,922 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'application_default']
+2025-10-23 17:30:58,923 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'docker_helper']
+2025-10-23 17:30:58,923 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'describe']
+2025-10-23 17:30:58,924 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'login']
+2025-10-23 17:30:58,924 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'revoke']
+2025-10-23 17:30:58,924 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'print_access_token']
+2025-10-23 17:30:58,925 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'activate_service_account']
+2025-10-23 17:30:58,925 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
+2025-10-23 17:30:58,925 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'enterprise_certificate_config']
+2025-10-23 17:30:58,926 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'print_refresh_token']
+2025-10-23 17:30:58,926 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'list']
+2025-10-23 17:30:58,926 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'activate_refresh_token']
+2025-10-23 17:30:58,927 DEBUG    root            Chosen display Format:table[no-heading,margin=6,width=80]([0]:label='':align=left:width=22,[1]:label='':align=left:wrap)
+2025-10-23 17:30:58,940 DEBUG    root            Chosen display Format:table[no-heading,margin=6,width=80]([0]:label='':align=left:width=22,[1]:label='':align=left:wrap)

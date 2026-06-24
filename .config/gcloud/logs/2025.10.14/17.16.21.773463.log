@@ -1,0 +1,12 @@
+2025-10-14 17:16:21,775 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2025-10-14 17:16:21,819 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
+2025-10-14 17:16:21,820 DEBUG    root            Running [gcloud.config.set] with arguments: [--quiet: "True", SECTION/PROPERTY: "project", VALUE: "tutorial-475120"]
+2025-10-14 17:16:21,822 WARNING  root            Your active project does not match the quota project in your local Application Default Credentials file. This might result in unexpected quota issues.
+
+To update your Application Default Credentials quota project, use the `gcloud auth application-default set-quota-project` command.
+2025-10-14 17:16:21,932 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2025-10-14 17:16:22,361 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/tutorial-475120?alt=json HTTP/1.1" 200 None
+2025-10-14 17:16:22,370 INFO     ___FILE_ONLY___ Updated property [core/project].
+
+2025-10-14 17:16:22,371 DEBUG    root            Chosen display Format:default
+2025-10-14 17:16:22,373 INFO     root            Display format: "default"

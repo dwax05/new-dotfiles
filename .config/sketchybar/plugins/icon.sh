@@ -14,8 +14,11 @@ function icon_map() {
     "Docker Desktop")
       ICON=
       ;;
-    ":iscord"|"Voxa"|"Discord Canary")
+    "Discord"|"Voxa"|"Discord Canary")
       ICON=
+      ;;
+    "Postman")
+      ICON=⛑
       ;;
     "FaceTime")
       ICON=

@@ -1,0 +1,19 @@
+2025-10-23 17:37:55,199 DEBUG    root            Loaded Command Group: ['gcloud', 'builds']
+2025-10-23 17:37:55,200 ERROR    root            (gcloud.builds) Command name argument expected.
+2025-10-23 17:37:55,201 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'worker_pools']
+2025-10-23 17:37:55,202 DEBUG    root            No implementation for release track [GA] for element: [/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/builds/workflows]
+2025-10-23 17:37:55,202 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'cancel']
+2025-10-23 17:37:55,202 DEBUG    root            No implementation for release track [GA] for element: [/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/builds/runs]
+2025-10-23 17:37:55,203 DEBUG    root            No implementation for release track [GA] for element: [/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/builds/enterprise_config]
+2025-10-23 17:37:55,209 DEBUG    root            No implementation for release track [GA] for element: [/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/builds/approve.yaml]
+2025-10-23 17:37:55,216 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'log']
+2025-10-23 17:37:55,216 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'describe']
+2025-10-23 17:37:55,216 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'get_default_service_account']
+2025-10-23 17:37:55,218 DEBUG    root            No implementation for release track [GA] for element: [/opt/homebrew/Caskroom/gcloud-cli/544.0.0/google-cloud-sdk/lib/surface/builds/reject.yaml]
+2025-10-23 17:37:55,219 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'list']
+2025-10-23 17:37:55,219 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'connections']
+2025-10-23 17:37:55,219 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'repositories']
+2025-10-23 17:37:55,220 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'triggers']
+2025-10-23 17:37:55,226 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'submit']
+2025-10-23 17:37:55,231 DEBUG    root            Chosen display Format:table[no-heading,margin=6,width=80]([0]:label='':align=left:width=22,[1]:label='':align=left:wrap)
+2025-10-23 17:37:55,244 DEBUG    root            Chosen display Format:table[no-heading,margin=6,width=80]([0]:label='':align=left:width=22,[1]:label='':align=left:wrap)

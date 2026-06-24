@@ -1,0 +1,11 @@
+2025-10-14 17:03:48,654 DEBUG    root            Loaded Command Group: ['gcloud', 'cloud_shell']
+2025-10-14 17:03:48,656 DEBUG    root            Loaded Command Group: ['gcloud', 'cloud-shell', 'ssh']
+2025-10-14 17:03:48,657 DEBUG    root            Running [gcloud.cloud-shell.ssh] with arguments: []
+2025-10-14 17:03:48,657 INFO     ___FILE_ONLY___ Automatic authentication with GCP CLI tools in Cloud Shell is disabled. To enable, please rerun command with `--authorize-session` flag.
+
+2025-10-14 17:03:48,673 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudshell.googleapis.com:443
+2025-10-14 17:03:49,187 DEBUG    urllib3.connectionpool https://cloudshell.googleapis.com:443 "GET /v1/users/me/environments/default?alt=json HTTP/1.1" 200 None
+2025-10-14 17:03:49,191 DEBUG    root            Running command [/usr/bin/ssh -t -p 6000 -i /Users/dylanwax/.ssh/google_compute_engine -o StrictHostKeyChecking=no djwax12@34.75.10.42 -- DEVSHELL_PROJECT_ID=famous-gearing-384923 bash -l].
+2025-10-14 17:03:49,191 DEBUG    root            Executing command: ['/usr/bin/ssh', '-t', '-p', '6000', '-i', '/Users/dylanwax/.ssh/google_compute_engine', '-o', 'StrictHostKeyChecking=no', 'djwax12@34.75.10.42', '--', 'DEVSHELL_PROJECT_ID=famous-gearing-384923', 'bash -l']
+2025-10-14 17:14:53,187 DEBUG    root            Chosen display Format:default
+2025-10-14 17:14:53,191 INFO     root            Display format: "default"

@@ -1,0 +1,26 @@
+2025-10-14 16:59:24,954 DEBUG    root            Loaded Command Group: ['gcloud', 'cloud_shell']
+2025-10-14 16:59:24,958 DEBUG    root            Loaded Command Group: ['gcloud', 'cloud-shell', 'ssh']
+2025-10-14 16:59:24,959 DEBUG    root            Running [gcloud.cloud-shell.ssh] with arguments: []
+2025-10-14 16:59:24,959 INFO     ___FILE_ONLY___ Automatic authentication with GCP CLI tools in Cloud Shell is disabled. To enable, please rerun command with `--authorize-session` flag.
+
+2025-10-14 16:59:24,977 WARNING  root            The private SSH key file for gcloud does not exist.
+2025-10-14 16:59:24,977 WARNING  root            The public SSH key file for gcloud does not exist.
+2025-10-14 16:59:24,977 WARNING  root            You do not have an SSH key for gcloud.
+2025-10-14 16:59:24,977 WARNING  root            SSH keygen will be executed to generate a key.
+2025-10-14 16:59:24,977 DEBUG    root            Running command [/usr/bin/ssh-keygen -t rsa -f /Users/dylanwax/.ssh/google_compute_engine].
+2025-10-14 16:59:24,977 DEBUG    root            Executing command: ['/usr/bin/ssh-keygen', '-t', 'rsa', '-f', '/Users/dylanwax/.ssh/google_compute_engine']
+2025-10-14 16:59:58,381 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudshell.googleapis.com:443
+2025-10-14 16:59:58,885 DEBUG    urllib3.connectionpool https://cloudshell.googleapis.com:443 "GET /v1/users/me/environments/default?alt=json HTTP/1.1" 200 None
+2025-10-14 16:59:58,892 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudshell.googleapis.com:443
+2025-10-14 16:59:59,705 DEBUG    urllib3.connectionpool https://cloudshell.googleapis.com:443 "POST /v1/users/me/environments/default:addPublicKey?alt=json HTTP/1.1" 200 None
+2025-10-14 16:59:59,708 INFO     ___FILE_ONLY___ Pushing your public key to Cloud Shell...
+2025-10-14 17:00:00,717 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudshell.googleapis.com:443
+2025-10-14 17:00:01,223 DEBUG    urllib3.connectionpool https://cloudshell.googleapis.com:443 "GET /v1/operations/operation-76491974-3d24-4be8-adae-97cc448dccce?alt=json HTTP/1.1" 200 None
+2025-10-14 17:00:01,331 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudshell.googleapis.com:443
+2025-10-14 17:00:02,163 DEBUG    urllib3.connectionpool https://cloudshell.googleapis.com:443 "GET /v1/users/me/environments/default?alt=json HTTP/1.1" 200 None
+2025-10-14 17:00:02,164 INFO     ___FILE_ONLY___ Waiting for your public key to propagate...
+
+2025-10-14 17:00:07,170 DEBUG    root            Running command [/usr/bin/ssh -t -p 6000 -i /Users/dylanwax/.ssh/google_compute_engine -o StrictHostKeyChecking=no djwax12@34.75.10.42 -- DEVSHELL_PROJECT_ID=famous-gearing-384923 bash -l].
+2025-10-14 17:00:07,170 DEBUG    root            Executing command: ['/usr/bin/ssh', '-t', '-p', '6000', '-i', '/Users/dylanwax/.ssh/google_compute_engine', '-o', 'StrictHostKeyChecking=no', 'djwax12@34.75.10.42', '--', 'DEVSHELL_PROJECT_ID=famous-gearing-384923', 'bash -l']
+2025-10-14 17:02:42,218 DEBUG    root            Chosen display Format:default
+2025-10-14 17:02:42,221 INFO     root            Display format: "default"

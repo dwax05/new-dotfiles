@@ -1,0 +1,85 @@
+# Template for providers.yaml
+#
+# You can add any OpenAI API compatible provider to the "providers" list.
+# For each provider you must also specify a list of models, along with model abilities.
+#
+# All fields are required unless marked as optional.
+#
+# Refer to your provider's API documentation for specific
+# details such as model identifiers, capabilities etc
+#
+# Note: Since the OpenAI API is not a standard we can't guarantee that all
+# providers will work correctly with Raycast AI.
+#
+# To use this template rename as `providers.yaml`
+#
+providers:
+  - id: lmstudio
+    name: LM-Studio
+    base_url: http://127.0.0.1:11435/v1
+    additional_parameters:
+      return_images: true
+      web_search_options:
+        search_context_size: medium
+    # Specify all models to use with the current provider
+    models:
+      - id: qwen/qwen3-30b-a3b-2507
+        name: Qwen 3
+        description: Qwen 3 General Model
+        context: 262000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: qwen/qwen3-coder-30b
+        name: Qwen 3 Coder
+        description: Qwen 3 Coder Model
+        context: 262000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: false
+          reasoning_effort:
+            supported: false
+      - id: openai/gpt-oss-20b
+        name: GPT-OSS 
+        description: Open source GPT model
+        context: 131000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: false
+          reasoning_effort:
+            supported: false
+      - id: qwen/qwen3-4b-thinking-2507
+        name: Qwen 3 4B Thinking
+        description: Qwen 3 4B Thinking Model
+        context: 262000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: true

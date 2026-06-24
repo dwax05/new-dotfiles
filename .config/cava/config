@@ -1,0 +1,8 @@
+[output]
+method = raw
+data_format = ascii
+bar_delimiter = 59           ; ASCII value for ';'
+frame_delimiter = 10         ; ASCII value for newline '\n'
+raw_target = /tmp/cava.fifo  ; Or any FIFO you want
+
+; vim: filetype=confini

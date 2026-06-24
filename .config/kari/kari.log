@@ -1,0 +1,81 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║                    🚀 Kari Starting                        ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+started at 2026-06-20 15:18:34
+log path   /Users/dylanwax/.config/kari/kari.log
+debug      true
+
+────────────────────────────────────────────────────────────────
+system ready
+
+time=2026-06-20T15:18:34.573-04:00 level=INFO msg="starting app query=\"\""
+time=2026-06-20T15:18:34.573-04:00 level=INFO msg="debug log path: /Users/dylanwax/.config/kari/kari.log"
+time=2026-06-20T15:19:16.928-04:00 level=DEBUG msg="search start mode=anime query=\"one piece\""
+time=2026-06-20T15:19:16.929-04:00 level=DEBUG msg="miruro search start query=\"one piece\""
+time=2026-06-20T15:19:19.071-04:00 level=DEBUG msg="miruro search done results=20"
+time=2026-06-20T15:19:19.071-04:00 level=INFO msg="onSearchDone success opID=1 results_count=20 used_query=\"one piece\""
+time=2026-06-20T15:19:22.308-04:00 level=DEBUG msg="selectSeries: index=0 results_len=20"
+time=2026-06-20T15:19:22.309-04:00 level=DEBUG msg="selectSeries: loading episodes for \"ONE PIECE\""
+time=2026-06-20T15:19:22.310-04:00 level=DEBUG msg="miruro fetch episodes mediaID=\"21\""
+time=2026-06-20T15:19:23.658-04:00 level=DEBUG msg="miruro fetch episodes done count=2321"
+time=2026-06-20T15:19:23.658-04:00 level=INFO msg="onEpisodesDone success opID=2 episodes_count=1166"
+time=2026-06-20T15:19:54.598-04:00 level=DEBUG msg="search start mode=tv query=\"flash\""
+time=2026-06-20T15:19:54.598-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"flash\""
+time=2026-06-20T15:19:54.598-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"flash\""
+time=2026-06-20T15:19:54.598-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"flash\""
+time=2026-06-20T15:19:55.555-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"flash\" results=30"
+time=2026-06-20T15:19:55.562-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"flash\" results=30"
+time=2026-06-20T15:19:55.562-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"flash\" results=30"
+time=2026-06-20T15:19:55.562-04:00 level=INFO msg="onSearchDone success opID=3 results_count=90 used_query=\"flash\""
+time=2026-06-20T15:20:04.946-04:00 level=DEBUG msg="search start mode=tv query=\"justice league\""
+time=2026-06-20T15:20:04.946-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"justice league\""
+time=2026-06-20T15:20:04.946-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"justice league\""
+time=2026-06-20T15:20:04.946-04:00 level=DEBUG msg="stream search start mode=\"tv\" query=\"justice league\""
+time=2026-06-20T15:20:05.915-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"justice league\" results=30"
+time=2026-06-20T15:20:05.918-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"justice league\" results=30"
+time=2026-06-20T15:20:05.926-04:00 level=DEBUG msg="stream search done mode=\"tv\" query=\"justice league\" results=30"
+time=2026-06-20T15:20:05.926-04:00 level=INFO msg="onSearchDone success opID=4 results_count=90 used_query=\"justice league\""
+time=2026-06-20T15:20:09.860-04:00 level=DEBUG msg="selectSeries: index=1 results_len=90"
+time=2026-06-20T15:20:09.860-04:00 level=DEBUG msg="selectSeries: loading episodes for \"Justice League Unlimited\""
+time=2026-06-20T15:20:10.079-04:00 level=INFO msg="onEpisodesDone success opID=5 episodes_count=39"
+time=2026-06-20T15:20:12.177-04:00 level=DEBUG msg="selectEpisode: index=0 results_len=39"
+time=2026-06-20T15:20:12.177-04:00 level=DEBUG msg="selectEpisode: resolving playback for series=\"Justice League Unlimited\" episode=\"Initiation\" autoPlay=false"
+time=2026-06-20T15:20:12.177-04:00 level=DEBUG msg="resolveCmd: opID=6 series=\"Justice League Unlimited\" episode=\"Initiation\""
+time=2026-06-20T15:20:12.179-04:00 level=DEBUG msg="vidnest resolve start url=\"https://vidnest-ebon.vercel.app?e=1&s=1&tmdb=84200&type=tv\""
+time=2026-06-20T15:20:12.179-04:00 level=DEBUG msg="vidking fetch start tmdbID=84200 media_type=\"tv\" S1E1"
+time=2026-06-20T15:20:12.179-04:00 level=DEBUG msg="cineby fetch start tmdbID=84200 media_type=\"tv\" S1E1"
+time=2026-06-20T15:20:14.136-04:00 level=DEBUG msg="vidking fetch success sources=2 subs=0"
+time=2026-06-20T15:20:14.299-04:00 level=WARN msg="cineby returned no sources tmdbID=84200"
+time=2026-06-20T15:20:14.299-04:00 level=DEBUG msg="provider \"cineby\" failed to resolve: no sources found"
+time=2026-06-20T15:20:14.801-04:00 level=DEBUG msg="yify: yify status: 404"
+time=2026-06-20T15:20:14.801-04:00 level=DEBUG msg="subtitle fetch failed: no subtitles found"
+time=2026-06-20T15:20:33.439-04:00 level=DEBUG msg="provider \"vidnest\" failed to resolve: no sources found"
+time=2026-06-20T15:20:33.439-04:00 level=DEBUG msg="resolveCmd: resolved successfully with 2 sources"
+time=2026-06-20T15:20:41.814-04:00 level=DEBUG msg="selectSeries: index=1 results_len=90"
+time=2026-06-20T15:20:41.814-04:00 level=DEBUG msg="selectSeries: loading episodes for \"Justice League Unlimited\""
+time=2026-06-20T15:20:41.921-04:00 level=INFO msg="onEpisodesDone success opID=8 episodes_count=39"
+time=2026-06-20T15:20:42.868-04:00 level=DEBUG msg="selectEpisode: index=0 results_len=39"
+time=2026-06-20T15:20:42.868-04:00 level=DEBUG msg="selectEpisode: resolving playback for series=\"Justice League Unlimited\" episode=\"Initiation\" autoPlay=false"
+time=2026-06-20T15:20:42.868-04:00 level=DEBUG msg="resolveCmd: opID=9 series=\"Justice League Unlimited\" episode=\"Initiation\""
+time=2026-06-20T15:20:42.869-04:00 level=DEBUG msg="vidking fetch start tmdbID=84200 media_type=\"tv\" S1E1"
+time=2026-06-20T15:20:42.869-04:00 level=DEBUG msg="vidnest resolve start url=\"https://vidnest-ebon.vercel.app?e=1&s=1&tmdb=84200&type=tv\""
+time=2026-06-20T15:20:42.869-04:00 level=DEBUG msg="cineby fetch start tmdbID=84200 media_type=\"tv\" S1E1"
+time=2026-06-20T15:20:44.087-04:00 level=DEBUG msg="vidking fetch success sources=2 subs=0"
+time=2026-06-20T15:20:44.392-04:00 level=DEBUG msg="yify: yify status: 404"
+time=2026-06-20T15:20:44.393-04:00 level=DEBUG msg="subtitle fetch failed: no subtitles found"
+time=2026-06-20T15:20:45.519-04:00 level=WARN msg="cineby returned no sources tmdbID=84200"
+time=2026-06-20T15:20:45.519-04:00 level=DEBUG msg="provider \"cineby\" failed to resolve: no sources found"
+
+────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║                    👋 Kari Stopped                         ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+stopped at 2026-06-20 15:20:57
+

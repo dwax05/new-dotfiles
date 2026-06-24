@@ -23,7 +23,7 @@ chruby ruby-3.3.5
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # DevkitPro
-export PATH="/opt/devkitpro/pacman/bin:$PATH"
+export PATH="$PATH:/opt/devkitpro/pacman/bin"
 
 # Conda Initialization (from conda init)
 if [ -f "/Users/dylanwax/miniconda3/etc/profile.d/conda.sh" ]; then

@@ -1,0 +1,14 @@
+2025-10-23 17:30:30,062 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2025-10-23 17:30:30,062 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'virtualenv']
+2025-10-23 17:30:30,068 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'virtualenv', 'create']
+2025-10-23 17:30:30,069 DEBUG    root            Running [gcloud.config.virtualenv.create] with arguments: [--python-to-use: "/opt/homebrew/opt/python@3.12/libexec/bin/python3"]
+2025-10-23 17:30:30,069 INFO     ___FILE_ONLY___ Creating virtualenv...
+
+2025-10-23 17:30:30,069 DEBUG    root            Executing command: ['/opt/homebrew/opt/python@3.12/libexec/bin/python3', '-m', 'venv', '/Users/dylanwax/.config/gcloud/virtenv']
+2025-10-23 17:30:31,104 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:31,105 DEBUG    ___FILE_ONLY___ 
+2025-10-23 17:30:31,105 INFO     ___FILE_ONLY___ Installing modules...
+
+2025-10-23 17:30:31,105 DEBUG    root            Executing command: ['/Users/dylanwax/.config/gcloud/virtenv/bin/pip3', 'install', '--log', '/Users/dylanwax/.config/gcloud/virtenv/install_module.log', '-q', '--disable-pip-version-check', 'crcmod', 'grpcio', 'pyopenssl==24.2.1', 'google_crc32c', 'certifi', 'https://github.com/googleapis/enterprise-certificate-proxy/releases/download/v0.3.6/cryptography-42.0.7-cp39-abi3-macosx_10_12_universal2.whl', 'setuptools']
+2025-10-23 17:30:32,900 DEBUG    root            Chosen display Format:default
+2025-10-23 17:30:32,901 INFO     root            Display format: "default"

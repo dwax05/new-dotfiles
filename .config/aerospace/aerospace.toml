@@ -159,6 +159,10 @@ if.app-id = 'com.electron.dockerdesktop'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.window-title-regex-substring = 'GT*'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.jordanbaird.Ice'
 run = 'layout floating'
 
