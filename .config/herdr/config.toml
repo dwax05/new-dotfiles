@@ -1,0 +1,9 @@
+[theme]
+name = "terminal"
+auto_switch = false
+
+[ui]
+show_agent_labels_on_pane_borders = false
+
+[experimental]
+switch_ascii_input_source_in_prefix = true

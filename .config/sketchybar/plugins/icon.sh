@@ -8,6 +8,9 @@ function icon_map() {
     "Code"|"Cursor"|"VSCodium"|"Xcode"|"Xcode-beta")
       ICON=󰨞
       ;;
+    "Claude")
+      ICON=⚹
+      ;;
     "Calendar")
       ICON=
       ;;

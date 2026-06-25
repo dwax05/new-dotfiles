@@ -225,12 +225,16 @@ if.app-name-regex-substring = 'Lunar Client'
 run = ['layout floating', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
+if.window-title-regex-substring = 'Claude'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'Discord'
 run = 'move-node-to-workspace 8 --focus-follows-window'
 
 [[on-window-detected]]
 if.app-id = 'ai.elementlabs.lmstudio'
-run = 'move-node-to-workspace 9 --focus-follows-window'
+run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.window-title-regex-substring = 'Picture-in-Picture'
