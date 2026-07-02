@@ -700,12 +700,11 @@ require("lazy").setup({
 	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
-		branch = "master",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-		opts = {
-			ensure_installed = {
+		lazy = false,
+		config = function()
+			local ensure_installed = {
 				"bash",
 				"c",
 				"diff",
@@ -717,24 +716,41 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+				"typescript",
+				"tsx",
+				"javascript",
+			}
+			-- only install what's missing (avoids reinstalling everything on startup)
+			local installed = require("nvim-treesitter.config").get_installed()
+			local to_install = vim.iter(ensure_installed)
+				:filter(function(p)
+					return not vim.tbl_contains(installed, p)
+				end)
+				:totable()
+			if #to_install > 0 then
+				require("nvim-treesitter").install(to_install)
+			end
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = ensure_installed, -- filetype names generally match parser names
+				callback = function()
+					-- Enable treesitter highlighting, replaces vim's regex syntax
+					pcall(vim.treesitter.start)
+					-- Enable treesitter-based indentation
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+
+			-- React filetypes use different filetype names than their parser names
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "typescriptreact", "javascriptreact" },
+				callback = function(ev)
+					local parser = ev.match == "typescriptreact" and "tsx" or "javascript"
+					pcall(vim.treesitter.start, ev.buf, parser)
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+		end,
 	},
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the

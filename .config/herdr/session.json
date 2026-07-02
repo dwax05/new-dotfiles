@@ -2,34 +2,72 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "w8",
+      "id": "wB",
       "custom_name": null,
-      "identity_cwd": "/Users/dylanwax",
+      "identity_cwd": "/Users/dylanwax/Developer/knightle",
       "public_pane_numbers": {
-        "11": 1
+        "1": 1,
+        "7": 9,
+        "2": 4
       },
-      "next_public_pane_number": 2,
+      "next_public_pane_number": 11,
       "public_tab_numbers": [
-        1
+        1,
+        4,
+        9
       ],
-      "next_public_tab_number": 2,
+      "next_public_tab_number": 11,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Pane": 11
+            "Pane": 1
           },
           "panes": {
-            "11": {
-              "cwd": "/Users/dylanwax"
+            "1": {
+              "cwd": "/Users/dylanwax/Developer/knightle"
             }
           },
           "zoomed": false,
-          "focused": 11,
-          "root_pane": 11
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 2
+          },
+          "panes": {
+            "2": {
+              "cwd": "/Users/dylanwax/Developer/knightle",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "fa820cf7-70f7-4df5-84b8-7a861b4884c4"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 2
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 7
+          },
+          "panes": {
+            "7": {
+              "cwd": "/Users/dylanwax/Developer/knightle"
+            }
+          },
+          "zoomed": false,
+          "focused": 7,
+          "root_pane": 7
         }
       ],
-      "active_tab": 0
+      "active_tab": 1
     }
   ],
   "active": 0,
