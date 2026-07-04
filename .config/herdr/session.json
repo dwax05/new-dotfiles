@@ -7,16 +7,14 @@
       "identity_cwd": "/Users/dylanwax/Developer/knightle",
       "public_pane_numbers": {
         "1": 1,
-        "7": 9,
-        "2": 4
+        "9": 11
       },
-      "next_public_pane_number": 11,
+      "next_public_pane_number": 13,
       "public_tab_numbers": [
         1,
-        4,
-        9
+        11
       ],
-      "next_public_tab_number": 11,
+      "next_public_tab_number": 13,
       "tabs": [
         {
           "custom_name": null,
@@ -35,36 +33,16 @@
         {
           "custom_name": null,
           "layout": {
-            "Pane": 2
+            "Pane": 9
           },
           "panes": {
-            "2": {
-              "cwd": "/Users/dylanwax/Developer/knightle",
-              "agent_session": {
-                "source": "herdr:claude",
-                "agent": "claude",
-                "kind": "id",
-                "value": "fa820cf7-70f7-4df5-84b8-7a861b4884c4"
-              }
-            }
-          },
-          "zoomed": false,
-          "focused": 2,
-          "root_pane": 2
-        },
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 7
-          },
-          "panes": {
-            "7": {
+            "9": {
               "cwd": "/Users/dylanwax/Developer/knightle"
             }
           },
           "zoomed": false,
-          "focused": 7,
-          "root_pane": 7
+          "focused": 9,
+          "root_pane": 9
         }
       ],
       "active_tab": 1

@@ -25,3 +25,6 @@
 2026-06-30T18:11:16.515227Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=14227
 2026-06-30T18:11:16.515602Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
 2026-06-30T18:11:16.709176Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-02T21:56:30.175342Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=84585
+2026-07-02T21:56:30.175672Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-02T21:56:30.404427Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame

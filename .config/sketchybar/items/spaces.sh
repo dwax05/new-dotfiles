@@ -1,23 +1,11 @@
 #!/usr/bin/env bash
 
-# Add workspace change event and bracket
 sketchybar --add event aerospace_workspace_change
 
-spaces=""
-workspaces=$(aerospace list-workspaces --all)
-echo $workspaces > ~/.cache/tmpspaces
-read -d' ' -a spaces <<< "${workspaces}"
+# All possible workspaces — items must exist at launch so events can show/hide them
+all_spaces=(1 2 3 4 5 6 7 8 9 0)
 
-if [[ -n "${spaces[0]}" ]]; then
-    # Remove the first element and store it temporarily
-    first_element="${spaces[0]}"
-    # Shift all elements left by one (remove the first element)
-    spaces=("${spaces[@]:1}")
-    # Append the saved first element to the end
-    spaces+=("$first_element")
-fi
-
-for sid in ${spaces[@]}; do
+for sid in "${all_spaces[@]}"; do
   item="space.$sid"
 
   sketchybar --add item "$item" left \

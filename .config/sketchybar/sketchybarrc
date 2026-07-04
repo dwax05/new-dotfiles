@@ -36,7 +36,7 @@ sketchybar --default \
     label.padding_right=5
 
 source "$ITEM_DIR/static_icon.sh"
-source "$ITEM_DIR/spaces.sh"
+FONT_FACE="$FONT_FACE" PLUGIN_DIR="$PLUGIN_DIR" SK_COLOR3="$SK_COLOR3" bash "$ITEM_DIR/spaces.sh"
 
 source "$ITEM_DIR/moon.sh"
 # source "$ITEM_DIR/weather.sh"
@@ -52,5 +52,5 @@ source "$ITEM_DIR/space_updater.sh"
 
 ##### Finalizing Setup #####
 sketchybar --update
-sketchybar --trigger space_change 
+sketchybar --trigger aerospace_workspace_change
 sketchybar --trigger volume_change

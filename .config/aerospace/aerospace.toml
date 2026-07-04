@@ -6,6 +6,8 @@ start-at-login = true
 
 after-startup-command = []
 
+config-version = 2
+
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',

@@ -1459,3 +1459,475 @@
 2026-07-02T04:12:13.912371Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
 2026-07-02T04:13:08.527076Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
 2026-07-02T04:13:13.548924Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:21:30.883008Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t9"
+2026-07-02T04:21:33.784622Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T04:21:38.806050Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:25:40.541168Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t9"
+2026-07-02T04:25:45.557077Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:25:47.015826Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T04:25:52.031799Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:31:11.914862Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t9"
+2026-07-02T04:31:16.931891Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:32:14.732374Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T04:32:19.753682Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:36:36.361533Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T04:42:44.513203Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t9"
+2026-07-02T04:42:49.528442Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:43:37.827749Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T04:43:42.839477Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:47:04.120659Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T04:47:42.551849Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T04:47:49.127404Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-02T04:47:52.116130Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t9"
+2026-07-02T04:47:52.615812Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=7 status="ExitStatus { code: 0, signal: None }"
+2026-07-02T04:47:52.615871Z  INFO herdr::pane: pane session terminated pane=7 pid=55209 signal=Hangup
+2026-07-02T04:47:53.496785Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T04:47:54.805693Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T04:47:59.820441Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T04:49:59.696966Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(33525)
+2026-07-02T04:50:06.173315Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T05:06:36.350380Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T05:07:22.304176Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-02T05:19:39.532523Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-02T05:36:36.348289Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T05:53:22.219650Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=9 rows=47 cols=153 scrollback_limit_bytes=10000000
+2026-07-02T05:53:22.231277Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=9 pid=21937
+2026-07-02T05:53:22.231685Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T05:53:22.231724Z  INFO herdr::logging: tab created event="tab.create" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB" pane_id=9
+2026-07-02T05:53:27.247986Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:00:26.271943Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T06:00:31.292686Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:04:53.769632Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T06:04:58.783942Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:05:19.436990Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T06:05:24.452071Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:06:36.353845Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T06:06:50.386938Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T06:06:55.398136Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:08:34.893020Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T06:08:39.913853Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T06:36:36.402293Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T07:06:36.402568Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T07:36:36.387183Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T08:06:36.348254Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T08:36:36.348633Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T09:06:36.335353Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T09:36:36.309217Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T10:06:36.396713Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T10:36:36.426689Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T11:06:36.421931Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T11:36:36.438817Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T12:06:36.429208Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T12:36:36.445745Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T13:06:36.440144Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T13:36:36.457772Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T14:06:36.469211Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T14:36:36.476920Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T15:06:36.451512Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T15:36:36.442216Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T16:11:59.011438Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T16:41:59.031772Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T17:06:12.576099Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T17:06:17.594337Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:11:59.030102Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T17:12:34.804490Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:12:39.812058Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:16:41.752370Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:16:46.768138Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:23:05.711502Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T17:23:14.512196Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T17:23:30.701161Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T17:23:35.722445Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:23:43.035214Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:23:48.054564Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:24:07.385165Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T17:24:12.397655Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:25:19.695297Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:25:24.712472Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:27:05.748265Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:27:10.770894Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:28:51.366617Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:28:56.379956Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:33:01.000638Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:33:02.481461Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:33:07.501131Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:35:29.461460Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:35:34.481745Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:36:31.363137Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:36:36.382347Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:41:59.133147Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T17:46:43.603078Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T17:46:48.171489Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T17:46:49.241585Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:46:54.259141Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:47:52.972001Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-02T17:47:54.207729Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:47:59.227285Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:48:21.448116Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:48:26.469543Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:48:27.003806Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:48:32.019203Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:49:27.229945Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:49:28.241111Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:49:33.258447Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:49:49.506277Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:49:54.522162Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:49:56.549543Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:50:01.560502Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:54:34.030761Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T17:54:39.048867Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T17:57:57.607826Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T17:57:58.565454Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T17:57:59.801833Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T17:58:04.808972Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T18:01:37.938755Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T18:01:42.958903Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T18:11:59.170917Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T18:43:49.293327Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T19:13:49.281664Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T19:15:31.075022Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T19:15:54.061405Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T19:16:31.894034Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T19:16:41.968553Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T19:43:49.389232Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T20:13:49.311568Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T20:16:51.029574Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:16:56.054429Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:17:39.177595Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:17:44.199166Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:19:05.805030Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:19:10.823226Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:24:10.760782Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:24:15.485592Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-02T20:24:17.004668Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(86288)
+2026-07-02T20:24:23.036208Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:36:59.874256Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T20:37:01.910698Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:37:06.913418Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:37:36.038208Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:37:41.052944Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:37:42.479233Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:37:44.069616Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:37:44.770448Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:37:49.786564Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:37:54.719136Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:37:59.747346Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:42:06.911572Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:42:11.434018Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:42:13.061952Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:42:18.078329Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:42:22.660396Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:42:24.511940Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:42:29.531348Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:42:43.304697Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:42:48.323883Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:42:50.626829Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:42:52.442203Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:42:57.461234Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:43:49.335441Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T20:45:11.253259Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T20:45:13.110169Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:45:18.113036Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:45:22.486034Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:45:27.506656Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:46:59.676075Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:47:04.695947Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:47:50.372723Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:47:51.851893Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T20:47:56.869991Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:48:08.906701Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:48:13.924188Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:48:17.470080Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T20:48:22.488134Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:48:34.854140Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:48:39.868254Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T20:49:08.569692Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T20:49:10.144111Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:49:11.709892Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T20:49:15.143174Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T20:49:20.157602Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:03:04.205594Z  INFO herdr::server::headless: client resize client_id=4 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T21:03:10.427425Z  INFO herdr::server::headless: client resize client_id=4 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T21:09:08.041116Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-02T21:09:12.742299Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:10:47.296268Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T21:10:52.314441Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:11:03.557019Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T21:11:05.096075Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T21:11:10.118195Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:20:14.872892Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T21:30:33.442458Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(70495)
+2026-07-02T21:30:36.171845Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-02T21:30:38.193757Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(70627)
+2026-07-02T21:30:40.873453Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:30:47.112672Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:53:08.019547Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T21:53:12.930770Z  INFO herdr::server::headless: client disconnected client_id=4
+2026-07-02T21:53:13.042271Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T21:56:30.404425Z  INFO herdr::server::headless: client connected client_id=6 cols=179 rows=48 cell_width_px=19 cell_height_px=42 render_encoding=SemanticFrame
+2026-07-02T22:02:53.162018Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T22:25:01.066317Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:25:06.080575Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T22:26:43.135763Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T22:26:44.227770Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:26:45.212677Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T22:26:47.816137Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:26:48.709851Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T22:26:53.729878Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T22:26:55.291700Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:27:00.308952Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T22:44:11.316440Z  INFO herdr::server::headless: client resize client_id=6 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T22:44:26.426957Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-02T22:44:27.279142Z  INFO herdr::server::headless: client resize client_id=6 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T22:44:31.127323Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T22:44:42.420235Z  INFO herdr::server::headless: client resize client_id=6 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T22:45:54.419697Z  INFO herdr::server::headless: client resize client_id=6 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-02T22:46:43.696512Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T22:47:19.421416Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T22:47:20.138080Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:47:21.046750Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T22:47:21.830790Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T22:47:26.848722Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T22:51:00.825878Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(29448)
+2026-07-02T22:51:06.519567Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T23:01:10.257713Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T23:01:11.670867Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T23:01:12.328548Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-02T23:01:13.018615Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T23:01:18.039932Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T23:12:08.990123Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-02T23:16:43.710519Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T23:41:04.555239Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-02T23:45:44.230348Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T23:45:47.796649Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T23:45:52.813067Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T23:46:43.706207Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-02T23:47:15.262529Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-02T23:47:20.278229Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-02T23:47:32.202177Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-02T23:47:37.222114Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T00:16:43.709462Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T00:18:22.998439Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T00:46:43.664071Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T01:06:38.703705Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T01:06:43.725245Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T01:06:55.667654Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T01:07:00.681562Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T01:08:25.086683Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T01:08:30.105584Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T01:16:43.681102Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T01:23:10.516317Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T01:23:15.534320Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T01:46:43.767826Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T01:51:35.307714Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-03T01:51:40.007558Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T02:16:43.770151Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T03:13:00.206357Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T03:43:00.169647Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T04:13:00.202989Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T04:43:00.218127Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T04:47:00.368121Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(8757)
+2026-07-03T04:47:07.910592Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:01:06.341614Z  INFO herdr::pane: agent changed pane=2 previous_agent=Some(Claude) agent=None pgid=Some(6919)
+2026-07-03T05:01:11.045445Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:02:28.632488Z  INFO herdr::pane: agent changed pane=2 previous_agent=None agent=Some(Claude) process=claude pgid=Some(50770)
+2026-07-03T05:02:38.540935Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:08:59.451320Z  INFO herdr::server::headless: client resize client_id=6 cols=88 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-03T05:09:01.013799Z  INFO herdr::server::headless: client resize client_id=6 cols=179 rows=48 cell_width_px=19 cell_height_px=42
+2026-07-03T05:13:00.168065Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T05:29:42.799856Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:40:54.950931Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T05:40:59.193250Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:41:04.217721Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:42:18.679310Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:43:00.274695Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T05:43:05.712996Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:43:11.252898Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:43:37.514182Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:44:13.963332Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:46:45.269028Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T05:46:45.889209Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T05:46:50.891895Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:47:16.477381Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:47:21.500269Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:49:19.477098Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T05:49:24.495024Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:49:34.380243Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:49:39.394505Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:50:07.734066Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T05:50:12.754616Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:50:16.823790Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:50:21.840853Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:56:43.979960Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T05:56:46.796168Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:56:51.813961Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:57:16.804315Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T05:57:18.390644Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T05:57:23.409187Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T05:57:49.060158Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T05:57:50.536888Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-03T06:06:52.106406Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:06:57.127760Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:07:06.651831Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:07:11.676846Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:13:00.273209Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T06:16:37.535703Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:16:42.556394Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:16:45.236788Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:16:50.259230Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:20:21.572182Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:20:24.696253Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:20:29.714884Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:22:47.629106Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:22:52.655722Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:22:58.656193Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:22:59.608439Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:23:03.935412Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:23:08.961186Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:23:12.622564Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:23:14.824476Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T06:23:19.831808Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:23:31.213680Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:23:35.784621Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T06:23:37.897649Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:23:42.924752Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:24:05.660855Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:24:10.682220Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:24:52.286482Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:24:53.478702Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:24:58.500108Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:25:34.738594Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:25:39.764085Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:25:45.991703Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T06:25:51.010939Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:26:31.426948Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T06:26:36.448874Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T06:43:00.274762Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T07:13:00.275478Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T07:43:00.295037Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T08:13:00.306425Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T08:43:00.308935Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T09:13:00.310427Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T13:36:48.509765Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T14:06:48.498236Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T14:36:48.519861Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T15:06:48.513814Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T15:36:48.524901Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T16:06:48.496909Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T16:36:48.462627Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T17:06:30.628755Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-03T17:06:35.646887Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:06:47.003305Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T17:06:52.027529Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:08:18.048768Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T17:08:21.016667Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T17:08:26.040206Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:08:28.207179Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T17:08:33.231965Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:08:52.529733Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-03T17:08:57.549526Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:15:18.426731Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-03T17:15:23.448346Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-03T17:22:34.628638Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T17:52:34.596567Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T18:22:34.652327Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T19:28:19.873066Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T19:58:19.860989Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-03T21:47:45.001479Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T00:02:17.136447Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T00:32:17.066256Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T01:36:01.088124Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T02:22:32.657787Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t4"
+2026-07-04T02:22:37.675336Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T02:23:01.891772Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=2 status="ExitStatus { code: 0, signal: None }"
+2026-07-04T02:23:01.891856Z  INFO herdr::pane: pane session terminated pane=2 pid=6919 signal=Hangup
+2026-07-04T02:23:03.832375Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T02:23:05.395822Z  INFO herdr::pane: agent changed pane=9 previous_agent=None agent=Some(Claude) process=claude pgid=Some(35036)
+2026-07-04T02:23:10.903140Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T02:28:45.949197Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T02:39:59.343495Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=10 rows=47 cols=153 scrollback_limit_bytes=10000000
+2026-07-04T02:39:59.352060Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=10 pid=61993
+2026-07-04T02:39:59.352341Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T02:39:59.352387Z  INFO herdr::logging: tab created event="tab.create" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC" pane_id=10
+2026-07-04T02:40:01.532722Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T02:40:06.543140Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T02:40:17.582217Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T02:40:18.607188Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T02:40:23.615792Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T02:58:45.897133Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T03:28:45.935743Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T03:58:45.945243Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T04:28:45.926789Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T04:58:45.963513Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T05:28:45.983858Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T05:42:13.668512Z  INFO herdr::pane: agent changed pane=9 previous_agent=Some(Claude) agent=None pgid=Some(67454)
+2026-07-04T05:42:18.373266Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:45:27.897962Z  INFO herdr::pane: agent changed pane=9 previous_agent=None agent=Some(Claude) process=claude pgid=Some(74395)
+2026-07-04T05:45:38.381906Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:52:35.012836Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T05:52:37.206769Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T05:52:42.215604Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:53:40.682154Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T05:53:45.691956Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:55:22.316912Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T05:55:27.327847Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:58:43.647243Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T05:58:45.980622Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T05:58:48.658304Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:58:49.283118Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T05:58:51.014309Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T05:58:56.021347Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:59:13.391480Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T05:59:18.404994Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T05:59:22.930907Z  INFO herdr::pane: agent changed pane=9 previous_agent=Some(Claude) agent=None pgid=Some(21937)
+2026-07-04T05:59:27.634642Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T06:28:46.019295Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T06:58:46.006134Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T07:28:46.036562Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T07:58:46.039243Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T08:28:46.038431Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T08:58:46.021468Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T09:28:46.011147Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T09:58:45.960259Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T10:28:46.038258Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T10:58:46.070616Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T11:28:46.074236Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T11:58:46.039949Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T12:28:46.082522Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T12:58:46.087444Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T13:28:46.066613Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T13:58:46.059275Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T14:28:46.087706Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T14:58:46.112059Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T15:28:46.122109Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T15:58:46.074609Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T16:50:40.752757Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T17:20:40.796507Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T17:50:40.790641Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T17:56:02.843074Z  INFO herdr::pane: agent changed pane=9 previous_agent=None agent=Some(Claude) process=claude pgid=Some(64913)
+2026-07-04T17:56:08.364985Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T18:20:40.806305Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T18:21:42.598503Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T18:21:47.609677Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T18:36:28.577927Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tB"
+2026-07-04T18:36:33.595628Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T18:39:24.511483Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-04T18:39:29.718193Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-04T18:43:30.504168Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-04T18:45:10.642167Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-04T18:49:07.429668Z  INFO herdr::app::actions: copied selection to clipboard
+2026-07-04T18:50:40.816114Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T19:12:58.826496Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T19:13:03.844281Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T19:20:40.747331Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T19:56:19.794302Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T20:56:31.180508Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-07-04T21:13:12.096570Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:t1"
+2026-07-04T21:13:13.131485Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wB" tab_id="wB:tC"
+2026-07-04T21:13:18.135778Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T21:13:21.434913Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=10 status="ExitStatus { code: 130, signal: None }"
+2026-07-04T21:13:21.435165Z  INFO herdr::pane: pane session terminated pane=10 pid=61993 signal=Hangup
+2026-07-04T21:13:23.539436Z  INFO herdr::server::headless: client disconnected client_id=6
+2026-07-04T21:13:23.710759Z  INFO herdr::pane: agent changed pane=9 previous_agent=Some(Claude) agent=None pgid=Some(21937)
+2026-07-04T21:13:28.417857Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/dylanwax/.config/herdr/session.json workspaces=1
+2026-07-04T21:26:31.155885Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
