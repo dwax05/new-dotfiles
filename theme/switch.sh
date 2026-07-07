@@ -85,12 +85,25 @@ wm_to_cynaberii() {
   osascript -e 'quit app "AeroSpace"' 2>/dev/null || true
   pkill -x aerospace 2>/dev/null || true
   sleep 0.5
-  # rift's config run_on_start spawns borders + wires sketchybar
-  ( rift >/dev/null 2>&1 & ) ; disown 2>/dev/null || true
-  ok "rift started"
+  # Run rift via its launchd service (single instance, survives, logs) rather
+  # than a raw backgrounded process. Its config run_on_start spawns borders +
+  # wires sketchybar.
+  pkill -x rift 2>/dev/null || true; sleep 0.5
+  rift service install >/dev/null 2>&1 || true
+  if rift service restart >/dev/null 2>&1 || rift service start >/dev/null 2>&1; then
+    ok "rift service started"
+  else
+    err "rift service failed to start"
+  fi
+  # Accessibility gate: rift can query but can't manage/switch spaces without it.
+  # (Can't reliably probe another proc's TCC state, so just remind.)
+  say "  ${c_dim}note: if spaces won't switch, grant Accessibility to rift"
+  say "        (System Settings > Privacy & Security > Accessibility), then:"
+  say "        rift service restart. Activate each space with Alt+Delete.$c_off"
 }
 wm_to_mine() {
   say "==> window manager: rift -> AeroSpace"
+  rift service stop >/dev/null 2>&1 || true
   pkill -x rift 2>/dev/null || true
   pkill -x borders 2>/dev/null || true
   sleep 0.5
