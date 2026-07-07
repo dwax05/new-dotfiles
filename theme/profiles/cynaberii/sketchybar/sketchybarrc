@@ -93,7 +93,8 @@ sketchybar --add item window_focus_tracker left \
 
 # Music (event-driven off Spotify's playback notification)
 sketchybar --add event spotify_change "$SPOTIFY_EVENT"
-sketchybar --add item music right \
+# Music sits just to the left of the notch (position q)
+sketchybar --add item music q \
            --set music \
              icon.color=$WHITE \
              label.color=$WHITE \
@@ -101,14 +102,6 @@ sketchybar --add item music right \
              drawing=off \
              script="$PLUGIN_DIR/music.sh" \
            --subscribe music spotify_change mouse.clicked
-
-sketchybar --add item sep3 right \
-           --set sep3 \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
 
 # Clock
 sketchybar --add item clock right \
