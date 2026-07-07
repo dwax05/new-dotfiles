@@ -35,6 +35,9 @@ if pgrep -x sketchybar > /dev/null; then
   $SKETCHYBAR --reload &
 fi
 
+# Ghostty (reloads colors-ghostty include on SIGUSR2)
+pkill -USR2 -x ghostty 2>/dev/null &
+
 # (yazi, written inline: 26.x needs the inline-table format)
 {
 source "$HOME/.cache/wal/colors.sh"
