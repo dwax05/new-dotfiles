@@ -74,6 +74,7 @@ sketchybar --add item left_sep left \
     width=10 \
     background.drawing=off \
     icon.drawing=off \
+    label.font="JetBrainsMono Nerd Font:Regular:12.0" \
     label.drawing=off
 
 sketchybar --add item window_tracker left \
@@ -116,7 +117,10 @@ sep() { # $1 = name — a thin "|" divider
                icon.drawing=off
 }
 
-# Clock (rightmost)
+# separator at the far right, to the right of the clock (added before it)
+sep sep_right
+
+# Clock (rightmost real item)
 sketchybar --add item clock right \
            --set clock \
              update_freq=10 \
@@ -131,7 +135,12 @@ sketchybar --add item theme_toggle right \
            --set theme_toggle \
              icon="󰔎" \
              icon.color=$WHITE \
+             icon.align=center \
+             icon.padding_left=10 \
+             icon.padding_right=2 \
              label.drawing=off \
+             label.padding_left=0 \
+             label.padding_right=0 \
              click_script="$HOME/.dotfiles/theme/switch.sh mine >/dev/null 2>&1"
 sep sep0
 
@@ -180,7 +189,12 @@ sketchybar --add item tailscale right \
            --set tailscale \
              icon="󱗼" \
              icon.color=$WHITE \
+             icon.align=center \
+             icon.padding_left=10 \
+             icon.padding_right=2 \
              label.drawing=off \
+             label.padding_left=0 \
+             label.padding_right=0 \
              update_freq=10 \
              script="$PLUGIN_DIR/tailscale.sh -q" \
              click_script="$PLUGIN_DIR/tailscale.sh -t"
