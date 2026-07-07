@@ -18,5 +18,6 @@ OUT="$HOME/.cache/wal/colors-ghostty"
   printf 'selection-foreground = %s\n' "$foreground"
 } > "$OUT"
 
-# reload open ghostty windows (ghostty reloads its config on SIGUSR2)
-pkill -USR2 -x ghostty 2>/dev/null || true
+# NOTE: intentionally NOT reloading running ghostty windows. New windows pick up
+# the palette via `config-file = ?~/.cache/wal/colors-ghostty`; existing sessions
+# are left alone so long-running terminal processes aren't disturbed.
