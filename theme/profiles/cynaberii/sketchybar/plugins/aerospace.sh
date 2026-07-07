@@ -15,7 +15,10 @@ for sid in $(asp list-workspaces --monitor all --empty no 2>/dev/null); do
 done
 
 BATCH=""
-for sid in $(asp list-workspaces --all --format "%{workspace}"); do
+# Reconcile the full fixed pill set (1..9,0), not `list-workspaces --all`:
+# aerospace drops a workspace from --all once it's empty AND unfocused, so
+# looping --all leaves a just-vacated empty pill stuck drawing=on.
+for sid in 1 2 3 4 5 6 7 8 9 0; do
   if [ "$sid" = "$FOCUSED" ]; then
     BATCH="$BATCH --set space.$sid background.color=$GREEN icon.color=$BLACK label.drawing=off drawing=on"
   elif [ -n "${NONEMPTY[$sid]}" ]; then
