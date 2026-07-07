@@ -22,7 +22,7 @@ sketchybar --bar \
 # label.color=0xffffffff
 # background.color=0x9924273a
 sketchybar --default \
-    background.color=0x66494d64 \
+    background.color=0x66${SK_COLOR8#0xff} \
     background.corner_radius=5 \
     background.padding_right=5 \
     background.height=26 \
@@ -30,7 +30,7 @@ sketchybar --default \
     icon.padding_left=5 \
     icon.padding_right=5 \
     label.font="$FONT_FACE:Medium:12.0" \
-    label.color=0xffcad3f5 \
+    label.color=$SK_FOREGROUND \
     label.y_offset=0 \
     label.padding_left=0 \
     label.padding_right=5

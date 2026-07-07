@@ -2,9 +2,9 @@
 
 sketchybar --add item weather.moon q \
     --set weather.moon \
-    background.color=0x667dc4e4 \
+    background.color=0x66${SK_COLOR6#0xff} \
     background.padding_right=-1 \
-    icon.color=0xff181926 \
+    icon.color=$SK_BACKGROUND \
     icon.font="$FONT_FACE:Medium:22.0" \
     icon.padding_left=4 \
     icon.padding_right=3 \

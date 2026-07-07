@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+source "$HOME/.config/sketchybar/colors.sh"
+
 query(){
   tailscale status
 
   if [ $? -eq 1 ]; then
-    sketchybar --set $NAME icon.color=0x66494d64
+    sketchybar --set $NAME icon.color=$SK_COLOR8
   else
-    sketchybar --set $NAME icon.color=0xffcad3f5
+    sketchybar --set $NAME icon.color=$SK_FOREGROUND
   fi
 }
 

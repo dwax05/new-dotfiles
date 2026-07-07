@@ -99,7 +99,9 @@ sketchybar --add item window_focus_tracker left \
     drawing=off \
   --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
 
-# Music (event-driven off Spotify's playback notification)
+# Music — nowplaying-cli (any player). Polled via update_freq so non-Spotify
+# sources (YouTube, Apple Music, ...) update too; the spotify_change notification
+# just gives instant response for Spotify.
 sketchybar --add event spotify_change "$SPOTIFY_EVENT"
 # Music sits just to the left of the notch (position q)
 sketchybar --add item music q \
@@ -107,6 +109,7 @@ sketchybar --add item music q \
              icon.color=$WHITE \
              label.color=$WHITE \
              label.max_chars=30 \
+             update_freq=3 \
              drawing=off \
              script="$PLUGIN_DIR/music.sh" \
            --subscribe music spotify_change mouse.clicked

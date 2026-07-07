@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
-# Currently-playing Spotify.app track, top-right.
-# Normal operation is driven by Spotify's distributed notification
-# (com.spotify.client.PlaybackStateChanged) delivered as $INFO — keyless.
-# On the initial/forced load (bar start) there is no $INFO, so we query
-# Spotify.app once via osascript to pick up an already-playing song.
+# Currently-playing media, top-right. Source is nowplaying-cli (MediaRemote), so
+# it covers ANY player: Spotify, YouTube in a browser, Apple Music, etc — not
+# just Spotify. Runs on update_freq polling (catches non-Spotify sources) plus
+# Spotify's distributed notification for instant response; both just re-read
+# nowplaying-cli.
 source "$HOME/.cache/wal/colors-sketchybar.sh"
+NP=/opt/homebrew/bin/nowplaying-cli
 
 hide() { sketchybar --set "$NAME" drawing=off; }
-render() { # $1 = Playing|Paused   $2 = label text
+render() { # $1 = Playing|Paused   $2 = label text   $3 = music|video
   local icon col label="$2"
-  if [[ "$1" == "Playing" ]]; then icon="󰎆"; col=$WHITE; else icon="󰏤"; col=$DIM; fi
+  if [[ "$1" == "Paused" ]]; then
+    icon="󰏤"; col=$DIM                                  # paused
+  elif [[ "$3" == "video" ]]; then
+    icon="󰕧"; col=$WHITE                                # playing, not music
+  else
+    icon="󰎆"; col=$WHITE                                # playing music
+  fi
   local MAX=40
   (( ${#label} > MAX )) && label="${label:0:$((MAX - 1))}…"
   sketchybar --set "$NAME" \
@@ -18,39 +25,32 @@ render() { # $1 = Playing|Paused   $2 = label text
     label="$label" label.color=$col drawing=on
 }
 
-# click -> toggle play/pause (nowplaying-cli is keyless; osascript needs Automation)
+# click -> toggle play/pause on whatever is playing
 if [[ "$SENDER" == "mouse.clicked" ]]; then
-  if command -v nowplaying-cli >/dev/null 2>&1; then
-    nowplaying-cli togglePlayPause
-  else
-    osascript -e 'tell application "Spotify" to playpause' 2>/dev/null
-  fi
+  "$NP" togglePlayPause
   exit 0
 fi
 
-# notification payload present -> parse it (keyless)
-if [[ -n "$INFO" ]]; then
-  STATE=$(echo "$INFO" | jq -r '.["Player State"]' 2>/dev/null)
-  case "$STATE" in
-    Playing|Paused)
-      TRACK=$(echo "$INFO"  | jq -r '.Name'   2>/dev/null)
-      ARTIST=$(echo "$INFO" | jq -r '.Artist' 2>/dev/null)
-      render "$STATE" "$TRACK - $ARTIST" ;;
-    *) hide ;;
-  esac
-  exit 0
-fi
+JSON=$("$NP" get --json title artist playbackRate 2>/dev/null)
+TITLE=$(echo "$JSON"  | jq -r '.title        // empty' 2>/dev/null)
+ARTIST=$(echo "$JSON" | jq -r '.artist       // empty' 2>/dev/null)
+RATE=$(echo "$JSON"   | jq -r '.playbackRate // 0'    2>/dev/null)
+# bundle id isn't exposed by `get`; pull it from the raw dump to tell a music
+# player (Spotify/Apple Music) from a browser video, etc.
+BUNDLE=$("$NP" get-raw 2>/dev/null | sed -n 's/^ *"[^"]*ClientBundleIdentifier" : "\(.*\)",\{0,1\}$/\1/p')
 
-# no payload (initial/forced load): query Spotify.app directly for the current song
-if pgrep -x Spotify >/dev/null 2>&1; then
-  ST=$(osascript -e 'tell application "Spotify" to player state as string' 2>/dev/null)
-  case "$ST" in
-    playing|paused)
-      TRACK=$(osascript -e 'tell application "Spotify" to name of current track' 2>/dev/null)
-      ARTIST=$(osascript -e 'tell application "Spotify" to artist of current track' 2>/dev/null)
-      [[ "$ST" == "playing" ]] && S="Playing" || S="Paused"
-      render "$S" "$TRACK - $ARTIST"
-      exit 0 ;;
-  esac
-fi
-hide
+# nothing playing (no title) -> hide the item
+[[ -z "$TITLE" ]] && { hide; exit 0; }
+
+# music player vs anything else (browser video, etc)
+case "$BUNDLE" in
+  com.spotify.client|com.apple.Music|com.apple.music|com.apple.iTunes) TYPE=music ;;
+  *) TYPE=video ;;
+esac
+
+# playbackRate > 0 == playing, else paused
+if awk "BEGIN{exit !(${RATE:-0} > 0)}"; then STATE=Playing; else STATE=Paused; fi
+
+# artist is often empty for browser video -> title only
+if [[ -n "$ARTIST" ]]; then LABEL="$TITLE - $ARTIST"; else LABEL="$TITLE"; fi
+render "$STATE" "$LABEL" "$TYPE"
