@@ -36,6 +36,56 @@ const NowPlaying = ({ output }) => {
   const [override, setOverride] = React.useState(null);
 
   const d = parse(output);
+
+  // NOTE: all hooks must run every render (before any early return), so these
+  // colour/art derivations are null-safe and the guard comes after the memo.
+  const c = (d && d.colors) || {};
+  const bg = (d && d.special && d.special.background) || "#101217";
+  const accent = c.color4 || "#C66451"; // cinnabar
+  const accent2 = c.color3 || "#B95147";
+  const sage = c.color6 || "#9AAD74";
+  const ink = (d && d.special && d.special.foreground) || "#c3c3c5";
+
+  const artSrc = (d && d.art) || ""; // base64 data URI from np.py ("" when no art)
+  const artVer = (d && d.artVer) || "";
+
+  // Memoise the album art so the big base64 image is only rebuilt/re-decoded
+  // when the track (or theme colour) actually changes — not on every 4s refresh.
+  // Re-decoding the ~250KB data URI each refresh was causing a visible flash
+  // and needless compositor work.
+  const artEl = React.useMemo(
+    () =>
+      artSrc ? (
+        <img
+          src={artSrc}
+          style={{
+            width: "56px",
+            height: "56px",
+            imageRendering: "pixelated",
+            border: `3px solid ${sage}`,
+            objectFit: "cover",
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            width: "56px",
+            height: "56px",
+            border: `3px solid ${sage}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: sage,
+            fontSize: "22px",
+          }}
+        >
+          ♪
+        </div>
+      ),
+    [artVer, artSrc ? 1 : 0, sage]
+  );
+
+  // safe to bail now that every hook above has run
   if (!d || !d.hasTrack) return <div />;
 
   const shownPlaying =
@@ -44,18 +94,6 @@ const NowPlaying = ({ output }) => {
     run("/opt/homebrew/bin/nowplaying-cli togglePlayPause");
     setOverride({ playing: !shownPlaying, until: Date.now() + 3500 });
   };
-
-  const c = d.colors || {};
-  const bg = (d.special && d.special.background) || "#101217";
-  const accent = c.color4 || "#C66451"; // cinnabar
-  const accent2 = c.color3 || "#B95147";
-  const sage = c.color6 || "#9AAD74";
-  const ink = (d.special && d.special.foreground) || "#c3c3c5";
-
-  const artSrc = d.art; // base64 data URI from np.py ("" when no art)
-
-  // chunky pixel border via layered box-shadow (no anti-aliasing)
-  const px = (n, col) => `${n}px ${n}px 0 0 ${col}`;
 
   return (
     <div
@@ -83,34 +121,8 @@ const NowPlaying = ({ output }) => {
         }
       `}</style>
 
-      {/* album art in a pixel frame */}
-      {artSrc ? (
-        <img
-          src={artSrc}
-          style={{
-            width: "56px",
-            height: "56px",
-            imageRendering: "pixelated",
-            border: `3px solid ${sage}`,
-            objectFit: "cover",
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            width: "56px",
-            height: "56px",
-            border: `3px solid ${sage}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: sage,
-            fontSize: "22px",
-          }}
-        >
-          ♪
-        </div>
-      )}
+      {/* album art in a pixel frame (memoised — see artEl above) */}
+      {artEl}
 
       {/* two disks (static) */}
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
