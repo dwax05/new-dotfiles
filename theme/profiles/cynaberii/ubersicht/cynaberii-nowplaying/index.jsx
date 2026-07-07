@@ -15,6 +15,8 @@ export const className = `
   bottom: 56px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
+  -webkit-user-select: none;
+  user-select: none;
   color: #fff;
 `;
 
@@ -37,7 +39,6 @@ export const render = ({ output }) => {
   const sage = c.color6 || "#9AAD74";
   const ink = (d.special && d.special.foreground) || "#c3c3c5";
 
-  const spin = d.playing ? "np-spin 2.6s linear infinite" : "none";
   const artSrc = d.art; // base64 data URI from np.py ("" when no art)
 
   // chunky pixel border via layered box-shadow (no anti-aliasing)
@@ -61,7 +62,6 @@ export const render = ({ output }) => {
       }}
     >
       <style>{`
-        @keyframes np-spin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
         @keyframes np-marquee {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -97,7 +97,7 @@ export const render = ({ output }) => {
         </div>
       )}
 
-      {/* two spinning reels */}
+      {/* two disks (static) */}
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         {[0, 1].map((i) => (
           <div
@@ -108,7 +108,6 @@ export const render = ({ output }) => {
               borderRadius: "50%",
               border: `3px solid ${accent}`,
               boxShadow: `inset 0 0 0 3px ${bg}, inset 0 0 0 5px ${accent2}`,
-              animation: spin,
             }}
           />
         ))}

@@ -13,6 +13,8 @@ export const className = `
   transform: translateX(-50%);
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
+  -webkit-user-select: none;
+  user-select: none;
   text-align: center;
 `;
 

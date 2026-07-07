@@ -11,6 +11,8 @@ export const className = `
   right: 60px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
+  -webkit-user-select: none;
+  user-select: none;
   text-align: center;
 `;
 
@@ -25,13 +27,14 @@ const parse = (o) => {
 // ── icon sprites (12 wide) ──
 const SUN = [
   "............",
-  "...S.SS.S...",
-  "....SSSS....",
+  "..S..SS..S..",
+  "...SSSSSS...",
+  "...SSSSSS...",
   "..SSSSSSSS..",
-  "S.SSSSSSSS.S",
   "..SSSSSSSS..",
   "...SSSSSS...",
-  "..S.SSSS.S..",
+  "...SSSSSS...",
+  "..S..SS..S..",
   "............",
 ];
 const CLOUD = [

@@ -11,6 +11,8 @@ export const className = `
   left: 60px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
+  -webkit-user-select: none;
+  user-select: none;
   color: #fff;
 `;
 

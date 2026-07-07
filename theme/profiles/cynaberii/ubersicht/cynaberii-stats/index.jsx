@@ -18,6 +18,8 @@ export const className = `
   bottom: 56px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
+  -webkit-user-select: none;
+  user-select: none;
   color: #fff;
 `;
 
