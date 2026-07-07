@@ -97,7 +97,7 @@ export const render = ({ output }) => {
   };
 
   const now = new Date();
-  const hh = String(now.getHours()).padStart(2, "0");
+  const hh = String(now.getHours() % 12).padStart(2, "0");
   const mm = String(now.getMinutes()).padStart(2, "0");
   // blink the colon each second
   const sep = now.getSeconds() % 2 === 0 ? ":" : " ";

@@ -3,10 +3,13 @@
 // sways in the corner. All motion is CSS (no JS timers/polling): the command
 // just cats the wal palette and refreshFrequency is false (postrun recolours).
 
+import { React } from "uebersicht";
+
 export const command = "cat ~/.cache/wal/colors.json";
 
 export const refreshFrequency = false;
 
+const SPIN_MS = 700; // fish spin duration on click
 const PX = 5;
 const PERIOD = 18; // seconds — one idle→swim→idle cycle
 const SEAWEED_GREEN = "#3f7d4a"; // distinct from the sage water
@@ -44,7 +47,12 @@ const TANK = [
 ];
 
 // fish (6 wide × 4), facing right. F body · T tail · e eye
-const FISH = ["T.FFF.", ".TFFFe", ".TFFFe", "T.FFF."];
+const FISH = [
+  "T.FFF.",
+  ".TFFeF",
+  ".TFFFF",
+  "T.FFF."
+];
 
 // seaweed strand (3 wide × 6), rooted at the bottom
 const WEED = ["..k", ".k.", "k..", ".k.", "..k", ".k."];
@@ -72,7 +80,16 @@ const Grid = ({ rows, px, palette }) => {
   );
 };
 
-export const render = ({ output }) => {
+const Fishtank = ({ output }) => {
+  const [spinning, setSpinning] = React.useState(false);
+  const spinTimer = React.useRef(null);
+  const spin = () => {
+    if (spinning) return; // let the current spin finish
+    setSpinning(true);
+    if (spinTimer.current) clearTimeout(spinTimer.current);
+    spinTimer.current = setTimeout(() => setSpinning(false), SPIN_MS);
+  };
+
   const j = parse(output) || {};
   const c = j.colors || {};
   const bg = (j.special && j.special.background) || "#101217";
@@ -123,15 +140,18 @@ export const render = ({ output }) => {
 
   return (
     <div
+      onClick={spin}
       style={{
         display: "inline-block",
         padding: "12px",
         background: bg,
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
+        cursor: "pointer",
       }}
     >
       <style>{`
+        @keyframes fb-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
         @keyframes fb-swim {
           0%, 50%  { transform: translateX(0) scaleX(1); }          /* idle at left, facing right */
           68%      { transform: translateX(${span}px) scaleX(1); }  /* swim across to the right */
@@ -175,7 +195,9 @@ export const render = ({ output }) => {
           }}
         >
           <div style={{ animation: `fb-swim ${PERIOD}s ease-in-out infinite` }}>
-            <Grid rows={FISH} px={FPX} palette={fishPal} />
+            <div style={{ animation: spinning ? `fb-spin ${SPIN_MS}ms ease-in-out` : "none" }}>
+              <Grid rows={FISH} px={FPX} palette={fishPal} />
+            </div>
           </div>
         </div>
 
@@ -184,3 +206,5 @@ export const render = ({ output }) => {
     </div>
   );
 };
+
+export const render = ({ output }) => <Fishtank output={output} />;

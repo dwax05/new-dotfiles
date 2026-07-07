@@ -12,9 +12,14 @@
 // Übersicht runs `command` with cwd = the widgets dir; folder symlinked in as
 // `cynaberii-pet`.
 
+import { React } from "uebersicht";
+
 export const command = "python3 './cynaberii-pet/pet.py'";
 
 export const refreshFrequency = 6000;
+
+const PET_MS = 1500; // how long the happy pet reaction lasts on click
+const HEART_PINK = "#ff6b9d"; // fixed bright pink so hearts always pop
 
 // Perched on the top-right corner of the cynaberii-nowplaying card (which sits
 // at left:32 bottom:56, ~80px tall). Paws on the card's top edge near its right
@@ -81,6 +86,22 @@ const closeEyes = (ch) => EYES.map(([r, c]) => [r, c, ch]);
 const openMouth = [[9, 7, "m"], [9, 8, "m"]];
 const CHEEKS = [[8, 2, "c"], [8, 13, "c"]];
 const SWEAT = [4, 14, "s"];
+
+// happy "being petted" face: closed eyes + blush + little open smile
+const HAPPY = set(BASE, [...closeEyes("D"), ...CHEEKS, ...openMouth]);
+// floating heart (5×4) for the pet reaction
+const BIGHEART = ["XX.XX", "XXXXX", ".XXX.", "..X.."];
+
+// a random burst of hearts coming off the cat (generated once per pet click)
+const makeHearts = () =>
+  Array.from({ length: 5 + Math.floor(Math.random() * 3) }, () => ({
+    x: 2 + Math.random() * 54, // across the cat's width
+    top: -6 + Math.random() * 12,
+    size: 3 + Math.floor(Math.random() * 2), // px per heart pixel
+    delay: Math.random() * 0.55,
+    dur: 0.9 + Math.random() * 0.6,
+    rot: Math.random() * 40 - 20,
+  }));
 
 // build the frame list for a state; returns { frames, dur }
 const framesFor = (state, charging) => {
@@ -163,7 +184,18 @@ const PetStrip = ({ frames, px, palette, dur, wiggle }) => {
   );
 };
 
-export const render = ({ output }) => {
+const Pet = ({ output }) => {
+  const [petting, setPetting] = React.useState(false);
+  const [heartSpecs, setHeartSpecs] = React.useState([]);
+  const timer = React.useRef(null);
+  const pet = () => {
+    if (petting) return; // let the current reaction finish
+    setPetting(true);
+    setHeartSpecs(makeHearts());
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setPetting(false), PET_MS);
+  };
+
   const d = parse(output);
   if (!d) return <div />;
 
@@ -188,23 +220,57 @@ export const render = ({ output }) => {
     z: ink, // sleep z
   };
 
-  const { frames, dur } = framesFor(d.state, d.charging || d.plugged);
-  // motion only for active/sleep states; idle + eat sit still (no perpetual bob)
-  const wiggle =
-    d.state === "run"
-      ? "pet-wiggle 0.28s steps(2) infinite"
-      : d.state === "sleep"
-      ? "pet-bob 2.8s ease-in-out infinite"
-      : "none";
+  // while being petted, override with the happy face + a bounce; otherwise the
+  // usual system-state animation
+  let frames, dur, wiggle;
+  if (petting) {
+    frames = [HAPPY];
+    dur = 0;
+    wiggle = "pet-happy 0.45s ease-in-out infinite";
+  } else {
+    ({ frames, dur } = framesFor(d.state, d.charging || d.plugged));
+    wiggle =
+      d.state === "run"
+        ? "pet-wiggle 0.28s steps(2) infinite"
+        : d.state === "sleep"
+          ? "pet-bob 2.8s ease-in-out infinite"
+          : "none";
+  }
+
+  const hearts = petting
+    ? heartSpecs.map((h, i) => (
+      <div
+        key={i}
+        style={{
+          position: "absolute",
+          left: `${h.x}px`,
+          top: `${h.top}px`,
+          animation: `pet-heart ${h.dur}s ease-out ${h.delay}s both`,
+        }}
+      >
+        <div style={{ transform: `rotate(${h.rot}deg)` }}>
+          <PetStrip frames={[BIGHEART]} px={h.size} palette={{ X: HEART_PINK }} dur={0} wiggle="none" />
+        </div>
+      </div>
+    ))
+    : [];
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div
+      onClick={pet}
+      style={{ textAlign: "center", position: "relative", display: "inline-block", cursor: "pointer" }}
+    >
       <style>{`
         @keyframes pet-cycle { from{transform:translateX(0)} to{transform:translateX(-100%)} }
         @keyframes pet-wiggle { 0%{transform:translateX(-1px)} 100%{transform:translateX(1px)} }
         @keyframes pet-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+        @keyframes pet-happy { 0%,100%{transform:translateY(0) scaleY(1)} 30%{transform:translateY(-3px)} 60%{transform:translateY(0) scaleY(0.93)} }
+        @keyframes pet-heart { 0%{opacity:0; transform:translateY(0) scale(0.7)} 25%{opacity:1} 100%{opacity:0; transform:translateY(-26px) scale(1)} }
       `}</style>
       <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle={wiggle} />
+      {hearts}
     </div>
   );
 };
+
+export const render = ({ output }) => <Pet output={output} />;
