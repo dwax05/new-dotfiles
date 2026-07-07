@@ -1,0 +1,25 @@
+# theme switch manifest — one entry per themed path.
+# kind  name
+#   cfg   -> target ~/.config/<name>   source theme/profiles/<profile>/<name>
+#   home  -> target ~/<name>           source theme/profiles/<profile>/<name>
+# Only paths listed here are ever touched by the switch. Everything else in
+# ~/.config (gh, git, opencode, herdr, kari, greg, ...) is left alone.
+# A profile that lacks a source for an entry means: on switch to that profile,
+# remove the managed symlink (real dirs are never deleted — see switch.sh guard).
+cfg   aerospace
+cfg   borders
+cfg   btop
+cfg   cava
+cfg   neru
+cfg   nvim
+cfg   rift
+cfg   sketchybar
+cfg   spotify-player
+cfg   starship
+cfg   wal
+cfg   wallpaperpeek
+cfg   walnotify
+cfg   workspacepeek
+cfg   yazi
+cfg   zen
+home  .wezterm.lua

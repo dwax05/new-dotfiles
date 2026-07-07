@@ -2,50 +2,40 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "wB",
+      "id": "wS",
       "custom_name": null,
-      "identity_cwd": "/Users/dylanwax/Developer/knightle",
+      "identity_cwd": "/Users/dylanwax/.dotfiles",
       "public_pane_numbers": {
-        "1": 1,
-        "9": 11
+        "45": 1
       },
-      "next_public_pane_number": 13,
+      "next_public_pane_number": 3,
       "public_tab_numbers": [
-        1,
-        11
+        1
       ],
-      "next_public_tab_number": 13,
+      "next_public_tab_number": 3,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Pane": 1
+            "Pane": 45
           },
           "panes": {
-            "1": {
-              "cwd": "/Users/dylanwax/Developer/knightle"
+            "45": {
+              "cwd": "/Users/dylanwax/.dotfiles",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "970264e4-0847-42de-a88d-bb8651ee111f"
+              }
             }
           },
           "zoomed": false,
-          "focused": 1,
-          "root_pane": 1
-        },
-        {
-          "custom_name": null,
-          "layout": {
-            "Pane": 9
-          },
-          "panes": {
-            "9": {
-              "cwd": "/Users/dylanwax/Developer/knightle"
-            }
-          },
-          "zoomed": false,
-          "focused": 9,
-          "root_pane": 9
+          "focused": 45,
+          "root_pane": 45
         }
       ],
-      "active_tab": 1
+      "active_tab": 0
     }
   ],
   "active": 0,

@@ -28,3 +28,32 @@
 2026-07-02T21:56:30.175342Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=84585
 2026-07-02T21:56:30.175672Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
 2026-07-02T21:56:30.404427Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-04T21:36:52.252282Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=68872
+2026-07-04T21:36:52.252340Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-04T21:36:52.448475Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-04T21:38:24.970094Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=71520
+2026-07-04T21:38:24.970435Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-04T21:38:25.142130Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T05:10:56.568071Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=45058
+2026-07-06T05:10:56.568467Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T05:10:56.637032Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T05:13:24.938410Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=49590
+2026-07-06T05:13:24.938524Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T05:13:25.146103Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T05:13:36.886740Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=51207
+2026-07-06T05:13:36.886834Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T05:13:37.034608Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T06:35:26.150133Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=40506
+2026-07-06T06:35:26.150236Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T06:35:26.193621Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T17:57:36.859434Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=5608
+2026-07-06T17:57:36.859734Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T17:57:36.934119Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T17:57:41.834550Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=6157
+2026-07-06T17:57:41.834657Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T17:57:41.953419Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-06T17:59:48.713580Z  WARN herdr::raw_input: flushing lone escape after input timeout; if this follows an alt chord or focus switch it may reach the pane as plain esc bytes=[27]
+2026-07-06T17:59:48.713718Z  WARN herdr::raw_input: flushing lone escape after input timeout; if this follows an alt chord or focus switch it may reach the pane as plain esc bytes=[27]
+2026-07-06T21:26:14.057969Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=88802
+2026-07-06T21:26:14.058286Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-06T21:26:14.180981Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame

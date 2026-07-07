@@ -1,0 +1,23 @@
+{
+  "$schema" : "https:\/\/opencode.ai\/config.json",
+  "plugin" : [
+    ".\/plugins\/cmux-session.js"
+  ],
+  "provider" : {
+    "lmstudio" : {
+      "models" : {
+        "qwen\/qwen3-30b-a3b-2507" : {
+          "name" : "qwen3-30b"
+        },
+        "qwen\/qwen3-coder-30b" : {
+          "name" : "qwen3-coder-30b"
+        }
+      },
+      "name" : "LM Studio (local)",
+      "npm" : "@ai-sdk\/openai-compatible",
+      "options" : {
+        "baseURL" : "http:\/\/localhost:11435\/v1"
+      }
+    }
+  }
+}

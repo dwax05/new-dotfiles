@@ -1,0 +1,33 @@
+# Path to the fzf binary. Set to an absolute path if fzf is not on PATH.
+fzf_path: fzf
+
+# Video player: "mpv" (default) or "vlc". IINA is used automatically on macOS.
+player: iina
+
+# chafa rendering backend for poster previews.
+# Options: sixel (default), kitty, iterm, symbols
+image_backend: kitty
+
+# Default search provider.
+provider: flixhq
+
+# Directory where downloaded files are saved. Defaults to home directory.
+dl_path: "~/Movies/luffy/"
+
+# Quality selection: leave empty to show an fzf prompt, or set to "best"
+# to always auto-select the highest available quality.
+quality: "best"
+
+# Extra arguments appended to every mpv invocation (ignored on VLC/IINA/Android).
+# mpv_args:
+#   - "--hwdec=auto"
+#   - "--volume=80"
+
+# Lifecycle hooks — shell commands run at key playback events.
+# LUFFY_TITLE, LUFFY_URL, LUFFY_SEASON, LUFFY_EPISODE, LUFFY_EP_NAME,
+# LUFFY_PROVIDER, LUFFY_ACTION, LUFFY_STREAM_URL, and LUFFY_POSITION
+# are set in the environment for every hook.
+# hooks:
+#   on_play: 'notify-send "Now playing" "$LUFFY_TITLE"'
+#   on_exit: 'echo "$LUFFY_TITLE stopped at ${LUFFY_POSITION}s" >> ~/luffy.log'
+#   on_download: 'notify-send "Downloading" "$LUFFY_TITLE"'
