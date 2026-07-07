@@ -12,7 +12,7 @@ cfg   borders
 cfg   btop
 cfg   cava
 cfg   neru
-cfg   nvim
+# nvim is shared for BOTH profiles (your config, not swapped).
 cfg   rift
 cfg   sketchybar
 cfg   spotify-player
