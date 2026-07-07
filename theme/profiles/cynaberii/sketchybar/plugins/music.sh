@@ -24,7 +24,7 @@ fi
 
 TRACK=$(echo "$SPOTIFY_JSON"  | jq -r '.Name'   2>/dev/null)
 ARTIST=$(echo "$SPOTIFY_JSON" | jq -r '.Artist' 2>/dev/null)
-LABEL="$ARTIST - $TRACK"
+LABEL="$TRACK - $ARTIST"
 
 MAX=40
 if (( ${#LABEL} > MAX )); then LABEL="${LABEL:0:$((MAX - 1))}…"; fi
