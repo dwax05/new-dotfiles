@@ -35,6 +35,12 @@ if pgrep -x sketchybar > /dev/null; then
   $SKETCHYBAR --reload &
 fi
 
+# Übersicht widgets — refresh so they pick up the new wal palette at once
+# (launchd has no PATH, so use the full osascript path)
+if pgrep -f "bersicht" > /dev/null; then
+  /usr/bin/osascript -e 'tell application "Übersicht" to refresh' >/dev/null 2>&1 &
+fi
+
 # Ghostty: regenerate colors from the wal palette + hot-reload
 bash "$HOME/.dotfiles/theme/shared/ghostty-from-wal.sh" &
 

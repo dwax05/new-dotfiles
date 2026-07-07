@@ -174,6 +174,18 @@ reload_bar() {
   fi
 }
 
+reload_borders() {
+  if pgrep -x borders >/dev/null 2>&1; then
+    brew services restart borders >/dev/null 2>&1 \
+      && ok "borders restarted" \
+      || warn "borders restart failed"
+  else
+    brew services start borders >/dev/null 2>&1 \
+      && ok "borders started" \
+      || warn "borders not running"
+  fi
+}
+
 switch() { # $1 profile
   local profile="$1"
   case "$profile" in mine|cynaberii) ;; *) err "unknown profile '$profile' (mine|cynaberii)"; exit 2;; esac
@@ -185,6 +197,8 @@ switch() { # $1 profile
   esac
   seed_bar_colors "$profile"
   reload_bar
+  reload_borders
+  bash "$THEME/shared/ubersicht-link.sh" "$profile" 2>/dev/null || true
   printf '%s\n' "$profile" > "$STATE"
   say "${c_ok}done — active profile: $profile$c_off"
 }

@@ -1,0 +1,186 @@
+// cynaberii · mascot desk pet — a cinnabar blob-fox that reacts to the system.
+// Real pixel art; frames are packed into one horizontal SVG strip and scrolled
+// with a CSS steps() animation, so it animates smoothly regardless of refresh.
+// Colours come from ./pet.py (system state + ~/.cache/wal/colors.json).
+//
+//   idle  → blinks           sleep → CPU idle, "z"s
+//   run   → CPU busy, sweat   eat   → network active, chewing
+//   blush → charging/plugged (cheeks, any state)
+//
+// Übersicht runs `command` with cwd = the widgets dir; folder symlinked in as
+// `cynaberii-pet`.
+
+export const command = "python3 './cynaberii-pet/pet.py'";
+
+export const refreshFrequency = 3000;
+
+export const className = `
+  left: 400px;
+  bottom: 24px;
+  font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
+  -webkit-font-smoothing: none;
+`;
+
+const parse = (o) => {
+  try {
+    return JSON.parse(o);
+  } catch (e) {
+    return null;
+  }
+};
+
+// ── base blob-fox (13 wide × 11 tall) ──
+//  B body · D outline · e eye · m mouth · . empty
+const BASE = [
+  ".....DDD.....",
+  "...DDBBBDD...",
+  "..DBBBBBBBD..",
+  ".DBBBBBBBBBD.",
+  ".DBBBBBBBBBD.",
+  "DBBeBBBBBeBBD",
+  "DBBeBBBBBeBBD",
+  "DBBBBBBBBBBBD",
+  ".DBBBmmmBBBD.",
+  "..DBBBBBBBD..",
+  "...DDDDDDD...",
+];
+
+const set = (grid, cells) => {
+  const g = grid.map((r) => r.split(""));
+  cells.forEach(([r, c, ch]) => {
+    if (g[r] && g[r][c] !== undefined) g[r][c] = ch;
+  });
+  return g.map((r) => r.join(""));
+};
+
+// feature cell groups
+const EYES = [[5, 3], [6, 3], [5, 9], [6, 9]];
+const closeEyes = (ch) => EYES.map(([r, c]) => [r, c, ch]); // flat line = closed
+const MOUTH = [[8, 5], [8, 6], [8, 7]];
+const openMouth = MOUTH.map(([r, c]) => [r, c, "m"]);
+const shutMouth = MOUTH.map(([r, c]) => [r, c, "B"]);
+const CHEEKS = [[6, 2, "c"], [6, 10, "c"]];
+const SWEAT = [2, 11, "s"];
+
+// build the frame list for a state; returns { frames, dur }
+const framesFor = (state, charging) => {
+  const blush = charging ? CHEEKS : [];
+  let frames;
+  let dur = 900;
+
+  if (state === "sleep") {
+    const a = set(BASE, [...closeEyes("D"), ...shutMouth, [1, 11, "z"]]);
+    const b = set(BASE, [...closeEyes("D"), ...shutMouth, [0, 12, "z"]]);
+    frames = [a, b];
+    dur = 1600;
+  } else if (state === "run") {
+    const a = set(BASE, [...openMouth, SWEAT]);
+    const b = set(BASE, [...openMouth]);
+    frames = [a, b];
+    dur = 320;
+  } else if (state === "eat") {
+    const a = set(BASE, openMouth);
+    const b = set(BASE, shutMouth);
+    frames = [a, b];
+    dur = 380;
+  } else {
+    // idle: mostly open eyes, occasional blink
+    const open = set(BASE, shutMouth);
+    const blink = set(BASE, [...closeEyes("D"), ...shutMouth]);
+    frames = [open, open, open, open, open, blink];
+    dur = 2400;
+  }
+
+  return { frames: frames.map((f) => set(f, blush)), dur };
+};
+
+// ── horizontal sprite strip, scrolled with steps() ──
+const PetStrip = ({ frames, px, palette, dur, wiggle }) => {
+  const fw = frames[0][0].length;
+  const fh = frames[0].length;
+  const n = frames.length;
+  const rects = [];
+  frames.forEach((g, f) =>
+    g.forEach((line, r) => {
+      for (let c = 0; c < line.length; c++) {
+        const col = palette[line[c]];
+        if (col)
+          rects.push(
+            <rect
+              key={`${f}-${r}-${c}`}
+              x={f * fw + c}
+              y={r}
+              width="1.03"
+              height="1.03"
+              fill={col}
+            />
+          );
+      }
+    })
+  );
+  return (
+    <div
+      style={{
+        width: fw * px,
+        height: fh * px,
+        overflow: "hidden",
+        animation: wiggle,
+      }}
+    >
+      <svg
+        width={n * fw * px}
+        height={fh * px}
+        viewBox={`0 0 ${n * fw} ${fh}`}
+        shapeRendering="crispEdges"
+        style={{
+          imageRendering: "pixelated",
+          animation: `pet-cycle ${dur}ms steps(${n}) infinite`,
+        }}
+      >
+        {rects}
+      </svg>
+    </div>
+  );
+};
+
+export const render = ({ output }) => {
+  const d = parse(output);
+  if (!d) return <div />;
+
+  const c = d.colors || {};
+  const bg = (d.special && d.special.background) || "#101217";
+  const accent = c.color4 || "#C66451"; // cinnabar body
+  const accent2 = c.color3 || "#B95147"; // outline
+  const sage = c.color6 || "#9AAD74";
+  const ink = (d.special && d.special.foreground) || "#c3c3c5";
+
+  const palette = {
+    B: accent,
+    D: accent2,
+    e: bg, // eyes (dark cutout)
+    m: c.color0 || "#101217", // open mouth
+    c: c.color2 || "#98594F", // blush cheeks
+    s: sage, // sweat drop
+    z: ink, // sleep z
+  };
+
+  const { frames, dur } = framesFor(d.state, d.charging || d.plugged);
+  // running jitters left-right; sleeping gently bobs
+  const wiggle =
+    d.state === "run"
+      ? "pet-wiggle 0.28s steps(2) infinite"
+      : d.state === "sleep"
+      ? "pet-bob 2.4s ease-in-out infinite"
+      : "pet-bob 3.4s ease-in-out infinite";
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <style>{`
+        @keyframes pet-cycle { from{transform:translateX(0)} to{transform:translateX(-100%)} }
+        @keyframes pet-wiggle { 0%{transform:translateX(-1px)} 100%{transform:translateX(1px)} }
+        @keyframes pet-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+      `}</style>
+      <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle={wiggle} />
+    </div>
+  );
+};
