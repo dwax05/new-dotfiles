@@ -103,24 +103,20 @@ sketchybar --add item music q \
              script="$PLUGIN_DIR/music.sh" \
            --subscribe music spotify_change mouse.clicked
 
-# Theme toggle — click to switch to the other profile (rightmost item)
-sketchybar --add item theme_toggle right \
-           --set theme_toggle \
-             icon="󰔎" \
-             icon.color=$WHITE \
-             label.drawing=off \
-             click_script="$HOME/.dotfiles/theme/switch.sh mine >/dev/null 2>&1"
+# ── right side (ordered like the mine profile) ──
+# right items add right-to-left, so first-added is rightmost. Visual L->R:
+#   tailscale | cpu | weather | volume | battery | theme_toggle | clock
+sep() { # $1 = name — a thin "|" divider
+  sketchybar --add item "$1" right \
+             --set "$1" \
+               label="|" \
+               label.color=$WHITE \
+               label.font="JetBrainsMono Nerd Font:Regular:12.0" \
+               background.drawing=off \
+               icon.drawing=off
+}
 
-# separator to the right of the clock (added before clock so it sits further right)
-sketchybar --add item sep_clock right \
-           --set sep_clock \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
-
-# Clock
+# Clock (rightmost)
 sketchybar --add item clock right \
            --set clock \
              update_freq=10 \
@@ -128,31 +124,16 @@ sketchybar --add item clock right \
              icon.color=$WHITE \
              label.color=$WHITE \
              script="$PLUGIN_DIR/clock.sh"
+sep sep_clock
 
-sketchybar --add item sep2 right \
-           --set sep2 \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
-
-# Weather
-sketchybar --add item weather right \
-           --set weather \
-             update_freq=1800 \
+# Theme toggle — click to switch to the other profile
+sketchybar --add item theme_toggle right \
+           --set theme_toggle \
+             icon="󰔎" \
              icon.color=$WHITE \
-             label.color=$WHITE \
-             script="$PLUGIN_DIR/weather.sh" \
-	     click_script="$PLUGIN_DIR/weather_click.sh"
-
-sketchybar --add item sep1 right \
-           --set sep1 \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
+             label.drawing=off \
+             click_script="$HOME/.dotfiles/theme/switch.sh mine >/dev/null 2>&1"
+sep sep0
 
 # Battery
 sketchybar --add item battery right \
@@ -162,14 +143,7 @@ sketchybar --add item battery right \
              label.color=$WHITE \
              script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
-
-sketchybar --add item sep0 right \
-           --set sep0 \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
+sep sep1
 
 # Volume
 sketchybar --add item volume right \
@@ -178,24 +152,19 @@ sketchybar --add item volume right \
              label.color=$WHITE \
              script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change
+sep sep2
 
-for sid in 1 2 3 4 5 6 7 8 9; do
-  sketchybar --subscribe space."$sid" "$WS_CHANGE_EVENT"
-done
-
-sketchybar --subscribe window_tracker "$WS_CHANGE_EVENT"
-sketchybar --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
-
-sketchybar --update
-
-# cpu
-sketchybar --add item sep_cpu right \
-           --set sep_cpu \
-             label="|" \
+# Weather
+sketchybar --add item weather right \
+           --set weather \
+             update_freq=1800 \
+             icon.color=$WHITE \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
+             script="$PLUGIN_DIR/weather.sh" \
+             click_script="$PLUGIN_DIR/weather_click.sh"
+sep sep_cpu
+
+# CPU
 sketchybar --add item cpu right \
            --set cpu \
              update_freq=5 \
@@ -204,6 +173,26 @@ sketchybar --add item cpu right \
              label.color=$WHITE \
              script="$PLUGIN_DIR/cpu.sh" \
              click_script="$HOME/.config/sketchybar/plugins/cpu_click.sh"
+sep sep_ts
+
+# Tailscale (leftmost of the right cluster)
+sketchybar --add item tailscale right \
+           --set tailscale \
+             icon="󱗼" \
+             icon.color=$WHITE \
+             label.drawing=off \
+             update_freq=10 \
+             script="$PLUGIN_DIR/tailscale.sh -q" \
+             click_script="$PLUGIN_DIR/tailscale.sh -t"
+
+# subscriptions + initial paint (after all right items exist)
+for sid in 1 2 3 4 5 6 7 8 9; do
+  sketchybar --subscribe space."$sid" "$WS_CHANGE_EVENT"
+done
+sketchybar --subscribe window_tracker "$WS_CHANGE_EVENT"
+sketchybar --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
+
+sketchybar --update
 
 # Workspace-peek watcher (refreshes window glyphs + pills on workspace change)
 pkill -f workspacepeek_watch.sh 2>/dev/null
