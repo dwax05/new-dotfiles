@@ -143,12 +143,18 @@ seed_bar_colors() { # $1 profile
       if [ -f "$WAL_SB_CACHE" ] && ! grep -q 'THEME_PROFILE=cynaberii' "$WAL_SB_CACHE" 2>/dev/null; then
         cp "$WAL_SB_CACHE" "$COLOR_STASH/mine.sh"
       fi
-      local fb="$HOME/.config/sketchybar/colors-fallback.sh"   # cynaberii's, via the live symlink
-      if [ -f "$fb" ]; then
-        cp "$fb" "$WAL_SB_CACHE"; printf '\nexport THEME_PROFILE=cynaberii\n' >> "$WAL_SB_CACHE"
-        ok "seeded cynaberii bar colours"
+      # Prefer live wal colours: render cynaberii-format from the current palette.
+      if bash "$THEME/shared/sketchybar-colors-cynaberii.sh" 2>/dev/null; then
+        ok "generated cynaberii bar colours from wal palette"
       else
-        warn "cynaberii colors-fallback.sh missing — bar may be transparent"
+        # no wal palette yet -> static fallback so the bar still shows
+        local fb="$HOME/.config/sketchybar/colors-fallback.sh"
+        if [ -f "$fb" ]; then
+          cp "$fb" "$WAL_SB_CACHE"; printf '\nexport THEME_PROFILE=cynaberii\n' >> "$WAL_SB_CACHE"
+          warn "no wal palette — seeded cynaberii fallback colours"
+        else
+          warn "cynaberii colors-fallback.sh missing — bar may be transparent"
+        fi
       fi
       ;;
     mine)
