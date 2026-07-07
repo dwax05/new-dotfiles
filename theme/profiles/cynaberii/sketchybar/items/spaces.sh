@@ -4,13 +4,16 @@ source "$HOME/.cache/wal/colors-sketchybar.sh"
 # (timeout, aerospace's CLI can block forever when the server is busy)
 asp() { perl -e 'alarm shift; exec @ARGV' 3 /opt/homebrew/bin/aerospace "$@"; }
 
-# order pills 1..9 then 0 at the end (treat 0 as 10 for the sort, keep original id)
-order_ws() { awk '{print ($1=="0"?10:$1)"\t"$1}' | sort -n | cut -f2; }
+# All possible workspaces must exist as items at launch so the aerospace event
+# can show/hide them — otherwise workspaces created later never get a pill and
+# emptied ones can't be hidden. Order: 1..9 then 0 at the end.
+all_spaces=(1 2 3 4 5 6 7 8 9 0)
 
-for sid in $(asp list-workspaces --all --format "%{workspace}" | order_ws); do
+for sid in "${all_spaces[@]}"; do
   sketchybar --add item space."$sid" left \
     --subscribe space."$sid" aerospace_workspace_change \
     --set space."$sid" \
+      drawing=off \
       icon="$sid" \
       icon.align=center \
       label="" \
