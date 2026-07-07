@@ -23,8 +23,8 @@ for sid in "${all_spaces[@]}"; do
       background.corner_radius=5 \
       background.height=25 \
       background.drawing=on \
-      icon.padding_left=10 \
-      icon.padding_right=5 \
+      icon.padding_left=0 \
+      icon.padding_right=0 \
       width=30 \
       click_script="aerospace workspace $sid && sketchybar --trigger aerospace_workspace_change" \
       script="$PLUGIN_DIR/aerospace.sh"

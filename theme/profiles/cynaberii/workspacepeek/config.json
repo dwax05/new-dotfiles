@@ -48,7 +48,7 @@
       "WezTerm" : "󰆍",
       "Zen" : "󰈹"
     },
-    "defaultGlyph" : "󰘔"
+    "defaultGlyph" : "󰘔 "
   },
   "hotkey" : {
     "consumeEvent" : true,
