@@ -3,7 +3,7 @@
 
 export const command = "python3 './cynaberii-weather/weather.py'";
 
-export const refreshFrequency = 60000; // colours refresh each min; weather cached 15min
+export const refreshFrequency = 900000; // 15min; postrun refreshes on wal recolor, data cached 15min
 
 // Top-right corner, under the menu bar.
 export const className = `

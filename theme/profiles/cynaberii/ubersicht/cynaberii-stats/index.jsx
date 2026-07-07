@@ -11,7 +11,7 @@
 
 export const command = "python3 './cynaberii-stats/stats.py'";
 
-export const refreshFrequency = 5000;
+export const refreshFrequency = 20000;
 
 export const className = `
   right: 32px;
@@ -200,9 +200,6 @@ export const render = ({ output }) => {
         <div style={bottomAlign}>
           <Pixels rows={buildHeart(d.battery, blush)} px={PX} palette={heartPalette} />
         </div>
-        {d.charging && (
-          <div style={{ fontSize: "10px", color: accent, marginTop: "2px" }}>⚡</div>
-        )}
         {label("batt", d.battery, accent)}
       </div>
     </div>

@@ -3,7 +3,7 @@
 
 export const command = "python3 './cynaberii-sys/sys.py'";
 
-export const refreshFrequency = 10000;
+export const refreshFrequency = 60000;
 
 // Top-left area, under the menu bar.
 export const className = `

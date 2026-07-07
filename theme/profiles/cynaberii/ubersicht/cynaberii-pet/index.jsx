@@ -14,7 +14,7 @@
 
 export const command = "python3 './cynaberii-pet/pet.py'";
 
-export const refreshFrequency = 3000;
+export const refreshFrequency = 6000;
 
 // Perched on the top-right corner of the cynaberii-nowplaying card (which sits
 // at left:32 bottom:56, ~80px tall). Paws on the card's top edge near its right
@@ -104,10 +104,10 @@ const framesFor = (state, charging) => {
     frames = [a, b];
     dur = 380;
   } else {
-    // idle: mostly open eyes, occasional blink
-    const blink = set(BASE, closeEyes("D"));
-    frames = [BASE, BASE, BASE, BASE, BASE, blink];
-    dur = 2400;
+    // idle: a single static frame — no animation, so the compositor can idle
+    // (this is the state the pet sits in almost all the time)
+    frames = [BASE];
+    dur = 0;
   }
 
   return { frames: frames.map((f) => set(f, blush)), dur };
@@ -153,7 +153,8 @@ const PetStrip = ({ frames, px, palette, dur, wiggle }) => {
         shapeRendering="crispEdges"
         style={{
           imageRendering: "pixelated",
-          animation: `pet-cycle ${dur}ms steps(${n}) infinite`,
+          // single-frame states are static — no animation keeps the compositor idle
+          animation: n > 1 ? `pet-cycle ${dur}ms steps(${n}) infinite` : "none",
         }}
       >
         {rects}
@@ -188,12 +189,13 @@ export const render = ({ output }) => {
   };
 
   const { frames, dur } = framesFor(d.state, d.charging || d.plugged);
+  // motion only for active/sleep states; idle + eat sit still (no perpetual bob)
   const wiggle =
     d.state === "run"
       ? "pet-wiggle 0.28s steps(2) infinite"
       : d.state === "sleep"
-      ? "pet-bob 2.4s ease-in-out infinite"
-      : "pet-bob 3.4s ease-in-out infinite";
+      ? "pet-bob 2.8s ease-in-out infinite"
+      : "none";
 
   return (
     <div style={{ textAlign: "center" }}>
