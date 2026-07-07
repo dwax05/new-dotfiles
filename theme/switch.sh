@@ -75,43 +75,22 @@ link_profile() { # $1 profile
   done < <(read_manifest)
 }
 
-# ── window manager handoff ───────────────────────────────────────────────
-wm_to_cynaberii() {
-  say "==> window manager: AeroSpace -> rift"
-  if ! command -v rift >/dev/null 2>&1; then
-    warn "rift not installed. Installing (brew acsandmann/tap/rift)..."
-    brew install acsandmann/tap/rift || { err "rift install failed — staying on AeroSpace"; return 1; }
-  fi
-  osascript -e 'quit app "AeroSpace"' 2>/dev/null || true
-  pkill -x aerospace 2>/dev/null || true
-  sleep 0.5
-  # Run rift via its launchd service (single instance, survives, logs) rather
-  # than a raw backgrounded process. Its config run_on_start spawns borders +
-  # wires sketchybar.
-  pkill -x rift 2>/dev/null || true; sleep 0.5
-  rift service install >/dev/null 2>&1 || true
-  if rift service restart >/dev/null 2>&1 || rift service start >/dev/null 2>&1; then
-    ok "rift service started"
-  else
-    err "rift service failed to start"
-  fi
-  # Accessibility gate: rift can query but can't manage/switch spaces without it.
-  # (Can't reliably probe another proc's TCC state, so just remind.)
-  say "  ${c_dim}note: if spaces won't switch, grant Accessibility to rift"
-  say "        (System Settings > Privacy & Security > Accessibility), then:"
-  say "        rift service restart. Activate each space with Alt+Delete.$c_off"
-}
-wm_to_mine() {
-  say "==> window manager: rift -> AeroSpace"
+# ── window manager ───────────────────────────────────────────────────────
+# Both profiles use AeroSpace as the WM. cynaberii's sketchybar auto-detects the
+# WM (pgrep rift -> rift variant, else aerospace) and reads live aerospace
+# workspaces, so we just make sure rift/borders are NOT running (rift needs
+# Accessibility and was more trouble than it's worth) and AeroSpace is up.
+ensure_aerospace_wm() {
+  say "==> window manager: AeroSpace (stopping rift/borders if present)"
   rift service stop >/dev/null 2>&1 || true
   pkill -x rift 2>/dev/null || true
   pkill -x borders 2>/dev/null || true
-  sleep 0.5
-  if [ -d "/Applications/AeroSpace.app" ]; then
-    open -a AeroSpace ; ok "AeroSpace started"
+  if pgrep -x AeroSpace >/dev/null 2>&1; then
+    ok "AeroSpace already running"
+  elif [ -d "/Applications/AeroSpace.app" ]; then
+    open -a AeroSpace; ok "AeroSpace started"
   else
-    command -v aerospace >/dev/null 2>&1 && { aerospace 2>/dev/null & disown; ok "aerospace started"; } \
-      || warn "AeroSpace not found"
+    warn "AeroSpace.app not found — start your WM manually"
   fi
 }
 
@@ -195,8 +174,8 @@ switch() { # $1 profile
   say "==> switching themed configs -> $profile"
   link_profile "$profile" || exit 1
   case "$profile" in
-    cynaberii) wm_to_cynaberii; wal_watch_load ;;
-    mine)      wm_to_mine;      wal_watch_unload ;;
+    cynaberii) ensure_aerospace_wm; wal_watch_load ;;
+    mine)      ensure_aerospace_wm; wal_watch_unload ;;
   esac
   seed_bar_colors "$profile"
   reload_bar

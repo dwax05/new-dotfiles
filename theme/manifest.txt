@@ -6,7 +6,8 @@
 # ~/.config (gh, git, opencode, herdr, kari, greg, ...) is left alone.
 # A profile that lacks a source for an entry means: on switch to that profile,
 # remove the managed symlink (real dirs are never deleted — see switch.sh guard).
-cfg   aerospace
+# aerospace is the shared WM for BOTH profiles (cynaberii's sketchybar reads live
+# aerospace workspaces) — deliberately NOT swapped, so your keybinds/config persist.
 cfg   borders
 cfg   btop
 cfg   cava
