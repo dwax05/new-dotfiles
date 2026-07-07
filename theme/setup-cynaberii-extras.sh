@@ -34,6 +34,15 @@ link() { # $1 src  $2 dst
   mkdir -p "$(dirname "$dst")"; ln -sfn "$src" "$dst"; ok "${dst/#$HOME/~} -> ${src/#$HOME/~}"
 }
 
+echo "==> dependencies"
+# fswatch drives the wallpaper->theme watcher for BOTH profiles
+if ! command -v fswatch >/dev/null 2>&1; then
+  command -v brew >/dev/null 2>&1 && brew install fswatch >/dev/null 2>&1 && ok "fswatch installed" \
+    || warn "install fswatch (brew install fswatch) — wallpaper theming needs it"
+else
+  ok "fswatch present"
+fi
+
 echo "==> ~/.local/bin scripts"
 mkdir -p "$BIN"
 for f in wallpaper-pick wallpaper-picker.py ws-capture.sh aerospace-switcher.py; do
