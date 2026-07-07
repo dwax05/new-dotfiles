@@ -59,8 +59,16 @@ const STAGES = [
 // shared pot (rows 12..15)
 const POT = ["..rrrrrrrrr..", "..mmmmmmmmm..", "..ppppppppp..", "...ppppppp..."];
 
-// little watering can (7 wide), shown while watering
-const CAN = ["..DDDD.", ".DkkkkD", "DDkkkkD", ".DkkkkD", "..DDDD."];
+// small watering can (7 wide), cinnabar, tilted; rose (o) on the left sprinkles.
+// B body · D outline · o rose/spout
+const CAN = [
+  "...DDD.",
+  ".DDDDD.",
+  "DoDBBBD",
+  "DoDBBBD",
+  ".DDDDD.",
+];
+const CAN_PX = 4; // rendered smaller than the plant
 
 const Grid = ({ rows, px, palette }) => {
   const w = rows[0].length;
@@ -100,7 +108,6 @@ const Plant = ({ colors, special }) => {
   const accent = c.color4 || "#C66451";
   const accent2 = c.color3 || "#B95147";
   const water = c.color6 || "#9AAD74";
-  const grey = c.color8 || "#5b5f6f";
   const PX = 5;
 
   const [stage, setStage] = React.useState(readStage);
@@ -159,25 +166,37 @@ const Plant = ({ colors, special }) => {
   const canvasW = 13 * PX;
   const canvasH = 16 * PX;
 
-  const drops = [];
-  if (watering) {
-    for (let i = 0; i < 4; i++) {
-      drops.push(
+  // small watering can, tilted, parked so its rose sits above the plant
+  const canLeft = 34;
+  const canTop = -4;
+  const roseX = 6 * PX; // sprinkle centred over the plant (not tied to the can's position)
+  const roseY = canTop + 3 * CAN_PX;
+  const fall = 18;
+  // streams start at the rose and fan outward — a sprinkle
+  const fanOffsets = [-6, 0, 6];
+  const fanKeyframes = fanOffsets
+    .map(
+      (dx, i) =>
+        `@keyframes cyn-fan-${i}{0%{transform:translate(0,0);opacity:1}85%{opacity:1}100%{transform:translate(${dx}px,${fall}px);opacity:0}}`
+    )
+    .join("\n");
+
+  const drops = watering
+    ? fanOffsets.map((dx, i) => (
         <div
           key={i}
           style={{
             position: "absolute",
-            top: `${2 * PX}px`,
-            left: `${8 * PX - i * PX}px`,
+            top: `${roseY}px`,
+            left: `${roseX}px`,
             width: `${Math.max(1, PX / 2)}px`,
             height: `${PX}px`,
             background: water,
-            animation: `cyn-water 0.4s linear ${(i / 4) * 0.25}s infinite`,
+            animation: `cyn-fan-${i} 0.55s linear ${i * 0.05}s infinite`,
           }}
         />
-      );
-    }
-  }
+      ))
+    : [];
 
   return (
     <div
@@ -191,14 +210,12 @@ const Plant = ({ colors, special }) => {
         cursor: "pointer",
       }}
     >
-      <style>{`
-        @keyframes cyn-water { 0%{transform:translateY(0);opacity:1} 90%{opacity:1} 100%{transform:translateY(${6 * PX}px);opacity:0} }
-      `}</style>
+      <style>{fanKeyframes}</style>
       <div style={{ position: "relative", width: `${canvasW}px`, height: `${canvasH}px` }}>
         <Grid rows={rows} px={PX} palette={plantPal} />
         {watering && (
-          <div style={{ position: "absolute", top: `${-1 * PX}px`, right: `${-2 * PX}px`, transform: "rotate(12deg)" }}>
-            <Grid rows={CAN} px={PX} palette={{ D: accent2, k: grey }} />
+          <div style={{ position: "absolute", top: `${canTop}px`, left: `${canLeft}px`, transform: "rotate(14deg)" }}>
+            <Grid rows={CAN} px={CAN_PX} palette={{ B: accent, D: accent2, o: accent2 }} />
           </div>
         )}
         {drops}
