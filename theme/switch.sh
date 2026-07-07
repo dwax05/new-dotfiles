@@ -137,6 +137,36 @@ wal_watch_unload() {
   rm -f "$WAL_WATCH_PLIST"
 }
 
+# ── sketchybar colours (both profiles share ~/.cache/wal/colors-sketchybar.sh) ──
+# Your bar and cynaberii's bar read the SAME cache file but expect different var
+# names. Seed the right one per profile so the bar isn't transparent. Once
+# cynaberii's pywal pipeline runs it regenerates this file in their format.
+WAL_SB_CACHE="$HOME/.cache/wal/colors-sketchybar.sh"
+COLOR_STASH="$THEME/.colorstash"
+seed_bar_colors() { # $1 profile
+  mkdir -p "$COLOR_STASH" "$(dirname "$WAL_SB_CACHE")"
+  case "$1" in
+    cynaberii)
+      # preserve your colours once (don't overwrite the stash with cynaberii's own)
+      if [ -f "$WAL_SB_CACHE" ] && ! grep -q 'THEME_PROFILE=cynaberii' "$WAL_SB_CACHE" 2>/dev/null; then
+        cp "$WAL_SB_CACHE" "$COLOR_STASH/mine.sh"
+      fi
+      local fb="$HOME/.config/sketchybar/colors-fallback.sh"   # cynaberii's, via the live symlink
+      if [ -f "$fb" ]; then
+        cp "$fb" "$WAL_SB_CACHE"; printf '\nexport THEME_PROFILE=cynaberii\n' >> "$WAL_SB_CACHE"
+        ok "seeded cynaberii bar colours"
+      else
+        warn "cynaberii colors-fallback.sh missing — bar may be transparent"
+      fi
+      ;;
+    mine)
+      if [ -f "$COLOR_STASH/mine.sh" ]; then
+        cp "$COLOR_STASH/mine.sh" "$WAL_SB_CACHE"; ok "restored your bar colours"
+      fi
+      ;;
+  esac
+}
+
 reload_bar() {
   if command -v sketchybar >/dev/null 2>&1 && pgrep -x sketchybar >/dev/null 2>&1; then
     sketchybar --reload >/dev/null 2>&1 && ok "sketchybar reloaded" || warn "sketchybar reload failed"
@@ -155,6 +185,7 @@ switch() { # $1 profile
     cynaberii) wm_to_cynaberii; wal_watch_load ;;
     mine)      wm_to_mine;      wal_watch_unload ;;
   esac
+  seed_bar_colors "$profile"
   reload_bar
   printf '%s\n' "$profile" > "$STATE"
   say "${c_ok}done — active profile: $profile$c_off"
