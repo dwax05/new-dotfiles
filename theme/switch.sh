@@ -181,7 +181,7 @@ switch() { # $1 profile
   link_profile "$profile" || exit 1
   case "$profile" in
     cynaberii) ensure_aerospace_wm; wal_watch_load ;;
-    mine)      ensure_aerospace_wm; wal_watch_unload ;;
+    mine)      ensure_aerospace_wm; wal_watch_load ;;
   esac
   seed_bar_colors "$profile"
   reload_bar
