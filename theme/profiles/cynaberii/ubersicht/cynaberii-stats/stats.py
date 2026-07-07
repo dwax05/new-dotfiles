@@ -31,15 +31,45 @@ def battery():
     return pct, plugged, charging
 
 
+CPU_STATE = "/tmp/cynaberii-stats-cpu"
+CPU_RISE_CAP = 25  # max % the reading may jump up between samples
+
+
 def cpu_pct():
-    """Approximate CPU load from the 1-min load average / core count."""
+    """Instantaneous CPU utilization (100 - idle), like sketchybar.
+
+    Deliberately NOT the load average: load average lags ~60s and stays pinned
+    after a burst — a theme switch's recolor work would leave the plant showing
+    100% long after the cores went idle. Instantaneous util drops the moment
+    the work finishes.
+
+    Reading is quick-to-fall but slow-to-rise (capped jump up): a one-off spike,
+    e.g. the recolor burst right after a theme switch, is damped instead of
+    shown at full, while real sustained load still ramps up over a few samples.
+    """
+    util = 0
     try:
-        la = sh(["sysctl", "-n", "vm.loadavg"])          # "{ 5.21 4.75 4.13 }"
-        load1 = float(la.replace("{", "").split()[0])
-        ncpu = int(sh(["sysctl", "-n", "hw.ncpu"]).strip() or 1)
-        return max(0, min(100, round(load1 / ncpu * 100)))
+        out = subprocess.run(
+            ["top", "-l", "1", "-n", "0"], capture_output=True, text=True, timeout=5
+        ).stdout
+        m = re.search(r"CPU usage:.*?([\d.]+)%\s*idle", out)
+        if m:
+            util = round(max(0.0, min(100.0, 100.0 - float(m.group(1)))))
     except Exception:
-        return 0
+        util = 0
+
+    prev = util
+    try:
+        prev = int(float(open(CPU_STATE).read().strip()))
+    except Exception:
+        pass
+    val = util if util <= prev else min(util, prev + CPU_RISE_CAP)
+
+    try:
+        open(CPU_STATE, "w").write(str(val))
+    except Exception:
+        pass
+    return val
 
 
 def mem_pct():

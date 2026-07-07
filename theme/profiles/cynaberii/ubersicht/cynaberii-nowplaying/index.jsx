@@ -5,6 +5,8 @@
 // Übersicht runs `command` with cwd = the widgets directory, so the path below
 // is relative to that (this widget folder is symlinked in as `cynaberii-nowplaying`).
 
+import { React, run } from "uebersicht";
+
 export const command = "python3 './cynaberii-nowplaying/np.py'";
 
 export const refreshFrequency = 4000;
@@ -28,9 +30,20 @@ const parse = (output) => {
   }
 };
 
-export const render = ({ output }) => {
+const NowPlaying = ({ output }) => {
+  // optimistic play/pause: flip the shown state instantly on click, then let
+  // the next refresh (which reads the real state) take over after a moment
+  const [override, setOverride] = React.useState(null);
+
   const d = parse(output);
   if (!d || !d.hasTrack) return <div />;
+
+  const shownPlaying =
+    override && Date.now() < override.until ? override.playing : d.playing;
+  const togglePlay = () => {
+    run("/opt/homebrew/bin/nowplaying-cli togglePlayPause");
+    setOverride({ playing: !shownPlaying, until: Date.now() + 3500 });
+  };
 
   const c = d.colors || {};
   const bg = (d.special && d.special.background) || "#101217";
@@ -46,6 +59,7 @@ export const render = ({ output }) => {
 
   return (
     <div
+      onClick={togglePlay}
       style={{
         display: "flex",
         alignItems: "center",
@@ -55,6 +69,7 @@ export const render = ({ output }) => {
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
         imageRendering: "pixelated",
+        cursor: "pointer",
         // fixed width so the right edge is stable regardless of title length —
         // keeps the perched cat (cynaberii-pet) sitting on the corner.
         width: "300px",
@@ -131,9 +146,11 @@ export const render = ({ output }) => {
           {d.artist}
         </div>
         <div style={{ fontSize: "8px", color: sage, marginTop: "4px" }}>
-          {d.playing ? "▶ playing" : "❚❚ paused"}
+          {shownPlaying ? "▶ playing" : "❚❚ paused"}
         </div>
       </div>
     </div>
   );
 };
+
+export const render = ({ output }) => <NowPlaying output={output} />;
