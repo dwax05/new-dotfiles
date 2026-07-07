@@ -10,6 +10,8 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 PLIST="$HOME/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
 WAL="$HOME/.local/bin/wal"
 LAST_IMAGE=""
+LAST_RUN=0
+DEBOUNCE=3   # seconds; macOS rewrites the plist in a burst per change
 
 echo "watching for wallpaper changes (mine)..."
 
@@ -25,7 +27,10 @@ if matches:
 
   [[ -z "$IMAGE" || ! -f "$IMAGE" ]] && continue
   [[ "$IMAGE" == "$LAST_IMAGE" ]] && continue
+  NOW=$(date +%s)
+  (( NOW - LAST_RUN < DEBOUNCE )) && continue   # collapse the plist-write burst
   LAST_IMAGE="$IMAGE"
+  LAST_RUN=$NOW
 
   echo "wallpaper changed → $IMAGE"
   echo "$IMAGE" > "$HOME/.cache/current_wallpaper.txt"

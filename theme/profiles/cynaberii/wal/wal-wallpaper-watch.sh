@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 PLIST="$HOME/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
 LAST_IMAGE=""
+LAST_RUN=0
+DEBOUNCE=3   # seconds; macOS rewrites the plist in a burst per change
 
 echo "watching for wallpaper changes..."
 
@@ -23,7 +25,10 @@ if matches:
     continue
   fi
 
+  NOW=$(date +%s)
+  (( NOW - LAST_RUN < DEBOUNCE )) && continue   # collapse the plist-write burst
   LAST_IMAGE="$IMAGE"
+  LAST_RUN=$NOW
 
   echo "wallpaper changed → $IMAGE"
   # (keep the last-chosen light/dark, default dark)
