@@ -4,7 +4,10 @@ source "$HOME/.cache/wal/colors-sketchybar.sh"
 # (timeout, aerospace's CLI can block forever when the server is busy)
 asp() { perl -e 'alarm shift; exec @ARGV' 3 /opt/homebrew/bin/aerospace "$@"; }
 
-for sid in $(asp list-workspaces --all --format "%{workspace}"); do
+# order pills 1..9 then 0 at the end (treat 0 as 10 for the sort, keep original id)
+order_ws() { awk '{print ($1=="0"?10:$1)"\t"$1}' | sort -n | cut -f2; }
+
+for sid in $(asp list-workspaces --all --format "%{workspace}" | order_ws); do
   sketchybar --add item space."$sid" left \
     --subscribe space."$sid" aerospace_workspace_change \
     --set space."$sid" \
