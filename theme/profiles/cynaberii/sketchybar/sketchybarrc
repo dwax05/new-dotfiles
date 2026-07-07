@@ -103,6 +103,15 @@ sketchybar --add item music q \
              script="$PLUGIN_DIR/music.sh" \
            --subscribe music spotify_change mouse.clicked
 
+# separator to the right of the clock (added before clock so it sits further right)
+sketchybar --add item sep_clock right \
+           --set sep_clock \
+             label="|" \
+             label.color=$WHITE \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
+             background.drawing=off \
+             icon.drawing=off
+
 # Clock
 sketchybar --add item clock right \
            --set clock \
