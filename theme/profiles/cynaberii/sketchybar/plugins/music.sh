@@ -6,7 +6,13 @@
 source "$HOME/.cache/wal/colors-sketchybar.sh"
 
 if [[ "$SENDER" == "mouse.clicked" ]]; then
-  osascript -e 'tell application "Spotify" to playpause' 2>/dev/null
+  # nowplaying-cli is keyless (no Automation permission). osascript needs the
+  # "sketchybar wants to control Spotify" Automation grant.
+  if command -v nowplaying-cli >/dev/null 2>&1; then
+    nowplaying-cli togglePlayPause
+  else
+    osascript -e 'tell application "Spotify" to playpause' 2>/dev/null
+  fi
   exit 0
 fi
 
@@ -17,7 +23,9 @@ if [[ -z "$SPOTIFY_JSON" ]]; then
 fi
 
 STATE=$(echo "$SPOTIFY_JSON" | jq -r '.["Player State"]' 2>/dev/null)
-if [[ "$STATE" != "Playing" ]]; then
+
+# nothing loaded -> hide
+if [[ "$STATE" != "Playing" && "$STATE" != "Paused" ]]; then
   sketchybar --set "$NAME" drawing=off
   exit 0
 fi
@@ -29,12 +37,19 @@ LABEL="$TRACK - $ARTIST"
 MAX=40
 if (( ${#LABEL} > MAX )); then LABEL="${LABEL:0:$((MAX - 1))}…"; fi
 
+# playing -> music glyph; paused -> pause glyph (dimmed)
+if [[ "$STATE" == "Playing" ]]; then
+  ICON="󰎆"; COL=$WHITE
+else
+  ICON="󰏤"; COL=$DIM
+fi
+
 sketchybar --set "$NAME" \
-  icon="󰎆" \
-  icon.color=$WHITE \
+  icon="$ICON" \
+  icon.color=$COL \
   icon.align=center \
   icon.background.drawing=off \
   icon.width=26 \
   label="$LABEL" \
-  label.color=$WHITE \
+  label.color=$COL \
   drawing=on
