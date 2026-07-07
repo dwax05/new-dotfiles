@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
-# Currently-playing Spotify.app track, top-right. Driven by Spotify's
-# distributed notification (com.spotify.client.PlaybackStateChanged) delivered
-# as $INFO — no Automation permission needed to READ. (Click-to-pause below is
-# the only osascript path and only fires on an actual click.)
+# Currently-playing Spotify.app track, top-right.
+# Normal operation is driven by Spotify's distributed notification
+# (com.spotify.client.PlaybackStateChanged) delivered as $INFO — keyless.
+# On the initial/forced load (bar start) there is no $INFO, so we query
+# Spotify.app once via osascript to pick up an already-playing song.
 source "$HOME/.cache/wal/colors-sketchybar.sh"
 
+hide() { sketchybar --set "$NAME" drawing=off; }
+render() { # $1 = Playing|Paused   $2 = label text
+  local icon col label="$2"
+  if [[ "$1" == "Playing" ]]; then icon="󰎆"; col=$WHITE; else icon="󰏤"; col=$DIM; fi
+  local MAX=40
+  (( ${#label} > MAX )) && label="${label:0:$((MAX - 1))}…"
+  sketchybar --set "$NAME" \
+    icon="$icon" icon.color=$col icon.align=center \
+    icon.background.drawing=off icon.width=26 \
+    label="$label" label.color=$col drawing=on
+}
+
+# click -> toggle play/pause (nowplaying-cli is keyless; osascript needs Automation)
 if [[ "$SENDER" == "mouse.clicked" ]]; then
-  # nowplaying-cli is keyless (no Automation permission). osascript needs the
-  # "sketchybar wants to control Spotify" Automation grant.
   if command -v nowplaying-cli >/dev/null 2>&1; then
     nowplaying-cli togglePlayPause
   else
@@ -16,40 +28,29 @@ if [[ "$SENDER" == "mouse.clicked" ]]; then
   exit 0
 fi
 
-SPOTIFY_JSON="$INFO"
-if [[ -z "$SPOTIFY_JSON" ]]; then
-  sketchybar --set "$NAME" drawing=off
+# notification payload present -> parse it (keyless)
+if [[ -n "$INFO" ]]; then
+  STATE=$(echo "$INFO" | jq -r '.["Player State"]' 2>/dev/null)
+  case "$STATE" in
+    Playing|Paused)
+      TRACK=$(echo "$INFO"  | jq -r '.Name'   2>/dev/null)
+      ARTIST=$(echo "$INFO" | jq -r '.Artist' 2>/dev/null)
+      render "$STATE" "$TRACK - $ARTIST" ;;
+    *) hide ;;
+  esac
   exit 0
 fi
 
-STATE=$(echo "$SPOTIFY_JSON" | jq -r '.["Player State"]' 2>/dev/null)
-
-# nothing loaded -> hide
-if [[ "$STATE" != "Playing" && "$STATE" != "Paused" ]]; then
-  sketchybar --set "$NAME" drawing=off
-  exit 0
+# no payload (initial/forced load): query Spotify.app directly for the current song
+if pgrep -x Spotify >/dev/null 2>&1; then
+  ST=$(osascript -e 'tell application "Spotify" to player state as string' 2>/dev/null)
+  case "$ST" in
+    playing|paused)
+      TRACK=$(osascript -e 'tell application "Spotify" to name of current track' 2>/dev/null)
+      ARTIST=$(osascript -e 'tell application "Spotify" to artist of current track' 2>/dev/null)
+      [[ "$ST" == "playing" ]] && S="Playing" || S="Paused"
+      render "$S" "$TRACK - $ARTIST"
+      exit 0 ;;
+  esac
 fi
-
-TRACK=$(echo "$SPOTIFY_JSON"  | jq -r '.Name'   2>/dev/null)
-ARTIST=$(echo "$SPOTIFY_JSON" | jq -r '.Artist' 2>/dev/null)
-LABEL="$TRACK - $ARTIST"
-
-MAX=40
-if (( ${#LABEL} > MAX )); then LABEL="${LABEL:0:$((MAX - 1))}…"; fi
-
-# playing -> music glyph; paused -> pause glyph (dimmed)
-if [[ "$STATE" == "Playing" ]]; then
-  ICON="󰎆"; COL=$WHITE
-else
-  ICON="󰏤"; COL=$DIM
-fi
-
-sketchybar --set "$NAME" \
-  icon="$ICON" \
-  icon.color=$COL \
-  icon.align=center \
-  icon.background.drawing=off \
-  icon.width=26 \
-  label="$LABEL" \
-  label.color=$COL \
-  drawing=on
+hide

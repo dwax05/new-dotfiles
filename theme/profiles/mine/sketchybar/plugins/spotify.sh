@@ -11,6 +11,20 @@ HALF_LENGTH=$(((MAX_LENGTH + 1) / 2))
 # Spotify JSON / $INFO comes in malformed, line below sanitizes it
 SPOTIFY_JSON="$INFO"
 
+# Initial/forced load has no $INFO (the notification only fires on a change), so
+# query Spotify.app once to pick up an already-playing song. osascript needs the
+# Automation grant; if denied it just falls through to the empty-state branch.
+if [[ -z "$SPOTIFY_JSON" && "$SENDER" != "mouse.clicked" ]] && pgrep -x Spotify >/dev/null 2>&1; then
+    ST=$(osascript -e 'tell application "Spotify" to player state as string' 2>/dev/null)
+    if [[ "$ST" == "playing" || "$ST" == "paused" ]]; then
+        T=$(osascript -e 'tell application "Spotify" to name of current track' 2>/dev/null)
+        A=$(osascript -e 'tell application "Spotify" to artist of current track' 2>/dev/null)
+        PS="Playing"; [[ "$ST" == "paused" ]] && PS="Paused"
+        SPOTIFY_JSON=$(jq -n --arg s "$PS" --arg n "$T" --arg a "$A" \
+            '{"Player State":$s,"Name":$n,"Artist":$a}')
+    fi
+fi
+
 update_track() {
 
     if [[ -z $SPOTIFY_JSON ]]; then
