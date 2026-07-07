@@ -4,6 +4,9 @@ ITEM_DIR="$HOME/.config/sketchybar/items"
 export PLUGIN_DIR
 export ITEM_DIR
 
+# Spotify.app playback notification — drives the music item without polling
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
 # (pywal colours if present, else the fallback so the bar still shows)
 if [ -f "$HOME/.cache/wal/colors-sketchybar.sh" ]; then
   source "$HOME/.cache/wal/colors-sketchybar.sh"
@@ -88,15 +91,16 @@ sketchybar --add item window_focus_tracker left \
     drawing=off \
   --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
 
-# Music
+# Music (event-driven off Spotify's playback notification)
+sketchybar --add event spotify_change "$SPOTIFY_EVENT"
 sketchybar --add item music right \
            --set music \
-             update_freq=5 \
              icon.color=$WHITE \
              label.color=$WHITE \
              label.max_chars=30 \
+             drawing=off \
              script="$PLUGIN_DIR/music.sh" \
-           --subscribe music mouse.clicked
+           --subscribe music spotify_change mouse.clicked
 
 sketchybar --add item sep3 right \
            --set sep3 \
