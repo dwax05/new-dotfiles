@@ -3,6 +3,10 @@
 # Same detection as cynaberii's watch (WallpaperPeek/Option+Q just sets the macOS
 # wallpaper; this reacts to it), but runs mine's pywal + post hook. Deliberately
 # does NOT reload running ghostty windows — new windows pick up the palette.
+# launchd gives us a minimal PATH; pywal needs imagemagick (magick/convert) and
+# we call sketchybar, both in /opt/homebrew/bin. Put homebrew on PATH.
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
 PLIST="$HOME/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
 WAL="$HOME/.local/bin/wal"
 LAST_IMAGE=""
