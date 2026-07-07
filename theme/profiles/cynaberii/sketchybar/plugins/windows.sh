@@ -4,7 +4,7 @@
 # parsing sketchybar. glyphs follow aerospace's window order.)
 source "$HOME/.cache/wal/colors-sketchybar.sh"
 AEROSPACE=/opt/homebrew/bin/aerospace
-source "$HOME/.config/sketchybar/icon_map.sh"
+ICON_SH="$HOME/.config/sketchybar/plugins/icon.sh"   # shared app-icon map
 
 # (timeout so a blocked aerospace CLI can't pile up hung procs)
 asp() { perl -e 'alarm shift; exec @ARGV' 3 "$AEROSPACE" "$@"; }
@@ -37,8 +37,7 @@ while IFS='|' read -r WIN_ID APP; do
   [[ "$APP" == "Python" || "$APP" == "python3" ]] && continue
   FOCUSED_SET[$WIN_ID]=1
 
-  __icon_map "$APP"
-  ICON=$icon_result
+  ICON=$("$ICON_SH" "$APP")
 
   if [[ "$WIN_ID" == "$FOCUSED_WIN" ]]; then
     BG=$PINK; FG=$BLACK

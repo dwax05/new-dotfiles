@@ -5,7 +5,7 @@
 source "$HOME/.cache/wal/colors-sketchybar.sh"
 RIFT=/opt/homebrew/bin/rift-cli
 JQ=/opt/homebrew/bin/jq
-source "$HOME/.config/sketchybar/icon_map.sh"
+ICON_SH="$HOME/.config/sketchybar/plugins/icon.sh"   # shared app-icon map
 
 rq() { perl -e 'alarm shift; exec @ARGV' 3 "$RIFT" "$@"; }
 
@@ -43,8 +43,7 @@ while IFS='|' read -r WIN_ID APP FOC; do
   FOCUSED_SET[$WIN_ID]=1
   ORDER+=("window.$WIN_ID")
 
-  __icon_map "$APP"
-  ICON=$icon_result
+  ICON=$("$ICON_SH" "$APP")
 
   if [[ "$FOC" == "true" ]]; then
     BG=$PINK; FG=$BLACK
