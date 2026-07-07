@@ -188,28 +188,6 @@ sketchybar --add item cpu right \
              script="$PLUGIN_DIR/cpu.sh" \
              click_script="$HOME/.config/sketchybar/plugins/cpu_click.sh"
 
-# ── input source (EN/ES/VI) + Neru state, left of cpu ──
-# (right-aligned items add right-to-left, so order here reads: input_source neru | cpu)
-sketchybar --add event neru_toggle
-
-# separator between the input/neru group and cpu
-sketchybar --add item sep_io right \
-           --set sep_io \
-             label="|" \
-             label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-             background.drawing=off \
-             icon.drawing=off
-
-# neru daemon on/off
-sketchybar --add item neru right \
-           --set neru \
-             update_freq=5 \
-             icon.padding_right=2 \
-             script="$PLUGIN_DIR/neru.sh" \
-           --subscribe neru neru_toggle
-
-
 # Workspace-peek watcher (refreshes window glyphs + pills on workspace change)
 pkill -f workspacepeek_watch.sh 2>/dev/null
 pkill -f riftpeek_watch.sh 2>/dev/null         # rift counterpart watcher
