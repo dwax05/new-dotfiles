@@ -25,7 +25,7 @@ if [[ -z "$WEATHER" ]]; then
   exit 0
 fi
 CONDITION=$(echo "$WEATHER" | sed 's/ [+-]*[0-9]*°.$//' | tr '[:upper:]' '[:lower:]')
-TEMP=$(echo "$WEATHER" | grep -oE '[+-]?[0-9]+°.')
+TEMP=$(echo "$WEATHER" | grep -oE '[+-]?[0-9]+°.' | tr -d '+')
 if [[ "$CONDITION" == *"sunny"* ]] || [[ "$CONDITION" == *"clear"* ]]; then ICON="󰖙"
 elif [[ "$CONDITION" == *"partly"* ]] || [[ "$CONDITION" == *"cloudy"* ]]; then ICON="󰖕"
 elif [[ "$CONDITION" == *"overcast"* ]]; then ICON="󰖐"
