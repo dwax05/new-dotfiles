@@ -60,7 +60,14 @@ sketchybar --default \
   icon.padding_left=4 \
   icon.padding_right=4 \
   label.padding_left=4 \
-  label.padding_right=4
+  label.padding_right=4 \
+  icon.y_offset=1 \
+  label.y_offset=1
+
+# Clear any existing items first so add-order (and thus left-to-right position)
+# is deterministic. A wallpaper retheme reloads the bar; without this a
+# re-source over a live bar re-appends items out of order (scrambled right side).
+sketchybar --remove '/.*/' 2>/dev/null
 
 sketchybar --add event aerospace_workspace_change
 sketchybar --add event focus_change

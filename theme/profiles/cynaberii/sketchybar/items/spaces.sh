@@ -21,6 +21,7 @@ for sid in "${all_spaces[@]}"; do
       drawing=off \
       icon="$sid" \
       icon.align=center \
+      icon.y_offset=1 \
       label="" \
       label.drawing=off \
       icon.color=$BLACK \
