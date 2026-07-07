@@ -56,13 +56,27 @@ bash theme/sync-cynaberii.sh     # git pull in ~/Developer/cynaberii, re-vendor
 git add theme/profiles/cynaberii && git commit -m "sync cynaberii"
 ```
 
-## Not toggled (run once, out of band)
+## Extras (full wallpaper→theme pipeline)
 
-cynaberii's extras aren't symlink-toggled and are left to their installer:
-`bin/` scripts, the pywal `balanced` backend, and the `wal-watch` LaunchAgent.
-For the full wallpaper→theme pipeline run their `~/Developer/cynaberii/install.sh`
-once. The Swift apps (WallpaperPeek/WorkspacePeek/WalNotify) must be built via
-their repo too.
+Two classes:
+
+**Additive globals** — standalone tools that do no harm while you're on `mine`,
+so they install once and stay:
+
+```sh
+bash theme/setup-cynaberii-extras.sh
+```
+
+installs `~/.local/bin` scripts (wallpaper picker, ws-capture, aerospace-switcher),
+wires the pywal `balanced` backend into the pywal package, and builds the Swift
+helper apps present in the clone (currently WalNotify; WorkspacePeek/WallpaperPeek
+aren't in this clone). Re-runnable.
+
+**Profile-coupled** — the `wal-watch` LaunchAgent runs cynaberii's
+`~/.config/wal/wal-wallpaper-watch.sh`, which only exists under the cynaberii
+profile. `theme-switch` **loads it on `cynaberii`** (generating the plist with
+`$HOME` expanded — launchd won't expand env itself) and **unloads it on `mine`**.
+No action needed.
 
 ## Undo entirely
 

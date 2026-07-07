@@ -102,6 +102,41 @@ wm_to_mine() {
   fi
 }
 
+# ── wal-watch LaunchAgent (coupled to cynaberii's wal config) ────────────
+WAL_WATCH_LABEL="com.user.wal-watch"
+WAL_WATCH_PLIST="$HOME/Library/LaunchAgents/$WAL_WATCH_LABEL.plist"
+wal_watch_load() {
+  local script="$HOME/.config/wal/wal-wallpaper-watch.sh"
+  if [ ! -f "$script" ]; then warn "wal-watch: $script missing — skipping agent"; return; fi
+  # Write the plist with $HOME expanded (launchd does not expand env in ProgramArguments).
+  mkdir -p "$(dirname "$WAL_WATCH_PLIST")"
+  cat > "$WAL_WATCH_PLIST" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>$WAL_WATCH_LABEL</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/bash</string><string>$script</string></array>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/wal-watch.log</string>
+  <key>StandardErrorPath</key><string>/tmp/wal-watch.log</string>
+</dict>
+</plist>
+PLIST
+  launchctl bootout "gui/$(id -u)/$WAL_WATCH_LABEL" 2>/dev/null || true
+  if launchctl bootstrap "gui/$(id -u)" "$WAL_WATCH_PLIST" 2>/dev/null; then
+    ok "wal-watch agent loaded"
+  else
+    warn "wal-watch agent failed to load (see /tmp/wal-watch.log)"
+  fi
+}
+wal_watch_unload() {
+  launchctl bootout "gui/$(id -u)/$WAL_WATCH_LABEL" 2>/dev/null && ok "wal-watch agent unloaded" || true
+  rm -f "$WAL_WATCH_PLIST"
+}
+
 reload_bar() {
   if command -v sketchybar >/dev/null 2>&1 && pgrep -x sketchybar >/dev/null 2>&1; then
     sketchybar --reload >/dev/null 2>&1 && ok "sketchybar reloaded" || warn "sketchybar reload failed"
@@ -117,8 +152,8 @@ switch() { # $1 profile
   say "==> switching themed configs -> $profile"
   link_profile "$profile" || exit 1
   case "$profile" in
-    cynaberii) wm_to_cynaberii ;;
-    mine)      wm_to_mine ;;
+    cynaberii) wm_to_cynaberii; wal_watch_load ;;
+    mine)      wm_to_mine;      wal_watch_unload ;;
   esac
   reload_bar
   printf '%s\n' "$profile" > "$STATE"
