@@ -93,7 +93,7 @@ function icon_map() {
       ICON=
       ;;
     *)
-      ICON=
+      ICON=󰘔
       ;;
   esac
 }
