@@ -53,7 +53,7 @@ while IFS='|' read -r WIN_ID APP; do
       --set window.$WIN_ID \
         icon=$ICON \
         icon.color=$FG \
-        icon.font=\"sketchybar-app-font:Regular:16.0\" \
+        icon.font=\"JetBrainsMono Nerd Font:Bold:14.0\" \
         label=\"$APP\" \
         label.color=$FG \
         background.color=$BG \
