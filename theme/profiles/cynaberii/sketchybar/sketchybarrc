@@ -34,7 +34,7 @@ fi
 
 sketchybar --bar \
   position=top \
-  height=40 \
+  height=34 \
   margin=0 \
   y_offset=0 \
   corner_radius=0 \
@@ -50,8 +50,8 @@ sketchybar --bar \
 sketchybar --default \
   padding_left=4 \
   padding_right=4 \
-  icon.font="JetBrainsMono Nerd Font:Bold:17.0" \
-  label.font="JetBrainsMono Nerd Font:Bold:17.0" \
+  icon.font="JetBrainsMono Nerd Font:Bold:14.0" \
+  label.font="JetBrainsMono Nerd Font:Bold:14.0" \
   icon.color=$WHITE \
   label.color=$WHITE \
   icon.padding_left=4 \
@@ -95,13 +95,14 @@ sketchybar --add item music right \
              icon.color=$WHITE \
              label.color=$WHITE \
              label.max_chars=30 \
-             script="$PLUGIN_DIR/music.sh"
+             script="$PLUGIN_DIR/music.sh" \
+           --subscribe music mouse.clicked
 
 sketchybar --add item sep3 right \
            --set sep3 \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
@@ -118,7 +119,7 @@ sketchybar --add item sep2 right \
            --set sep2 \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
@@ -135,7 +136,7 @@ sketchybar --add item sep1 right \
            --set sep1 \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
@@ -152,7 +153,7 @@ sketchybar --add item sep0 right \
            --set sep0 \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
@@ -178,7 +179,7 @@ sketchybar --add item sep_cpu right \
            --set sep_cpu \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 sketchybar --add item cpu right \
@@ -199,7 +200,7 @@ sketchybar --add item sep_io right \
            --set sep_io \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
@@ -216,7 +217,7 @@ sketchybar --add item sep_neru right \
            --set sep_neru \
              label="|" \
              label.color=$WHITE \
-             label.font="JetBrainsMono Nerd Font:Regular:13.0" \
+             label.font="JetBrainsMono Nerd Font:Regular:12.0" \
              background.drawing=off \
              icon.drawing=off
 
