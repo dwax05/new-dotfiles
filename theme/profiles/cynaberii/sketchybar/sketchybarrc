@@ -103,6 +103,14 @@ sketchybar --add item music q \
              script="$PLUGIN_DIR/music.sh" \
            --subscribe music spotify_change mouse.clicked
 
+# Theme toggle — click to switch to the other profile (rightmost item)
+sketchybar --add item theme_toggle right \
+           --set theme_toggle \
+             icon="󰔎" \
+             icon.color=$WHITE \
+             label.drawing=off \
+             click_script="$HOME/.dotfiles/theme/switch.sh mine >/dev/null 2>&1"
+
 # separator to the right of the clock (added before clock so it sits further right)
 sketchybar --add item sep_clock right \
            --set sep_clock \
