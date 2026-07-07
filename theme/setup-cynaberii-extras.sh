@@ -14,7 +14,10 @@
 set -uo pipefail
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
-SRC="${CYNABERII_SRC:-$HOME/Developer/cynaberii}"
+SRC="${CYNABERII_SRC:-$HOME/Developer/cynaberiidots/cynaberii}"
+# WallpaperPeek/WorkspacePeek ship outside the dotfiles repo — separate source
+# dirs. Default: siblings of the clone. Override with PEEK_SRC.
+PEEK_SRC="${PEEK_SRC:-$(dirname "$SRC")}"
 BIN="$HOME/.local/bin"
 
 c_ok=$'\033[32m'; c_warn=$'\033[33m'; c_off=$'\033[0m'
@@ -52,21 +55,27 @@ else
 fi
 
 echo "==> Swift helper apps"
+build_swift() { # $1 dir  $2 name
+  local app="$1" name="$2"
+  [ -f "$app/install.sh" ] || return 1
+  echo "  building $name ..."
+  if ( cd "$app" && ./install.sh >"/tmp/theme-swift-$name.log" 2>&1 ); then
+    ok "$name installed"
+  else
+    warn "$name build failed — see /tmp/theme-swift-$name.log"
+  fi
+}
+built=0
+# WalNotify lives in the clone (needed at ~/.local/bin/WalNotify by wal/postrun)
 if [ -d "$SRC/swift" ]; then
-  built=0
   for app in "$SRC"/swift/*/; do
-    name="$(basename "$app")"
-    [ -f "$app/install.sh" ] || continue
-    echo "  building $name ..."
-    if ( cd "$app" && ./install.sh >/tmp/theme-swift-$name.log 2>&1 ); then
-      ok "$name installed"; built=1
-    else
-      warn "$name build failed — see /tmp/theme-swift-$name.log"
-    fi
+    build_swift "$app" "$(basename "$app")" && built=1
   done
-  [ "$built" = 0 ] && warn "no buildable Swift apps found (WorkspacePeek/WallpaperPeek may not be in this clone)"
-else
-  warn "no swift/ dir in clone"
 fi
+# WallpaperPeek / WorkspacePeek ship separately, beside the clone
+for name in WallpaperPeek WorkspacePeek; do
+  [ -d "$PEEK_SRC/$name" ] && { build_swift "$PEEK_SRC/$name" "$name" && built=1; }
+done
+[ "$built" = 0 ] && warn "no buildable Swift apps found (checked $SRC/swift and $PEEK_SRC)"
 
 echo "${c_ok}extras setup done.${c_off} wal-watch agent is handled per-profile by theme-switch."

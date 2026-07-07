@@ -7,7 +7,7 @@
 set -euo pipefail
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
-SRC="${CYNABERII_SRC:-$HOME/Developer/cynaberii}"
+SRC="${CYNABERII_SRC:-$HOME/Developer/cynaberiidots/cynaberii}"
 DST="$DOTFILES/theme/profiles/cynaberii"
 
 [ -d "$SRC/config" ] || { echo "cynaberii clone not found at $SRC" >&2; exit 1; }

@@ -37,7 +37,7 @@ theme/
   manifest.txt         the themed paths the switch owns
   state                active profile name
   profiles/mine/       my themed configs (moved here by `migrate`)
-  profiles/cynaberii/  vendored from ~/Developer/cynaberii
+  profiles/cynaberii/  vendored from ~/Developer/cynaberiidots/cynaberii
 ```
 
 ## Window manager
@@ -52,7 +52,7 @@ A live WM handoff reflows windows once — expected, recoverable.
 ## Updating cynaberii
 
 ```sh
-bash theme/sync-cynaberii.sh     # git pull in ~/Developer/cynaberii, re-vendor
+bash theme/sync-cynaberii.sh     # git pull in ~/Developer/cynaberiidots/cynaberii, re-vendor
 git add theme/profiles/cynaberii && git commit -m "sync cynaberii"
 ```
 
