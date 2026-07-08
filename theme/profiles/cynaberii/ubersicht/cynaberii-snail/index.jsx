@@ -14,10 +14,13 @@ export const refreshFrequency = 30000; // disk usage changes slowly
 
 const SHY_MS = 700; // how long the snail keeps its eyestalks tucked in
 const SNAIL_PX = 3; // sprite scale
-// the module's bounding box the snail crawls around (cynaberii-sys is ~150×92)
-const BOX_W = 150;
-const BOX_H = 92;
+// the module's bounding box the snail crawls around. cynaberii-sys renders
+// ~150 wide × ~104 tall (pixel grids + labels + 14px padding + 4px border), and
+// casts a 6px drop shadow to the right + below — the snail must clear both.
+const BOX_W = 160;
+const BOX_H = 101;
 const OUT_PX = 18; // how far outside the box edge the snail rides (smaller = closer)
+const SHADOW_PX = 6; // cynaberii-sys boxShadow (6px right + 6px down)
 
 // Anchored to the top-left of the wifi/disk module (cynaberii-sys, top:80
 // left:60). The snail crawls clockwise around the box perimeter over 24h —
@@ -151,28 +154,45 @@ const Snail = ({ output }) => {
 
   const grid = fillShell(shy ? SNAIL_SHY : SNAIL, disk);
 
+  // Measure the real cynaberii-sys box at runtime instead of trusting the
+  // BOX_W/BOX_H constants — text labels (`disk NN%`) stretch it wider than the
+  // pixel grids, and that varies with font/values. getBoundingClientRect gives
+  // the border-box (shadow lives outside layout, hence + SHADOW_PX below). The
+  // snail widget shares this box's top/left origin, so width/height is all we
+  // need. Falls back to the constants if the node isn't found yet.
+  let bw = BOX_W, bh = BOX_H;
+  try {
+    const el = document.querySelector('[id*="cynaberii-sys"]');
+    if (el) {
+      const r = el.getBoundingClientRect();
+      // guard the race where a global refresh renders us before sys lays out
+      // (rect 0×0) — the accurate BOX_W/BOX_H fallback covers that frame.
+      if (r.width > 10 && r.height > 10) { bw = r.width; bh = r.height; }
+    }
+  } catch (e) { /* no DOM yet — keep fallback constants */ }
+
   // position along the box perimeter from the time of day (0 at midnight → full
   // loop at 24:00), clockwise, head leading. Rotation keeps the snail crawling
   // on the surface: upright on top, down the right, upside-down on the bottom.
   const now = new Date();
   const liveFrac = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) / 86400;
   const dayFrac = d.frac != null ? d.frac : liveFrac; // test override from snail.py
-  const dist = dayFrac * 2 * (BOX_W + BOX_H);
+  const dist = dayFrac * 2 * (bw + bh);
   let x, y, rot;
-  if (dist < BOX_W) { x = dist; y = 0; rot = 0; }                              // top → right
-  else if (dist < BOX_W + BOX_H) { x = BOX_W; y = dist - BOX_W; rot = 90; }    // right ↓
-  else if (dist < 2 * BOX_W + BOX_H) { x = 2 * BOX_W + BOX_H - dist; y = BOX_H; rot = 180; } // bottom ← (upside down)
-  else { x = 0; y = 2 * (BOX_W + BOX_H) - dist; rot = 270; }                   // left ↑
+  if (dist < bw) { x = dist; y = 0; rot = 0; }                          // top → right
+  else if (dist < bw + bh) { x = bw; y = dist - bw; rot = 90; }         // right ↓
+  else if (dist < 2 * bw + bh) { x = 2 * bw + bh - dist; y = bh; rot = 180; } // bottom ← (upside down)
+  else { x = 0; y = 2 * (bw + bh) - dist; rot = 270; }                  // left ↑
 
   const sw = grid[0].length * SNAIL_PX, sh = grid.length * SNAIL_PX;
   // push the snail fully outside the box edge (ride the outer perimeter): offset
   // outward along each edge's normal by ~half the sprite + a small gap
   const OUT = OUT_PX;
   let cx, cy;
-  if (rot === 0) { cx = x; cy = -OUT; }                 // above the top edge
-  else if (rot === 90) { cx = BOX_W + OUT; cy = y; }    // right of the right edge
-  else if (rot === 180) { cx = x; cy = BOX_H + OUT; }   // below the bottom edge
-  else { cx = -OUT; cy = y; }                           // left of the left edge
+  if (rot === 0) { cx = x; cy = -OUT; }                              // above the top edge
+  else if (rot === 90) { cx = bw + OUT + SHADOW_PX; cy = y; }        // right of the right edge (clear shadow)
+  else if (rot === 180) { cx = x; cy = bh + OUT + SHADOW_PX; }       // below the bottom edge (clear shadow)
+  else { cx = -OUT; cy = y; }                                        // left of the left edge
 
   return (
     <div
