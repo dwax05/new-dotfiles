@@ -143,6 +143,20 @@ if [[ -f "$NERU_TMPL" ]]; then
   /opt/homebrew/bin/neru config reload >/dev/null 2>&1 &
 fi
 
+FF_TMPL="$HOME/.config/fastfetch/config.jsonc.tmpl"
+FF_CFG="$HOME/.config/fastfetch/config.jsonc"
+if [[ -f "$FF_TMPL" ]]; then
+  /usr/bin/sed \
+    -e "s|%COLOR1%|$color1|g" \
+    -e "s|%COLOR2%|$color2|g" \
+    -e "s|%COLOR3%|$color3|g" \
+    -e "s|%COLOR4%|$color4|g" \
+    -e "s|%COLOR5%|$color5|g" \
+    -e "s|%COLOR6%|$color6|g" \
+    -e "s|%COLOR7%|$color7|g" \
+    "$FF_TMPL" > "$FF_CFG.tmp" && /bin/mv "$FF_CFG.tmp" "$FF_CFG"
+fi
+
 if pgrep -x borders > /dev/null; then
   cat > "$HOME/.config/borders/bordersrc" << BORDERS
 #!/bin/bash

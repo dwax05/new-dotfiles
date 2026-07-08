@@ -94,6 +94,18 @@ const HAPPY = set(BASE, [...closeEyes("D"), ...CHEEKS, ...openMouth]);
 // floating heart (5×4) for the pet reaction
 const BIGHEART = ["XX.XX", "XXXXX", ".XXX.", "..X.."];
 
+// little eighth-note (3×5): filled head bottom-left, stem up the right
+const NOTE = ["..X", "..X", "..X", "XXX", "XX."];
+
+// steady stream of notes drifting off the cat while music plays. Fixed set with
+// staggered infinite loops (not regenerated per render) so it stays smooth.
+const NOTE_SPECS = [
+  { x: 44, size: 3, delay: 0.0, dur: 2.0, rot: -12, sway: 8 },
+  { x: 52, size: 4, delay: 0.7, dur: 2.3, rot: 10, sway: -10 },
+  { x: 48, size: 3, delay: 1.4, dur: 2.1, rot: 18, sway: 12 },
+  { x: 56, size: 3, delay: 1.0, dur: 2.4, rot: -6, sway: -6 },
+];
+
 // a random burst of hearts coming off the cat (generated once per pet click)
 const makeHearts = () =>
   Array.from({ length: 5 + Math.floor(Math.random() * 3) }, () => ({
@@ -186,6 +198,35 @@ const PetStrip = ({ frames, px, palette, dur, wiggle }) => {
   );
 };
 
+// Over-ear headphones as pixel art in the sprite's own 16×17 grid, so the band
+// arcs over the crown (behind the cat's ears) and the cups land on the sides of
+// the head. Rendered with the same PetStrip pipeline as the cat; colours come
+// from the wal palette. P = band/cup shell · U = cushion · . = empty
+const HEADPHONES = [
+  "................",
+  "................",
+  "...PPPPPPPPPP...",
+  "..PP........PP..",
+  ".PP..........PP.",
+  ".P............P.",
+  "PUP..........PUP",
+  "PUP..........PUP",
+  ".P............P.",
+  "................",
+  "................",
+  "................",
+  "................",
+  "................",
+  "................",
+  "................",
+  "................",
+];
+const Headphones = ({ px, palette }) => (
+  <div style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none" }}>
+    <PetStrip frames={[HEADPHONES]} px={px} palette={palette} dur={0} wiggle="none" />
+  </div>
+);
+
 const Pet = ({ output }) => {
   const [petting, setPetting] = React.useState(false);
   const [heartSpecs, setHeartSpecs] = React.useState([]);
@@ -208,6 +249,8 @@ const Pet = ({ output }) => {
   const pink = c.color2 || "#98594F";
   const sage = c.color6 || "#9AAD74";
   const ink = (d.special && d.special.foreground) || "#c3c3c5";
+  const music = !!d.music;
+  const NOTE_COLORS = [sage, pink, ink]; // notes cycle through these
 
   const palette = {
     B: accent,
@@ -236,7 +279,9 @@ const Pet = ({ output }) => {
         ? "pet-wiggle 0.28s steps(2) infinite"
         : d.state === "sleep"
           ? "pet-bob 2.8s ease-in-out infinite"
-          : "none";
+          : music
+            ? "pet-groove 0.6s ease-in-out infinite"
+            : "none";
   }
 
   const hearts = petting
@@ -257,6 +302,31 @@ const Pet = ({ output }) => {
     ))
     : [];
 
+  // music notes floating up off the cat while a song plays (not during petting)
+  const notes = (music && !petting)
+    ? NOTE_SPECS.map((s, i) => (
+      <div
+        key={i}
+        style={{
+          position: "absolute",
+          left: `${s.x}px`,
+          top: "-4px",
+          animation: `pet-note ${s.dur}s ease-out ${s.delay}s infinite`,
+        }}
+      >
+        <div style={{ transform: `rotate(${s.rot}deg)` }}>
+          <PetStrip
+            frames={[NOTE]}
+            px={s.size}
+            palette={{ X: NOTE_COLORS[i % NOTE_COLORS.length] }}
+            dur={0}
+            wiggle="none"
+          />
+        </div>
+      </div>
+    ))
+    : [];
+
   return (
     <div
       onClick={pet}
@@ -268,8 +338,16 @@ const Pet = ({ output }) => {
         @keyframes pet-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
         @keyframes pet-happy { 0%,100%{transform:translateY(0) scaleY(1)} 30%{transform:translateY(-3px)} 60%{transform:translateY(0) scaleY(0.93)} }
         @keyframes pet-heart { 0%{opacity:0; transform:translateY(0) scale(0.7)} 25%{opacity:1} 100%{opacity:0; transform:translateY(-26px) scale(1)} }
+        @keyframes pet-groove { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-2px) rotate(2deg)} }
+        @keyframes pet-note { 0%{opacity:0; transform:translateY(0) scale(0.6)} 18%{opacity:1} 100%{opacity:0; transform:translateY(-34px) scale(1)} }
       `}</style>
-      <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle={wiggle} />
+      <div style={{ position: "relative", animation: wiggle }}>
+        <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle="none" />
+        {music && !petting && (
+          <Headphones px={4} palette={{ P: ink, U: c.color5 || pink }} />
+        )}
+      </div>
+      {notes}
       {hearts}
     </div>
   );

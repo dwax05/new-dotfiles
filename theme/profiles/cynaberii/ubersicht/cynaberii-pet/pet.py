@@ -23,6 +23,7 @@ NET_STATE = "/tmp/cynaberii-pet-net"  # "timestamp totalbytes"
 CPU_STATE = "/tmp/cynaberii-pet-cpu"
 EAT_KBPS = 150  # KB/s over this → "eat"
 CPU_RISE_CAP = 25  # max % the reading may jump up between samples
+NP = "/opt/homebrew/bin/nowplaying-cli"
 
 
 def sh(cmd):
@@ -107,6 +108,26 @@ def battery():
     return pct, plugged, charging
 
 
+def music_playing():
+    """True only when a track is actively playing (Spotify/system now-playing).
+
+    nowplaying-cli's playbackRate is the reliable signal: it's "1" while playing
+    and "null" (unparseable) when paused or stopped — so any non-positive/missing
+    value means not playing. (elapsedTime can't be used: `get elapsedTime` always
+    returns 0 regardless of state.)
+    """
+    try:
+        rate = subprocess.run(
+            [NP, "get", "playbackRate"], capture_output=True, text=True, timeout=3
+        ).stdout.strip()
+    except Exception:
+        return False
+    try:
+        return float(rate) > 0
+    except ValueError:
+        return False
+
+
 def wal_colors():
     try:
         with open(os.path.expanduser("~/.cache/wal/colors.json")) as f:
@@ -120,6 +141,7 @@ def main():
     cpu = cpu_pct()
     kbps = net_kbps()
     pct, plugged, charging = battery()
+    music = music_playing()
 
     if kbps > EAT_KBPS:
         state = "eat"
@@ -137,6 +159,7 @@ def main():
                 "state": state,
                 "charging": charging,
                 "plugged": plugged,
+                "music": music,
                 "cpu": cpu,
                 "kbps": kbps,
                 "battery": pct,
