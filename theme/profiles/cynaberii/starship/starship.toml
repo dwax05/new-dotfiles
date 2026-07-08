@@ -19,7 +19,7 @@ add_newline = false
 show_always = true
 style_user = "bold fg:text"
 style_root = "bold fg:text"
-format = '[ dotfiles ](bold fg:text)'
+format = '[ $user ](bold fg:text)'
 disabled = false
 
 [directory]

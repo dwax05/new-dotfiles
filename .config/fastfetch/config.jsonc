@@ -3,7 +3,6 @@
   // Generated from config.jsonc.tmpl by ~/.config/wal/postrun - do not edit config.jsonc by hand
   "logo": {
     "type": "kitty-direct",
-    "source": "~/.config/fastfetch/apple_cat.png",
     "width": 20, // Width in characters (height auto from aspect)
     "padding": {
       "top": 1, // Top padding
@@ -11,15 +10,15 @@
       "right": 2 // Right padding
     },
     "color": { // Override logo colors
-      "1": "#C79929",
-      "2": "#519160"
+      "1": "#9791AE",
+      "2": "#8776AB"
     }
   },
   "display": {
     "separator": " ", // Separator between keys and values
     "color": {
-      "keys": "#C79929", // Key color
-      "title": "#CA7119" // Title color
+      "keys": "#9791AE", // Key color
+      "title": "#896C9C" // Title color
     },
     "key": {
       "width": 12, // Aligns keys to this width
@@ -35,9 +34,9 @@
     "percent": {
       "type": 9, // 1=number, 2=bar, 3=both, 9=colored number
       "color": {
-        "green": "#519160",
-        "yellow": "#B1972A",
-        "red": "#CA7119"
+        "green": "#8776AB",
+        "yellow": "#7E81AE",
+        "red": "#896C9C"
       }
     }
   },
@@ -50,19 +49,19 @@
       "key": " user ",
       "type": "title",
       "format": "{user-name}",
-      "keyColor": "#CA7119"
+      "keyColor": "#896C9C"
     },
     {
       "key": "│",
       "type": "host",
       "key": " hname",
-      "keyColor": "#519160"
+      "keyColor": "#8776AB"
     },
     {
       "key": "│",
       "type": "uptime",
       "key": " uptime",
-      "keyColor": "#B1972A"
+      "keyColor": "#7E81AE"
     },
     {
       "type": "custom",
@@ -76,25 +75,25 @@
       "key": "│",
       "type": "os",
       "key": " distro",
-      "keyColor": "#C79929"
+      "keyColor": "#9791AE"
     },
     {
       "key": "│",
       "type": "kernel",
       "key": " kernel",
-      "keyColor": "#C2A348"
+      "keyColor": "#A795D3"
     },
     {
       "key": "│",
       "type": "terminal",
       "key": " term ",
-      "keyColor": "#537889"
+      "keyColor": "#C0BFC5"
     },
     {
       "key": "│",
       "type": "shell",
       "key": " shell ",
-      "keyColor": "#c7c8c6"
+      "keyColor": "#c4c3c9"
     },
     {
       "type": "custom",
@@ -108,19 +107,19 @@
       "key": "│",
       "type": "cpu",
       "key": " cpu ",
-      "keyColor": "#C79929"
+      "keyColor": "#9791AE"
     },
     {
       "key": "│",
       "type": "disk",
       "key": " disk ",
-      "keyColor": "#C2A348"
+      "keyColor": "#A795D3"
     },
     {
       "key": "│",
       "type": "memory",
       "key": " memory",
-      "keyColor": "#537889"
+      "keyColor": "#C0BFC5"
     },
     {
       "type": "custom",

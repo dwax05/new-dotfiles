@@ -171,28 +171,35 @@ const Snail = ({ output }) => {
     }
   } catch (e) { /* no DOM yet — keep fallback constants */ }
 
-  // position along the box perimeter from the time of day (0 at midnight → full
-  // loop at 24:00), clockwise, head leading. Rotation keeps the snail crawling
-  // on the surface: upright on top, down the right, upside-down on the bottom.
+  // The snail crawls the four straight edges just outside the sys box as one
+  // rigid sprite, snapping its rotation at each corner. The straight runs are
+  // inset by half the sprite length (M) so the body never dangles past a corner
+  // into empty space. Right/bottom edges sit an extra SHADOW_PX out to clear the
+  // box's drop shadow.
+  const sw = grid[0].length * SNAIL_PX, sh = grid.length * SNAIL_PX;
+  const M = sw / 2; // corner inset along the travel axis
+  const pathLeft = -OUT_PX, pathTop = -OUT_PX;
+  const pathRight = bw + OUT_PX + SHADOW_PX, pathBot = bh + OUT_PX + SHADOW_PX;
+  const topLen = (pathRight - M) - (pathLeft + M); // == bottomLen
+  const sideLen = (pathBot - M) - (pathTop + M);   // == right/leftLen
+  const total = 2 * topLen + 2 * sideLen;
+
+  // position along the perimeter from the time of day (0 at midnight → full loop
+  // at 24:00), clockwise from the top-left, head leading. Rotation snaps per
+  // edge: 0 on top, 90 down the right, 180 (upside down) along the bottom, 270
+  // up the left.
   const now = new Date();
   const liveFrac = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) / 86400;
   const dayFrac = d.frac != null ? d.frac : liveFrac; // test override from snail.py
-  const dist = dayFrac * 2 * (bw + bh);
-  let x, y, rot;
-  if (dist < bw) { x = dist; y = 0; rot = 0; }                          // top → right
-  else if (dist < bw + bh) { x = bw; y = dist - bw; rot = 90; }         // right ↓
-  else if (dist < 2 * bw + bh) { x = 2 * bw + bh - dist; y = bh; rot = 180; } // bottom ← (upside down)
-  else { x = 0; y = 2 * (bw + bh) - dist; rot = 270; }                  // left ↑
+  let dist = (((dayFrac % 1) + 1) % 1) * total;
 
-  const sw = grid[0].length * SNAIL_PX, sh = grid.length * SNAIL_PX;
-  // push the snail fully outside the box edge (ride the outer perimeter): offset
-  // outward along each edge's normal by ~half the sprite + a small gap
-  const OUT = OUT_PX;
-  let cx, cy;
-  if (rot === 0) { cx = x; cy = -OUT; }                              // above the top edge
-  else if (rot === 90) { cx = bw + OUT + SHADOW_PX; cy = y; }        // right of the right edge (clear shadow)
-  else if (rot === 180) { cx = x; cy = bh + OUT + SHADOW_PX; }       // below the bottom edge (clear shadow)
-  else { cx = -OUT; cy = y; }                                        // left of the left edge
+  // walk the edge list, consuming `dist`; each yields center cx/cy + rotation
+  let cx, cy, rot;
+  const seg = (len) => (dist < len ? true : (dist -= len, false));
+  if (seg(topLen)) { cx = pathLeft + M + dist; cy = pathTop; rot = 0; }         // top →
+  else if (seg(sideLen)) { cx = pathRight; cy = pathTop + M + dist; rot = 90; } // right ↓
+  else if (seg(topLen)) { cx = pathRight - M - dist; cy = pathBot; rot = 180; } // bottom ← (upside down)
+  else { cx = pathLeft; cy = pathBot - M - dist; rot = 270; }                   // left ↑
 
   return (
     <div

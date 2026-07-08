@@ -2,7 +2,7 @@
 /opt/homebrew/bin/borders \
   style=square \
   width=7 \
-  hidpi=on \
+  hidpi=off \
   ax_focus=on \
-  active_color="glow(0xff7f6768)" \
-  inactive_color=0xff5d5b6a
+  active_color="glow(0xff8776AB)" \
+  inactive_color=0xff8776AB

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# launchd agents start with a minimal PATH; pywal's wal backend shells out to
+# imagemagick (magick/convert) which live in /opt/homebrew/bin.
+export PATH="/opt/homebrew/bin:$PATH"
 PLIST="$HOME/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
 LAST_IMAGE=""
 LAST_RUN=0
@@ -35,7 +38,7 @@ if matches:
   LIGHT_FLAG=""
   [[ "$(cat "$HOME/.cache/wal/appearance" 2>/dev/null)" == "light" ]] && LIGHT_FLAG="-l"
   # (-n = don't set the wallpaper, raycast already did, avoids a feedback loop)
-  $HOME/miniconda3/bin/wal -i "$IMAGE" --backend balanced $LIGHT_FLAG -n
+  $HOME/.local/bin/wal -i "$IMAGE" --backend balanced $LIGHT_FLAG -n
   bash "$HOME/.config/wal/postrun"
   echo "postrun done"
 done
