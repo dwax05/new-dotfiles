@@ -6,11 +6,14 @@ export const command = "cat ~/.cache/wal/colors.json";
 
 export const refreshFrequency = 1000;
 
-// Centre-top of the desktop.
+// Centre-top of the desktop. z-index sits above the tree-frog widget
+// (cynaberii-frog) so the card occludes the frog's body, leaving just its head
+// peeking out below the bottom edge.
 export const className = `
   top: 90px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
   -webkit-user-select: none;

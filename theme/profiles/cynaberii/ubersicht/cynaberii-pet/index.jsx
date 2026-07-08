@@ -16,7 +16,7 @@ import { React } from "uebersicht";
 
 export const command = "python3 './cynaberii-pet/pet.py'";
 
-export const refreshFrequency = 6000;
+export const refreshFrequency = 10000; // 10s: pet.py runs `top -l 1` (heaviest poll)
 
 const PET_MS = 1500; // how long the happy pet reaction lasts on click
 const HEART_PINK = "#ff6b9d"; // fixed bright pink so hearts always pop
@@ -302,8 +302,9 @@ const Pet = ({ output }) => {
     ))
     : [];
 
-  // music notes floating up off the cat while a song plays (not during petting)
-  const notes = (music && !petting)
+  // music notes floating up off the cat while a song plays — kept flowing even
+  // during a pet, so headphones + hearts + notes all coexist
+  const notes = music
     ? NOTE_SPECS.map((s, i) => (
       <div
         key={i}
@@ -343,9 +344,7 @@ const Pet = ({ output }) => {
       `}</style>
       <div style={{ position: "relative", animation: wiggle }}>
         <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle="none" />
-        {music && !petting && (
-          <Headphones px={4} palette={{ P: ink, U: c.color5 || pink }} />
-        )}
+        {music && <Headphones px={4} palette={{ P: ink, U: c.color5 || pink }} />}
       </div>
       {notes}
       {hearts}
