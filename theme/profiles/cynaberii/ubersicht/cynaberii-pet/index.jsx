@@ -20,6 +20,7 @@ export const refreshFrequency = 10000; // 10s: pet.py runs `top -l 1` (heaviest 
 
 const PET_MS = 1500; // how long the happy pet reaction lasts on click
 const HEART_PINK = "#ff6b9d"; // fixed bright pink so hearts always pop
+const PHONES_MS = 420; // headphones slide-on / lift-off transition length
 
 // Perched on the top-right corner of the cynaberii-nowplaying card (which sits
 // at left:32 bottom:56, ~80px tall). Paws on the card's top edge near its right
@@ -239,8 +240,35 @@ const Pet = ({ output }) => {
     timer.current = setTimeout(() => setPetting(false), PET_MS);
   };
 
+  // headphones fade/slide in when music starts and lift off when it stops. We
+  // keep them mounted through the exit animation, then unmount. Music state only
+  // changes at refresh boundaries, so drive it off the output prop.
+  const [phonesMounted, setPhonesMounted] = React.useState(false);
+  const [phonesAnim, setPhonesAnim] = React.useState("none");
+  const prevMusic = React.useRef(false);
+  const phonesTimer = React.useRef(null);
+  React.useEffect(() => {
+    const dd = parse(output);
+    const m = !!(dd && dd.music);
+    if (m === prevMusic.current) return;
+    prevMusic.current = m;
+    if (phonesTimer.current) clearTimeout(phonesTimer.current);
+    if (m) {
+      setPhonesMounted(true);
+      setPhonesAnim(`pet-phones-on ${PHONES_MS}ms ease-out both`);
+    } else {
+      setPhonesAnim(`pet-phones-off ${PHONES_MS}ms ease-in both`);
+      phonesTimer.current = setTimeout(() => setPhonesMounted(false), PHONES_MS);
+    }
+  }, [output]);
+  React.useEffect(() => () => {
+    if (phonesTimer.current) clearTimeout(phonesTimer.current);
+  }, []);
+
   const d = parse(output);
   if (!d) return <div />;
+
+  const px = 3; // sprite scale (px per sprite pixel); tune to taste
 
   const c = d.colors || {};
   const bg = (d.special && d.special.background) || "#101217";
@@ -341,10 +369,16 @@ const Pet = ({ output }) => {
         @keyframes pet-heart { 0%{opacity:0; transform:translateY(0) scale(0.7)} 25%{opacity:1} 100%{opacity:0; transform:translateY(-26px) scale(1)} }
         @keyframes pet-groove { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-2px) rotate(2deg)} }
         @keyframes pet-note { 0%{opacity:0; transform:translateY(0) scale(0.6)} 18%{opacity:1} 100%{opacity:0; transform:translateY(-34px) scale(1)} }
+        @keyframes pet-phones-on { 0%{opacity:0; transform:translateY(-7px)} 100%{opacity:1; transform:translateY(0)} }
+        @keyframes pet-phones-off { 0%{opacity:1; transform:translateY(0) rotate(0)} 100%{opacity:0; transform:translateY(-9px) rotate(-6deg)} }
       `}</style>
       <div style={{ position: "relative", animation: wiggle }}>
-        <PetStrip frames={frames} px={4} palette={palette} dur={dur} wiggle="none" />
-        {music && <Headphones px={4} palette={{ P: ink, U: c.color5 || pink }} />}
+        <PetStrip frames={frames} px={px} palette={palette} dur={dur} wiggle="none" />
+        {phonesMounted && (
+          <div style={{ position: "absolute", left: 0, top: 0, animation: phonesAnim }}>
+            <Headphones px={px} palette={{ P: ink, U: c.color5 || pink }} />
+          </div>
+        )}
       </div>
       {notes}
       {hearts}

@@ -20,6 +20,10 @@ export const refreshFrequency = 8000; // thermal state changes slowly
 const POP_MS = 1100;  // how long the "pop out" reveal lasts on click
 const FLICK_MS = 480; // tongue-flick length (within the pop)
 const POP_PX = 26;    // how far the frog shoves itself out from behind the card
+// auto-poke: the frog pops itself out on its own, (random so it
+// never feels metronomic). Tune the window to taste.
+const AUTO_MIN_MS = 25000;
+const AUTO_MAX_MS = 45000;
 const TONGUE_RED = "#E23B3B"; // fixed red so the tongue always reads as a tongue
 
 // Peeks out from behind the clock card: the clock card (opaque, ~112px tall,
@@ -111,12 +115,35 @@ const Strip = ({ grid, px, palette }) => {
 const Frog = ({ output }) => {
   const [poking, setPoking] = React.useState(false);
   const timer = React.useRef(null);
-  const zap = () => {
-    if (poking) return; // let the current pop finish
+  const pokingRef = React.useRef(false); // stable read for the auto-timer
+  const autoTimer = React.useRef(null);
+  const popOut = () => {
+    if (pokingRef.current) return; // let the current pop finish
+    pokingRef.current = true;
     setPoking(true);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => setPoking(false), POP_MS);
+    timer.current = setTimeout(() => {
+      pokingRef.current = false;
+      setPoking(false);
+    }, POP_MS);
   };
+  const zap = () => popOut();
+
+  // the frog pokes itself out on its own at a random ~1-minute cadence
+  React.useEffect(() => {
+    const schedule = () => {
+      const wait = AUTO_MIN_MS + Math.random() * (AUTO_MAX_MS - AUTO_MIN_MS);
+      autoTimer.current = setTimeout(() => {
+        popOut();
+        schedule();
+      }, wait);
+    };
+    schedule();
+    return () => {
+      if (autoTimer.current) clearTimeout(autoTimer.current);
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
 
   const d = parse(output);
   if (!d) return <div />;
