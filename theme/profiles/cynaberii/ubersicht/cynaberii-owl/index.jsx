@@ -12,7 +12,7 @@ import { React } from "uebersicht";
 
 export const command = "python3 './cynaberii-owl/owl.py'";
 
-export const refreshFrequency = 5000; // wake within ~5s of you returning
+export const refreshFrequency = 7000; // wake within ~7s of you returning
 
 const BLINK_MS = 200;
 

@@ -9,6 +9,11 @@ import json
 import os
 import re
 import subprocess
+import sys
+
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "..", "_cynshared"))
+import cyncpu  # noqa: E402  shared cheap CPU sampler (host ticks, not `top`)
 
 
 def sh(cmd):
@@ -31,45 +36,8 @@ def battery():
     return pct, plugged, charging
 
 
-CPU_STATE = "/tmp/cynaberii-stats-cpu"
-CPU_RISE_CAP = 25  # max % the reading may jump up between samples
-
-
-def cpu_pct():
-    """Instantaneous CPU utilization (100 - idle), like sketchybar.
-
-    Deliberately NOT the load average: load average lags ~60s and stays pinned
-    after a burst — a theme switch's recolor work would leave the plant showing
-    100% long after the cores went idle. Instantaneous util drops the moment
-    the work finishes.
-
-    Reading is quick-to-fall but slow-to-rise (capped jump up): a one-off spike,
-    e.g. the recolor burst right after a theme switch, is damped instead of
-    shown at full, while real sustained load still ramps up over a few samples.
-    """
-    util = 0
-    try:
-        out = subprocess.run(
-            ["top", "-l", "1", "-n", "0"], capture_output=True, text=True, timeout=5
-        ).stdout
-        m = re.search(r"CPU usage:.*?([\d.]+)%\s*idle", out)
-        if m:
-            util = round(max(0.0, min(100.0, 100.0 - float(m.group(1)))))
-    except Exception:
-        util = 0
-
-    prev = util
-    try:
-        prev = int(float(open(CPU_STATE).read().strip()))
-    except Exception:
-        pass
-    val = util if util <= prev else min(util, prev + CPU_RISE_CAP)
-
-    try:
-        open(CPU_STATE, "w").write(str(val))
-    except Exception:
-        pass
-    return val
+# CPU utilisation now comes from cyncpu (shared host-tick sampler); the old
+# `top -l 1` reader lived here and cost ~0.29s per call.
 
 
 def mem_pct():
@@ -107,7 +75,7 @@ def wal_colors():
 
 def main():
     pct, plugged, charging = battery()
-    cpu = cpu_pct()
+    cpu = cyncpu.cpu_pct("cynaberii-stats")
     mem = mem_pct()
 
     # wilt stage 0 (perky) .. 3 (droopy) from CPU load

@@ -9,7 +9,7 @@ import { React, run } from "uebersicht";
 
 export const command = "python3 './cynaberii-nowplaying/np.py'";
 
-export const refreshFrequency = 4000;
+export const refreshFrequency = 6000;
 
 // Bottom-left of the desktop, above the dock. Tweak to taste.
 export const className = `

@@ -17,12 +17,15 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "..", "_cynshared"))
+import cyncpu  # noqa: E402  shared cheap CPU sampler
+
 NET_STATE = "/tmp/cynaberii-pet-net"  # "timestamp totalbytes"
-CPU_STATE = "/tmp/cynaberii-pet-cpu"
 EAT_KBPS = 150  # KB/s over this → "eat"
-CPU_RISE_CAP = 25  # max % the reading may jump up between samples
 NP = "/opt/homebrew/bin/nowplaying-cli"
 
 
@@ -31,38 +34,6 @@ def sh(cmd):
         return subprocess.run(cmd, capture_output=True, text=True, timeout=3).stdout
     except Exception:
         return ""
-
-
-def cpu_pct():
-    """Instantaneous CPU utilization (100 - idle), quick-to-fall/slow-to-rise.
-
-    Not the load average — that lags ~60s and stays pinned after a burst (e.g.
-    a theme switch's recolor work), which would make the cat "run" long after
-    the cores went idle. The rise cap keeps a one-off spike from tripping it.
-    """
-    util = 0
-    try:
-        out = subprocess.run(
-            ["top", "-l", "1", "-n", "0"], capture_output=True, text=True, timeout=5
-        ).stdout
-        m = re.search(r"CPU usage:.*?([\d.]+)%\s*idle", out)
-        if m:
-            util = round(max(0.0, min(100.0, 100.0 - float(m.group(1)))))
-    except Exception:
-        util = 0
-
-    prev = util
-    try:
-        prev = int(float(open(CPU_STATE).read().strip()))
-    except Exception:
-        pass
-    val = util if util <= prev else min(util, prev + CPU_RISE_CAP)
-
-    try:
-        open(CPU_STATE, "w").write(str(val))
-    except Exception:
-        pass
-    return val
 
 
 def net_total():
@@ -138,7 +109,7 @@ def wal_colors():
 
 
 def main():
-    cpu = cpu_pct()
+    cpu = cyncpu.cpu_pct("cynaberii-pet")
     kbps = net_kbps()
     pct, plugged, charging = battery()
     music = music_playing()
