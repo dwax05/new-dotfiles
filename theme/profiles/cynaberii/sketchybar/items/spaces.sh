@@ -24,6 +24,7 @@ for sid in "${all_spaces[@]}"; do
       icon.y_offset=1 \
       label="" \
       label.drawing=off \
+      icon.font="Silkscreen:Bold:12.0" \
       icon.color=$BLACK \
       background.color=$DIM \
       background.corner_radius=5 \

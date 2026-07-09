@@ -145,11 +145,7 @@ sketchybar --add item theme_toggle right \
              icon="󰔎" \
              icon.color=$WHITE \
              icon.align=center \
-             icon.padding_left=10 \
-             icon.padding_right=2 \
              label.drawing=off \
-             label.padding_left=0 \
-             label.padding_right=0 \
              click_script="$HOME/.dotfiles/theme/switch.sh mine >/dev/null 2>&1"
 sep sep0
 
@@ -173,15 +169,15 @@ sketchybar --add item volume right \
 sep sep2
 
 # Weather
-sketchybar --add item weather right \
-           --set weather \
-             update_freq=1800 \
-             icon.color=$WHITE \
-             label.color=$WHITE \
-             script="$PLUGIN_DIR/weather.sh" \
-             click_script="$PLUGIN_DIR/weather_click.sh"
-sep sep_cpu
-
+# sketchybar --add item weather right \
+#            --set weather \
+#              update_freq=1800 \
+#              icon.color=$WHITE \
+#              label.color=$WHITE \
+#              script="$PLUGIN_DIR/weather.sh" \
+#              click_script="$PLUGIN_DIR/weather_click.sh"
+# sep sep_cpu
+#
 # CPU
 sketchybar --add item cpu right \
            --set cpu \
