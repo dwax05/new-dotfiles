@@ -4,7 +4,9 @@
 
 export const command = "cat ~/.cache/wal/colors.json";
 
-export const refreshFrequency = 1000;
+// 60s: only the minute needs a re-render. The colon blink is a pure-CSS
+// animation (see clk-blink keyframes), so it never spends a render cycle.
+export const refreshFrequency = 60000;
 
 // Centre-top of the desktop. z-index sits above the tree-frog widget
 // (cynaberii-frog) so the card occludes the frog's body, leaving just its head
@@ -60,7 +62,7 @@ const layout = (str) => {
   return lines;
 };
 
-const PixelText = ({ str, px, color }) => {
+const PixelText = ({ str, px, color, style }) => {
   const rows = layout(str);
   const w = Math.max(...rows.map((r) => r.length));
   const h = rows.length;
@@ -77,7 +79,7 @@ const PixelText = ({ str, px, color }) => {
       height={h * px}
       viewBox={`0 0 ${w} ${h}`}
       shapeRendering="crispEdges"
-      style={{ imageRendering: "pixelated", display: "block", margin: "0 auto" }}
+      style={{ imageRendering: "pixelated", display: "block", margin: "0 auto", ...style }}
     >
       {rects}
     </svg>
@@ -104,17 +106,28 @@ export const render = ({ output }) => {
   const now = new Date();
   const hh = String(now.getHours() % 12 || 12).padStart(2, "0");
   const mm = String(now.getMinutes()).padStart(2, "0");
-  // blink the colon each second
-  const sep = now.getSeconds() % 2 === 0 ? ":" : " ";
-  const time = `${hh}${sep}${mm}`;
 
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const date = `${days[now.getDay()]} ${months[now.getMonth()]} ${now.getDate()}`;
 
+  // The colon is a separate segment so CSS can blink it (opacity) without the
+  // widget re-rendering every second. 9px margin each side reproduces the
+  // 1-unit inter-glyph gap the old single-string layout gave it.
+  const px = 9;
   return (
     <div style={card}>
-      <PixelText str={time} px={9} color={accent} />
+      <style>{`@keyframes clk-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }`}</style>
+      <div style={{ display: "inline-flex", alignItems: "flex-start", justifyContent: "center" }}>
+        <PixelText str={hh} px={px} color={accent} />
+        <PixelText
+          str={":"}
+          px={px}
+          color={accent}
+          style={{ margin: `0 ${px}px`, animation: "clk-blink 2s infinite" }}
+        />
+        <PixelText str={mm} px={px} color={accent} />
+      </div>
       <div style={{ color: sage, fontSize: "12px", letterSpacing: "2px", marginTop: "12px" }}>
         {date}
       </div>
