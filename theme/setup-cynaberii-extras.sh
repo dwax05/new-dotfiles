@@ -45,8 +45,8 @@ fi
 
 echo "==> fonts"
 # Vendored icon/pixel fonts live in the repo so a fresh machine renders the
-# pixel-art menu bar instead of tofu boxes. Symlink them into ~/Library/Fonts
-# (CoreText resolves symlinks); force-replace since these are ours.
+# pixel-art menu bar instead of tofu boxes. CoreText does NOT reliably follow
+# symlinks in ~/Library/Fonts, so copy (idempotent by content).
 FONT_SRC="$DOTFILES/theme/profiles/cynaberii/fonts"
 FONT_DST="$HOME/Library/Fonts"
 if [ -d "$FONT_SRC" ]; then
@@ -54,10 +54,10 @@ if [ -d "$FONT_SRC" ]; then
   for ttf in "$FONT_SRC"/*.ttf; do
     [ -e "$ttf" ] || continue
     dst="$FONT_DST/$(basename "$ttf")"
-    if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$ttf" ]; then
+    if [ -f "$dst" ] && ! [ -L "$dst" ] && cmp -s "$ttf" "$dst"; then
       ok "$(basename "$ttf") (already)"
     else
-      ln -sfn "$ttf" "$dst"; ok "$(basename "$ttf") -> ~/Library/Fonts"
+      rm -f "$dst"; cp "$ttf" "$dst"; ok "$(basename "$ttf") -> ~/Library/Fonts"
     fi
   done
 else
