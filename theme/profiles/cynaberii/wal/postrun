@@ -171,7 +171,7 @@ BORDERS
   $BORDERS active_color="glow(0xff${BORDER_COLOR})" inactive_color=0xff${BORDER_COLOR_INACTIVE} &
 fi
 
-BASE_CAPE="$HOME/.config/wal/forgetmenotGREY_base.cape"
+BASE_CAPE="$HOME/.config/wal/cursor_base.cape"
 MOUSECLOAK="/Applications/Mousecape.app/Contents/MacOS/mousecloak"
 CAPE_DIR="$HOME/.config/wal/capes"
 mkdir -p "$CAPE_DIR"
@@ -183,7 +183,7 @@ OUT_CAPE="$CAPE_DIR/${WALLPAPER_NAME}.cape"
 MOUSECAPE_DIR="$HOME/Library/Application Support/Mousecape/capes"
 
 if [[ -f "$BASE_CAPE" ]]; then
-  $PYTHON "$HOME/.config/wal/wal-recolour-cape.py" "$BASE_CAPE" "$OUT_CAPE" && {
+  $PYTHON "$HOME/.config/wal/wal-recolor-cape.py" "$BASE_CAPE" "$OUT_CAPE" && {
     cp "$OUT_CAPE" "$MOUSECAPE_DIR/${WALLPAPER_NAME}.cape"
     $MOUSECLOAK --apply "$OUT_CAPE"
   } &

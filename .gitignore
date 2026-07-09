@@ -2,3 +2,6 @@ theme/.colorstash/
 
 # Local agent scratch notes / writeups (not part of the repo)
 _agentnotes/
+
+# Mousecape cursor art — paid artist assets, do not distribute
+*.cape

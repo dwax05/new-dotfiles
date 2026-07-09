@@ -44,18 +44,28 @@ def main():
     wal = load_wal_colors()
     c   = wal['colors']
 
-    src_dark_green  = (0x4A, 0x9E, 0x7E)
-    src_mid_green   = (0x6D, 0xC4, 0xA0)
-    src_light_green = (0x95, 0xD1, 0xB7)
-    src_pink        = (0xF0, 0xA9, 0xC7)
-    src_highlight   = (0xD3, 0xE5, 0xFF)
+    # JelleeBun base cape palette. Body = blue jelly (three shades) + a pale
+    # specular highlight, accent = yellow spark (three shades). Grays/white
+    # (outline + pointer arrow) are deliberately left untouched so the cursor
+    # stays legible on any wallpaper. These source pixels MUST match the base
+    # cape's actual colors — if you swap or re-colour the art, run
+    # wal-update-base-cape.py and update both this map and its MAPPED dict.
+    src_body_dark  = (0x51, 0x65, 0xC7)   # #5165C7  jelly body, darkest
+    src_body_mid   = (0x70, 0x92, 0xDF)   # #7092DF  jelly body, mid
+    src_body_light = (0x9B, 0xBF, 0xF3)   # #9BBFF3  jelly body, light
+    src_highlight  = (0xD3, 0xE5, 0xFF)   # #D3E5FF  pale specular highlight
+    src_accent     = (0xFF, 0xCA, 0x3D)   # #FFCA3D  yellow spark, mid
+    src_accent_lt  = (0xFF, 0xE3, 0x99)   # #FFE399  yellow spark, light
+    src_accent_dk  = (0x66, 0x50, 0x12)   # #665012  yellow spark, dark
 
     color_map = {
-        src_dark_green:  hex_to_rgb(c['color2']),
-        src_mid_green:   hex_to_rgb(c['color10']),
-        src_light_green: hex_to_rgb(c['color13']),
-        src_pink:        hex_to_rgb(c['color3']),
-        src_highlight:   hex_to_rgb(c['color14']),
+        src_body_dark:  hex_to_rgb(c['color2']),
+        src_body_mid:   hex_to_rgb(c['color10']),
+        src_body_light: hex_to_rgb(c['color13']),
+        src_highlight:  hex_to_rgb(c['color14']),
+        src_accent:     hex_to_rgb(c['color3']),
+        src_accent_lt:  hex_to_rgb(c['color11']),
+        src_accent_dk:  hex_to_rgb(c['color9']),
     }
 
     with open(input_cape, 'rb') as f:
