@@ -43,6 +43,27 @@ else
   ok "fswatch present"
 fi
 
+echo "==> fonts"
+# Vendored icon/pixel fonts live in the repo so a fresh machine renders the
+# pixel-art menu bar instead of tofu boxes. Symlink them into ~/Library/Fonts
+# (CoreText resolves symlinks); force-replace since these are ours.
+FONT_SRC="$DOTFILES/theme/profiles/cynaberii/fonts"
+FONT_DST="$HOME/Library/Fonts"
+if [ -d "$FONT_SRC" ]; then
+  mkdir -p "$FONT_DST"
+  for ttf in "$FONT_SRC"/*.ttf; do
+    [ -e "$ttf" ] || continue
+    dst="$FONT_DST/$(basename "$ttf")"
+    if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$ttf" ]; then
+      ok "$(basename "$ttf") (already)"
+    else
+      ln -sfn "$ttf" "$dst"; ok "$(basename "$ttf") -> ~/Library/Fonts"
+    fi
+  done
+else
+  warn "no vendored fonts dir at ${FONT_SRC/#$HOME/~}"
+fi
+
 echo "==> ~/.local/bin scripts"
 mkdir -p "$BIN"
 for f in wallpaper-pick wallpaper-picker.py ws-capture.sh aerospace-switcher.py; do
