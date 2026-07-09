@@ -44,6 +44,9 @@ fi
 # Ghostty: regenerate colors from the wal palette + hot-reload
 bash "$HOME/.dotfiles/theme/shared/ghostty-from-wal.sh" &
 
+# Vicinae: regenerate theme from the wal palette + hot-apply
+bash "$HOME/.dotfiles/theme/shared/vicinae-from-wal.sh" &
+
 # (yazi, written inline: 26.x needs the inline-table format)
 {
 source "$HOME/.cache/wal/colors.sh"
