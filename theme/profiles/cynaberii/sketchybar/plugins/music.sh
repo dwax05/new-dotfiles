@@ -20,11 +20,11 @@ hide() { sketchybar --set "$NAME" drawing=off; }
 render() { # $1 = Playing|Paused   $2 = label text   $3 = music|video
   local icon col label="$2"
   if [[ "$1" == "Paused" ]]; then
-    icon="󰏤"; col=$DIM                                  # paused
+    icon=""; col=$DIM                                  # paused
   elif [[ "$3" == "video" ]]; then
-    icon="󰕧"; col=$WHITE                                # playing, not music
+    icon=""; col=$WHITE                                # playing, not music
   else
-    icon="󰎆"; col=$WHITE                                # playing music
+    icon=""; col=$WHITE                                # playing music
   fi
   local MAX=40
   (( ${#label} > MAX )) && label="${label:0:$((MAX - 1))}…"

@@ -61,7 +61,7 @@ sketchybar --default \
   icon.padding_right=4 \
   label.padding_left=4 \
   label.padding_right=4 \
-  icon.y_offset=1 \
+  icon.y_offset=0 \
   label.y_offset=1
 
 # Clear any existing items first so add-order (and thus left-to-right position)
@@ -106,6 +106,7 @@ sketchybar --add event spotify_change "$SPOTIFY_EVENT"
 # Music sits just to the left of the notch (position q)
 sketchybar --add item music q \
            --set music \
+             icon.font="pixelart-icons-font:Regular:14.0" \
              icon.color=$WHITE \
              label.color=$WHITE \
              label.max_chars=30 \
@@ -142,7 +143,8 @@ sep sep_clock
 # Theme toggle — click to switch to the other profile
 sketchybar --add item theme_toggle right \
            --set theme_toggle \
-             icon="󰔎" \
+             icon.font="pixelart-icons-font:Regular:14.0" \
+             icon="" \
              icon.color=$WHITE \
              icon.align=center \
              label.drawing=off \
@@ -152,6 +154,7 @@ sep sep0
 # Battery
 sketchybar --add item battery right \
            --set battery \
+             icon.font="pixelart-icons-font:Regular:14.0" \
              update_freq=120 \
              icon.color=$WHITE \
              label.color=$WHITE \
@@ -162,6 +165,7 @@ sep sep1
 # Volume
 sketchybar --add item volume right \
            --set volume \
+             icon.font="pixelart-icons-font:Regular:14.0" \
              icon.color=$WHITE \
              label.color=$WHITE \
              script="$PLUGIN_DIR/volume.sh" \
@@ -181,8 +185,9 @@ sep sep2
 # CPU
 sketchybar --add item cpu right \
            --set cpu \
+             icon.font="pixelart-icons-font:Regular:14.0" \
              update_freq=5 \
-             icon="󰍛" \
+             icon="" \
              icon.color=$WHITE \
              label.color=$WHITE \
              script="$PLUGIN_DIR/cpu.sh" \
@@ -192,7 +197,8 @@ sep sep_ts
 # Tailscale (leftmost of the right cluster)
 sketchybar --add item tailscale right \
            --set tailscale \
-             icon="󱗼" \
+             icon.font="pixelart-icons-font:Regular:14.0" \
+             icon="" \
              icon.color=$WHITE \
              icon.align=center \
              icon.padding_left=10 \
