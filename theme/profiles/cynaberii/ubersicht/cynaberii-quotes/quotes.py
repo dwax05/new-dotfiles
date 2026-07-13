@@ -4,18 +4,17 @@
 Emits one line of JSON: a short niche tumblr-style meme quote plus the live
 pywal palette so the speech bubble recolours with the wallpaper.
 
-The quote is picked *deterministically from the palette* (md5 of the joined
-colour hexes, modulo the list length). That means the line only changes when
-the wallpaper/wal palette changes — Übersicht is refreshed on every recolour
-by `wal/postrun` — and stays stable across manual refreshes of the same theme.
+The quote is picked *at random* on every run, independent of the wallpaper —
+so it rerolls whenever the widget refreshes (recolour via `wal/postrun`, click,
+or a manual Übersicht refresh).
 
 Content lives in quotes.json next to this script; edit it freely to add lines.
 For testing, write to /tmp/cynaberii-quotes-force: a bare integer selects that
-index, anything else is shown verbatim. Delete the file to go back to palette.
+index, anything else is shown verbatim. Delete the file to go back to random.
 """
-import hashlib
 import json
 import os
+import random
 
 HERE = os.path.dirname(os.path.realpath(__file__))
 QUOTES = os.path.join(HERE, "quotes.json")
@@ -42,7 +41,7 @@ def load_quotes():
         return FALLBACK
 
 
-def pick(quotes, colors):
+def pick(quotes):
     # test override wins: bare int → index, else literal text
     try:
         forced = open(FORCE).read().strip()
@@ -52,15 +51,13 @@ def pick(quotes, colors):
             return forced
     except Exception:
         pass
-    # deterministic from the palette: same wallpaper → same quote
-    key = "".join(str(v) for v in colors.values()) or "cynaberii"
-    seed = int(hashlib.md5(key.encode()).hexdigest(), 16)
-    return quotes[seed % len(quotes)]
+    # random every run, independent of the wallpaper
+    return random.choice(quotes)
 
 
 def main():
     colors, special = wal_colors()
-    quote = pick(load_quotes(), colors)
+    quote = pick(load_quotes())
     print(json.dumps({"quote": quote, "colors": colors, "special": special}))
 
 
