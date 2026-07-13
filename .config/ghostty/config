@@ -28,7 +28,8 @@ window-decoration = true
 background-blur-radius = 60
 window-padding-balance = true
 macos-window-shadow = false
-macos-titlebar-style = tabs
+# macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 # window-theme=ghostty
 
 # general

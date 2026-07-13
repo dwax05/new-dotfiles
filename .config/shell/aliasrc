@@ -63,15 +63,26 @@ share() {
   fi
 }
 
-command -v aerospace >/dev/null && \
+# Emit "id<title<name" for every window from whichever WM is running (rift first,
+# else aerospace). Used by `windows` / `focuswin` below.
+__wm_list_windows(){
+  if pgrep -x rift >/dev/null 2>&1 && command -v rift-cli >/dev/null 2>&1; then
+    rift-cli query workspaces 2>/dev/null | \
+      jq -r '.[].windows[]? | "\(.window_server_id)<\(.title // "")<\(.app_name)"'
+  elif command -v aerospace >/dev/null 2>&1; then
+    aerospace list-windows --all --format "%{window-id}<%{window-title}<%{app-name}" 2>/dev/null
+  fi
+}
+
+(command -v rift-cli >/dev/null || command -v aerospace >/dev/null) && \
 windows(){
   echo "---"
   while IFS="<"; read -r id title name; do
-    printf "id:%d\ntitle:%s\nname:%s\n---\n" "$id" "$title" "$name"
-  done < <(aerospace list-windows --all --format "%{window-id}<%{window-title}<%{app-name}")
+    printf "id:%s\ntitle:%s\nname:%s\n---\n" "$id" "$title" "$name"
+  done < <(__wm_list_windows)
 }
 
-command -v aerospace >/dev/null && \
+(command -v rift-cli >/dev/null || command -v aerospace >/dev/null) && \
 focuswin(){
   # Declare arrays
   declare -a ids
@@ -85,7 +96,7 @@ focuswin(){
     ids+=("$id")
     titles+=("$title")
     names+=("$name")
-  done < <(aerospace list-windows --all --format "%{window-id}<%{window-title}<%{app-name}" 2>/dev/null)
+  done < <(__wm_list_windows)
 
   # Check if any windows were found
   if [[ ${#ids[@]} -eq 0 ]]; then

@@ -717,7 +717,7 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 				"typescript",
-				"switft",
+				"swift",
 				"tsx",
 				"javascript",
 			}
