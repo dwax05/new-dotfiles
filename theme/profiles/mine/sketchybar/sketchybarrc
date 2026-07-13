@@ -9,6 +9,19 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 source "$HOME/.config/sketchybar/colors.sh"
 
+# ── wm detection (aerospace vs rift) ──
+# (whichever wm is running drives the space pills. rift uses the *_rift.sh
+# counterparts; defaults to aerospace when rift isn't up.)
+if pgrep -x rift >/dev/null 2>&1; then
+  WS_CHANGE_EVENT=rift_workspace_change
+  SPACES_ITEMS="$ITEM_DIR/spaces_rift.sh"
+  WINDOWS_PLUGIN="$PLUGIN_DIR/space_windows_rift.sh"
+else
+  WS_CHANGE_EVENT=aerospace_workspace_change
+  SPACES_ITEMS="$ITEM_DIR/spaces.sh"
+  WINDOWS_PLUGIN="$PLUGIN_DIR/space_windows.sh"
+fi
+
 sketchybar --bar \
     height=32 \
     color=0x00000000 \
@@ -36,7 +49,7 @@ sketchybar --default \
     label.padding_right=5
 
 source "$ITEM_DIR/static_icon.sh"
-FONT_FACE="$FONT_FACE" PLUGIN_DIR="$PLUGIN_DIR" SK_COLOR3="$SK_COLOR3" bash "$ITEM_DIR/spaces.sh"
+FONT_FACE="$FONT_FACE" PLUGIN_DIR="$PLUGIN_DIR" SK_COLOR3="$SK_COLOR3" bash "$SPACES_ITEMS"
 
 source "$ITEM_DIR/moon.sh"
 # source "$ITEM_DIR/weather.sh"
@@ -49,9 +62,9 @@ source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/ram.sh"
 source "$ITEM_DIR/tailscale.sh"
 
-source "$ITEM_DIR/space_updater.sh"
+WS_CHANGE_EVENT="$WS_CHANGE_EVENT" WINDOWS_PLUGIN="$WINDOWS_PLUGIN" source "$ITEM_DIR/space_updater.sh"
 
 ##### Finalizing Setup #####
 sketchybar --update
-sketchybar --trigger aerospace_workspace_change
+sketchybar --trigger "$WS_CHANGE_EVENT"
 sketchybar --trigger volume_change
