@@ -35,10 +35,19 @@ if pgrep -x sketchybar > /dev/null; then
   $SKETCHYBAR --reload &
 fi
 
-# Übersicht widgets — refresh so they pick up the new wal palette at once
-# (launchd has no PATH, so use the full osascript path)
+# Übersicht widgets — soft-refresh each widget so they re-read the wal palette.
+# NB: a bare `refresh` (app-level) does a full webview RELOAD → widgets blank to
+# default. Per-widget `refresh <id>` dispatches WIDGET_WANTS_REFRESH = soft
+# re-run of the command, no reload. And the app name "Übersicht" doesn't resolve
+# in AppleScript (NFC/NFD ü mismatch), so target by bundle id.
 if pgrep -f "bersicht" > /dev/null; then
-  /usr/bin/osascript -e 'tell application "Übersicht" to refresh' >/dev/null 2>&1 &
+  /usr/bin/osascript <<'OSA' >/dev/null 2>&1 &
+tell application id "tracesOf.Uebersicht"
+  repeat with w in (get id of every widget)
+    refresh widget id w
+  end repeat
+end tell
+OSA
 fi
 
 # Ghostty: regenerate colors from the wal palette + hot-reload
