@@ -28,6 +28,7 @@ const PHONES_MS = 420; // headphones slide-on / lift-off transition length
 export const className = `
   left: 276px;
   bottom: 140px;
+  z-index: 3;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
   -webkit-user-select: none;

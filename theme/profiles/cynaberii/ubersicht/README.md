@@ -45,6 +45,11 @@ To (re)link manually: `theme/shared/ubersicht-link.sh cynaberii`.
 - **cynaberii-sys** — pixel wifi signal bars (lit when connected, + SSID) and a
   disk jar filling with root-volume usage. `sys.py` (networksetup + df).
   Top-left.
+- **cynaberii-quotes** — pixel speech bubble with a short niche tumblr-style meme
+  line. `quotes.py` picks from a curated `quotes.json` deterministically from the
+  wal palette, so the line only swaps when the wallpaper recolours. Left
+  mid-screen. Edit `quotes.json` to add your own; test with
+  `echo <n|text> > /tmp/cynaberii-quotes-force`.
 
 ## Layout
 
@@ -56,6 +61,7 @@ To (re)link manually: `theme/shared/ubersicht-link.sh cynaberii`.
 | nowplaying | media | bottom-left |
 | pet (cat) | CPU/net/charging | perched on now-playing |
 | stats | battery/CPU/RAM | bottom-right |
+| quotes | tumblr meme line | left mid-screen |
 
 Positions are absolute in each widget's `className` — nudge to taste.
 
