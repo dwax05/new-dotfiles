@@ -12,3 +12,8 @@ _agentnotes/
 # Python bytecode cache
 __pycache__/
 *.pyc
+
+# Claude Code agent files — local, not part of the repo
+CLAUDE.md
+CLAUDE.local.md
+.claude/
