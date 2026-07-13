@@ -76,10 +76,34 @@ link_profile() { # $1 profile
 }
 
 # ── window manager ───────────────────────────────────────────────────────
-# Both profiles use AeroSpace as the WM. cynaberii's sketchybar auto-detects the
-# WM (pgrep rift -> rift variant, else aerospace) and reads live aerospace
-# workspaces, so we just make sure rift/borders are NOT running (rift needs
-# Accessibility and was more trouble than it's worth) and AeroSpace is up.
+# Both profiles now use rift as the WM (each profile ships its own theme/profiles/
+# <profile>/rift, symlinked to ~/.config/rift by the manifest). Both bars auto-
+# detect the WM (pgrep rift -> the *_rift.sh plugins, else aerospace), so we stop
+# AeroSpace and (re)start the rift service. rift's run_on_start launches borders.
+ensure_rift_wm() {
+  say "==> window manager: rift (stopping AeroSpace if present)"
+  pkill -x AeroSpace 2>/dev/null || true
+  if ! command -v rift >/dev/null 2>&1; then
+    warn "rift not installed — 'brew install acsandmann/tap/rift'"; return
+  fi
+  # Both profiles use rift; a theme switch only re-points its config symlink.
+  # If rift is already up, DON'T restart it — a restart re-tiles every window at
+  # once and freezes the desktop. Leave the running WM alone; only (re)start when
+  # it's actually down. (Config differences apply on the next natural rift start.)
+  if pgrep -x rift >/dev/null 2>&1; then
+    ok "rift already running — left in place (no restart)"
+    return
+  fi
+  rift service install >/dev/null 2>&1 || true
+  if rift service start >/dev/null 2>&1; then
+    ok "rift service started"
+  else
+    warn "rift service failed to start — start your WM manually"
+  fi
+}
+
+# Legacy fallback: flip a profile back to AeroSpace by calling this instead of
+# ensure_rift_wm (aerospace configs are kept under theme/profiles/*/aerospace).
 ensure_aerospace_wm() {
   say "==> window manager: AeroSpace (stopping rift/borders if present)"
   rift service stop >/dev/null 2>&1 || true
@@ -168,22 +192,23 @@ seed_bar_colors() { # $1 profile
 reload_bar() {
   if command -v sketchybar >/dev/null 2>&1 && pgrep -x sketchybar >/dev/null 2>&1; then
     sketchybar --reload >/dev/null 2>&1 && ok "sketchybar reloaded" || warn "sketchybar reload failed"
+  elif command -v sketchybar >/dev/null 2>&1; then
+    # not running — launch directly (detached), skip slow brew services.
+    ( exec sketchybar ) >/dev/null 2>&1 &
+    ok "sketchybar started (detached)"
   else
-    command -v brew >/dev/null 2>&1 && brew services restart sketchybar >/dev/null 2>&1 \
-      && ok "sketchybar (re)started" || warn "sketchybar not running"
+    warn "sketchybar not installed"
   fi
 }
 
 reload_borders() {
-  if pgrep -x borders >/dev/null 2>&1; then
-    brew services restart borders >/dev/null 2>&1 \
-      && ok "borders restarted" \
-      || warn "borders restart failed"
-  else
-    brew services start borders >/dev/null 2>&1 \
-      && ok "borders started" \
-      || warn "borders not running"
-  fi
+  # brew services restart is slow (launchctl churn) and blocks the switch. Relaunch
+  # the process directly instead, detached so we don't wait on it. Borders re-reads
+  # ~/.config/borders/bordersrc (repointed by link_profile) on start.
+  command -v borders >/dev/null 2>&1 || { warn "borders not installed"; return; }
+  pkill -x borders 2>/dev/null || true
+  ( sleep 0.3; exec /bin/bash "$HOME/.config/borders/bordersrc" ) >/dev/null 2>&1 &
+  ok "borders relaunched (detached)"
 }
 
 switch() { # $1 profile
@@ -192,8 +217,8 @@ switch() { # $1 profile
   say "==> switching themed configs -> $profile"
   link_profile "$profile" || exit 1
   case "$profile" in
-    cynaberii) ensure_aerospace_wm; wal_watch_load ;;
-    mine)      ensure_aerospace_wm; wal_watch_load ;;
+    cynaberii) ensure_rift_wm; wal_watch_load ;;
+    mine)      ensure_rift_wm; wal_watch_load ;;
   esac
   seed_bar_colors "$profile"
   reload_bar
