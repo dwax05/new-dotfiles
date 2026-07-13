@@ -58,8 +58,39 @@ reapply_app_rules_on_title_change = false
 workspace_rules = []
 workspace_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+# (ported from the old aerospace on-window-detected rules. rift workspaces are
+# 0-indexed, so workspace = N is the space labelled N+1. Spotify lived on aerospace
+# space 0; rift has no space 0, so it goes to 9 (index 8) alongside lmstudio. Rules
+# match on the same field aerospace used: app_id / app_name / title_substring.)
 app_rules = [
+  # ── float only (no workspace) ──
+  { app_name = "Finder", floating = true },
+  { title_substring = "Shutting Down", floating = true },
+  { title_substring = "Facetime", floating = true },
+  { app_id = "com.electron.dockerdesktop", floating = true },
+  { title_substring = "GT", floating = true },
+  { app_id = "com.jordanbaird.Ice", floating = true },
+  { title_substring = "Steam", floating = true },
+  { app_id = "org.m0k.transmission", floating = true },
+  { app_id = "com.apple.MobileSMS", floating = true },
+  { app_id = "com.apple.Notes", floating = true },
+  { app_id = "com.raycast.macos", floating = true },
+  { title_substring = "ollama", floating = true },
+  { title_substring = "Picture-in-Picture", floating = true },
   { app_id = "com.github.wez.wezterm", title_substring = "wallpaper-picker", floating = true },
+
+  # ── auto-assign to a workspace ──
+  { app_name = "Spotify", workspace = 8 },
+  { app_id = "md.obsidian", workspace = 3 },
+  { app_name = "Mail", workspace = 4 },
+  { app_name = "App Store", workspace = 5 },
+  { app_name = "Setapp", workspace = 5, floating = true },
+  { app_name = "Crossover", workspace = 6, floating = true },
+  { app_name = "Prism Launcher", workspace = 6, floating = true },
+  { app_name = "Lunar Client", workspace = 6, floating = true },
+  { title_substring = "Claude", workspace = 6 },
+  { app_name = "Discord", workspace = 7 },
+  { app_id = "ai.elementlabs.lmstudio", workspace = 8 },
 ]
 
 [modifier_combinations]
