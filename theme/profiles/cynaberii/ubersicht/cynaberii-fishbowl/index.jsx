@@ -16,7 +16,7 @@ const SEAWEED_GREEN = "#3f7d4a"; // distinct from the sage water
 
 // Right side, mid-screen. Nudge to taste.
 export const className = `
-  top: 300px;
+  top: 270px;
   right: 60px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
@@ -149,6 +149,7 @@ const Fishtank = ({ output }) => {
         background: bg,
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
+        transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease",
         cursor: "pointer",
       }}
     >

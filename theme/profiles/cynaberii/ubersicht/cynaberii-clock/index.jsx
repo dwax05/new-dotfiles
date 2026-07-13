@@ -101,6 +101,7 @@ export const render = ({ output }) => {
     background: bg,
     border: `4px solid ${accent}`,
     boxShadow: `6px 6px 0 0 ${accent2}`,
+    transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease",
   };
 
   const now = new Date();

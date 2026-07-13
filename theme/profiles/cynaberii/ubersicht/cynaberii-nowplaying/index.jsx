@@ -85,12 +85,17 @@ const NowPlaying = ({ output }) => {
     [artVer, artSrc ? 1 : 0, sage]
   );
 
-  // safe to bail now that every hook above has run
-  if (!d || !d.hasTrack) return <div />;
+  // No early return: even before the first poll succeeds (e.g. right after a
+  // cold boot, while nowplaying-cli is still coming up) we render an idle
+  // "nothing playing" cassette immediately instead of a blank div.
+  const hasTrack = !!(d && d.hasTrack);
 
   const shownPlaying =
-    override && Date.now() < override.until ? override.playing : d.playing;
+    hasTrack && override && Date.now() < override.until
+      ? override.playing
+      : hasTrack && d.playing;
   const togglePlay = () => {
+    if (!hasTrack) return; // nothing to toggle when idle
     run("/opt/homebrew/bin/nowplaying-cli togglePlayPause");
     setOverride({ playing: !shownPlaying, until: Date.now() + 3500 });
   };
@@ -106,8 +111,9 @@ const NowPlaying = ({ output }) => {
         background: bg,
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
+        transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease",
         imageRendering: "pixelated",
-        cursor: "pointer",
+        cursor: hasTrack ? "pointer" : "default",
         // fixed width so the right edge is stable regardless of title length —
         // keeps the perched cat (cynaberii-pet) sitting on the corner.
         width: "300px",
@@ -148,17 +154,19 @@ const NowPlaying = ({ output }) => {
             fontSize: "11px",
             color: ink,
             animation:
-              d.title && d.title.length > 18 ? "np-marquee 9s linear infinite" : "none",
+              hasTrack && d.title && d.title.length > 18
+                ? "np-marquee 9s linear infinite"
+                : "none",
           }}
         >
-          {d.title}
-          {d.title && d.title.length > 18 ? `   •   ${d.title}` : ""}
+          {hasTrack ? d.title : "nothing playing"}
+          {hasTrack && d.title && d.title.length > 18 ? `   •   ${d.title}` : ""}
         </div>
         <div style={{ fontSize: "9px", color: accent, marginTop: "5px" }}>
-          {d.artist}
+          {hasTrack ? d.artist : "—"}
         </div>
         <div style={{ fontSize: "8px", color: sage, marginTop: "4px" }}>
-          {shownPlaying ? "▶ playing" : "❚❚ paused"}
+          {!hasTrack ? "❚❚ idle" : shownPlaying ? "▶ playing" : "❚❚ paused"}
         </div>
       </div>
     </div>

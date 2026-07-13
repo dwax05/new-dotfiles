@@ -19,7 +19,7 @@ const BLINK_MS = 200;
 // Perched on the top edge of the battery/CPU/mem card (cynaberii-stats,
 // bottom:56, ~143px tall → top edge ~199px up). Nudge `bottom` to taste.
 export const className = `
-  right: 40px;
+  right: 66px;
   bottom: 205px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;

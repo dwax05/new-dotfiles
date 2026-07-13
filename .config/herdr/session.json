@@ -2,37 +2,31 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "wS",
+      "id": "w17",
       "custom_name": null,
-      "identity_cwd": "/Users/dylanwax/.dotfiles",
+      "identity_cwd": "/Users/dylanwax",
       "public_pane_numbers": {
-        "45": 1
+        "17": 1
       },
-      "next_public_pane_number": 3,
+      "next_public_pane_number": 2,
       "public_tab_numbers": [
         1
       ],
-      "next_public_tab_number": 3,
+      "next_public_tab_number": 2,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Pane": 45
+            "Pane": 17
           },
           "panes": {
-            "45": {
-              "cwd": "/Users/dylanwax/.dotfiles",
-              "agent_session": {
-                "source": "herdr:claude",
-                "agent": "claude",
-                "kind": "id",
-                "value": "970264e4-0847-42de-a88d-bb8651ee111f"
-              }
+            "17": {
+              "cwd": "/Users/dylanwax"
             }
           },
           "zoomed": false,
-          "focused": 45,
-          "root_pane": 45
+          "focused": 17,
+          "root_pane": 17
         }
       ],
       "active_tab": 0

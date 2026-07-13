@@ -57,3 +57,51 @@
 2026-07-06T21:26:14.057969Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=88802
 2026-07-06T21:26:14.058286Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
 2026-07-06T21:26:14.180981Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
+2026-07-09T05:38:16.207434Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=72621
+2026-07-09T05:38:16.207664Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T05:38:16.455682Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-09T20:27:37.382078Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=4579
+2026-07-09T20:27:37.382291Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T20:27:37.585717Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-09T20:37:14.288796Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=2327
+2026-07-09T20:37:14.288994Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T20:37:14.492421Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-09T20:39:14.264719Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=9117
+2026-07-09T20:39:14.264777Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T20:39:14.300175Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-09T20:42:48.407301Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=19414
+2026-07-09T20:42:48.407375Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T20:42:48.617267Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-09T21:43:17.765804Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=4287
+2026-07-09T21:43:17.765895Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-09T21:43:17.897779Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-10T17:27:35.561685Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=9901
+2026-07-10T17:27:35.561993Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-10T17:27:35.651903Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T03:48:24.498795Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=11910
+2026-07-12T03:48:24.499951Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T03:48:24.710511Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T03:51:15.534457Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=18346
+2026-07-12T03:51:15.534533Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T03:51:15.621252Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T04:00:53.872476Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=2559
+2026-07-12T04:00:53.872691Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T04:00:54.077145Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T04:03:38.859100Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=8716
+2026-07-12T04:03:38.859175Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T04:03:38.960366Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T04:10:27.549077Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=9607
+2026-07-12T04:10:27.549313Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T04:10:27.800290Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T04:48:56.264749Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=72513
+2026-07-12T04:48:56.264800Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T04:48:56.378630Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T16:40:50.800164Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=66010
+2026-07-12T16:40:50.800515Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T16:40:51.031023Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T20:40:27.739635Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=47661
+2026-07-12T20:40:27.739738Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T20:40:27.882555Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-12T23:51:23.957925Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=51449
+2026-07-12T23:51:23.958970Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-12T23:51:24.083202Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame

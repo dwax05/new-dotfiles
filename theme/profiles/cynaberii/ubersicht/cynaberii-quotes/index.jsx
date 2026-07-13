@@ -102,6 +102,7 @@ export const render = ({ output }) => {
           background: panel,
           border: `3px solid ${accent}`,
           boxShadow: `5px 5px 0 0 ${accent2}`,
+          transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease, color 0.6s ease",
           color: ink,
           fontSize: "11px",
           lineHeight: "1.55",

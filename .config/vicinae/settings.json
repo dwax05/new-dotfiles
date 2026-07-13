@@ -11,14 +11,16 @@
 {
    "$schema": "https://vicinae.com/schemas/config.json",
    "close_on_focus_loss": true,
+   "pop_to_root_on_close": false,
    "escape_key_behavior": "",
+   "favicon_service": "twenty",
    "global_shortcuts": {
       "toggle": "control+SPACE"
    },
    "font": {
       "rendering": "native",
       "normal": {
-         "family": "CaskaydiaCove Nerd Font",
+         "family": "Silkscreen",
          "size": 13
       }
    },
@@ -27,19 +29,50 @@
          "name": "wal-dark"
       }
    },
+   "telemetry": {
+      "system_info": false
+   },
    "launcher_window": {
       "rounding": 12,
+      "opacity": 0.5,
       "compact_mode": {
          "enabled": false
-      }
+      },
+      "material": "blur"
    },
-   "favorites": [],
+   "favorites": [
+      "applications:com.spotify.client",
+      "applications:com.mitchellh.ghostty",
+      "clipboard:history",
+      "applications:com.apple.systempreferences",
+      "files:search",
+      "@sameoldlab/store.vicinae.fuzzy-files:find",
+      "core:search-emojis",
+      "@rolandleth/store.raycast.kill-process:index"
+   ],
    "providers": {
+      "@huzef44/store.raycast.keyboard-brightness": {
+         "entrypoints": {
+            "toggle-keyboard-brightness": {
+               "shortcut": "F6"
+            }
+         }
+      },
+      "applications": {
+         "entrypoints": {
+            "com.mitchellh.ghostty": {
+               "shortcut": "super+control+alt+T"
+            }
+         }
+      },
       "calculator": {
          "preferences": {
             "backend": "soulver-core",
             "refreshRatesOnStartup": true
          }
+      },
+      "shortcuts": {
+         "enabled": true
       }
    }
 }

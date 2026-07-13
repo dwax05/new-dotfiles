@@ -129,7 +129,7 @@ const Plant = ({ colors, special }) => {
     if (readStage() === NSTAGES - 1) {
       try {
         window.localStorage.setItem(STORE_KEY, "0");
-      } catch (e) {}
+      } catch (e) { }
       setStage(0);
       return;
     }
@@ -140,13 +140,13 @@ const Plant = ({ colors, special }) => {
       const next = (readStage() + 1) % NSTAGES;
       try {
         window.localStorage.setItem(STORE_KEY, String(next));
-      } catch (e) {}
+      } catch (e) { }
       // when it reaches the flowering stage, roll a surprise bloom colour
       if (next === NSTAGES - 1) {
         const fc = FLOWERS[Math.floor(Math.random() * FLOWERS.length)];
         try {
           window.localStorage.setItem(FLOWER_KEY, fc);
-        } catch (e) {}
+        } catch (e) { }
         setFlower(fc);
       }
       setStage(next);
@@ -185,19 +185,19 @@ const Plant = ({ colors, special }) => {
 
   const drops = watering
     ? fanOffsets.map((dx, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            top: `${roseY}px`,
-            left: `${roseX}px`,
-            width: `${Math.max(1, PX / 2)}px`,
-            height: `${PX}px`,
-            background: water,
-            animation: `cyn-fan-${i} 0.55s linear ${i * 0.05}s infinite`,
-          }}
-        />
-      ))
+      <div
+        key={i}
+        style={{
+          position: "absolute",
+          top: `${roseY}px`,
+          left: `${roseX}px`,
+          width: `${Math.max(1, PX / 2)}px`,
+          height: `${PX}px`,
+          background: water,
+          animation: `cyn-fan-${i} 0.55s linear ${i * 0.05}s infinite`,
+        }}
+      />
+    ))
     : [];
 
   return (
@@ -209,6 +209,7 @@ const Plant = ({ colors, special }) => {
         background: bg,
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
+        transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease",
         cursor: "pointer",
       }}
     >

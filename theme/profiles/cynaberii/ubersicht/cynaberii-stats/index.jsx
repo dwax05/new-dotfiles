@@ -14,7 +14,7 @@ export const command = "python3 './cynaberii-stats/stats.py'";
 export const refreshFrequency = 20000;
 
 export const className = `
-  right: 32px;
+  right: 60px;
   bottom: 56px;
   font-family: 'Silkscreen', 'Press Start 2P', 'Monaco', monospace;
   -webkit-font-smoothing: none;
@@ -186,6 +186,7 @@ export const render = ({ output }) => {
         background: bg,
         border: `4px solid ${accent}`,
         boxShadow: `6px 6px 0 0 ${accent2}`,
+        transition: "background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease",
       }}
     >
       {/* plant (CPU) + soil (memory) */}
