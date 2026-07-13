@@ -53,7 +53,8 @@
     },
     {
       "key": "│",
-      "type": "host",
+      "type": "command",
+      "text": "system_profiler SPHardwareDataType 2>/dev/null | awk -F': ' '/Model Name/{print $2; exit}'",
       "key": " hname",
       "keyColor": "%COLOR2%"
     },
@@ -75,7 +76,8 @@
       "key": "│",
       "type": "os",
       "key": " distro",
-      "keyColor": "%COLOR4%"
+      "keyColor": "%COLOR4%",
+      "format": "{name} {codename} {version} {arch}"
     },
     {
       "key": "│",
@@ -88,12 +90,6 @@
       "type": "terminal",
       "key": " term ",
       "keyColor": "%COLOR6%"
-    },
-    {
-      "key": "│",
-      "type": "shell",
-      "key": " shell ",
-      "keyColor": "%COLOR7%"
     },
     {
       "type": "custom",
@@ -113,7 +109,9 @@
       "key": "│",
       "type": "disk",
       "key": " disk ",
-      "keyColor": "%COLOR5%"
+      "keyColor": "%COLOR5%",
+      "folders": "/",
+      "format": "{size-used} / {size-total} ({size-percentage})"
     },
     {
       "key": "│",

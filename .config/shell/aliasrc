@@ -137,6 +137,10 @@ c(){
   clear && greet pokemon
 }
 
+# fastfetch with a random pokeget sprite (plain `fastfetch` keeps the macOS logo)
+command -v pokeget >/dev/null && \
+alias fetch='bash "${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pokefetch.sh"'
+
 # === Aliases ===
 
 # Safe file ops
