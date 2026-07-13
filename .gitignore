@@ -5,3 +5,10 @@ _agentnotes/
 
 # Mousecape cursor art — paid artist assets, do not distribute
 *.cape
+
+# macOS Finder cruft
+.DS_Store
+
+# Python bytecode cache
+__pycache__/
+*.pyc
