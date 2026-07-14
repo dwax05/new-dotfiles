@@ -57,13 +57,51 @@ mkdir "$LOCK" 2>/dev/null || exit 0
 trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 sleep 0.15
 
-JSON=$("$NP" get --json title artist playbackRate 2>/dev/null)
-TITLE=$(echo "$JSON"  | jq -r '.title        // empty' 2>/dev/null)
-ARTIST=$(echo "$JSON" | jq -r '.artist       // empty' 2>/dev/null)
-RATE=$(echo "$JSON"   | jq -r '.playbackRate // 0'    2>/dev/null)
+JSON=$("$NP" get --json title artist album duration elapsedTime playbackRate 2>/dev/null)
+TITLE=$(echo "$JSON"    | jq -r '.title        // empty' 2>/dev/null)
+ARTIST=$(echo "$JSON"   | jq -r '.artist       // empty' 2>/dev/null)
+ALBUM=$(echo "$JSON"    | jq -r '.album        // empty' 2>/dev/null)
+DURATION=$(echo "$JSON" | jq -r '.duration     // empty' 2>/dev/null)
+ELAPSED=$(echo "$JSON"  | jq -r '.elapsedTime  // empty' 2>/dev/null)
+RATE=$(echo "$JSON"     | jq -r '.playbackRate // 0'    2>/dev/null)
 # bundle id isn't exposed by `get`; pull it from the raw dump to tell a music
 # player (Spotify/Apple Music) from a browser video, etc.
 BUNDLE=$("$NP" get-raw 2>/dev/null | sed -n 's/^ *"[^"]*ClientBundleIdentifier" : "\(.*\)",\{0,1\}$/\1/p')
+
+# ── shared now-playing cache ────────────────────────────────────────────────
+# We already hold the freshest nowplaying-cli read (event-driven + 3s poll), so
+# publish it to a shared file that the Übersicht music widgets (poster,
+# nowplaying) read instead of each spawning their own nowplaying-cli. Album art
+# (the ~250KB artworkData query) is fetched once per track here, not per widget.
+SHARE_DIR="$HOME/.cache/cynaberii"
+SHARE="$SHARE_DIR/nowplaying.json"
+ART_CACHE=/tmp/cynaberii-npshare-art.b64
+ART_KEY=/tmp/cynaberii-npshare-key
+publish_share() { # writes $SHARE atomically from the current TITLE/ARTIST/... vars
+  mkdir -p "$SHARE_DIR"
+  local key="$TITLE|$ARTIST" art="" last=""
+  if [[ -n "$TITLE" ]]; then
+    last=$(cat "$ART_KEY" 2>/dev/null)
+    if [[ "$key" != "$last" ]]; then
+      # track changed -> refetch art (strip whitespace/newlines from the blob)
+      art=$("$NP" get artworkData 2>/dev/null | tr -d '[:space:]')
+      [[ ${#art} -lt 100 ]] && art=""
+      printf '%s' "$art" > "$ART_CACHE"
+      printf '%s' "$key" > "$ART_KEY"
+    else
+      art=$(cat "$ART_CACHE" 2>/dev/null)
+    fi
+  fi
+  local tmp="$SHARE.$$"
+  jq -n \
+    --arg title "$TITLE" --arg artist "$ARTIST" --arg album "$ALBUM" \
+    --arg duration "$DURATION" --arg elapsed "$ELAPSED" --arg rate "$RATE" \
+    --arg bundle "$BUNDLE" --arg art "$art" \
+    '{title:$title, artist:$artist, album:$album, duration:$duration,
+      elapsed:$elapsed, playbackRate:$rate, bundle:$bundle, art:$art}' \
+    > "$tmp" 2>/dev/null && mv -f "$tmp" "$SHARE" 2>/dev/null || rm -f "$tmp" 2>/dev/null
+}
+publish_share
 
 # nothing playing (no title) -> hide, but only after two empties in a row so a
 # transient blank during a pause/unpause toggle doesn't flash the item off

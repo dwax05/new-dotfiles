@@ -23,10 +23,10 @@ import time
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "..", "_cynshared"))
 import cyncpu  # noqa: E402  shared cheap CPU sampler
+import cynmusic  # noqa: E402  shared now-playing (reads the bar's cache)
 
 NET_STATE = "/tmp/cynaberii-pet-net"  # "timestamp totalbytes"
 EAT_KBPS = 150  # KB/s over this → "eat"
-NP = "/opt/homebrew/bin/nowplaying-cli"
 
 
 def sh(cmd):
@@ -79,26 +79,6 @@ def battery():
     return pct, plugged, charging
 
 
-def music_playing():
-    """True only when a track is actively playing (Spotify/system now-playing).
-
-    nowplaying-cli's playbackRate is the reliable signal: it's "1" while playing
-    and "null" (unparseable) when paused or stopped — so any non-positive/missing
-    value means not playing. (elapsedTime can't be used: `get elapsedTime` always
-    returns 0 regardless of state.)
-    """
-    try:
-        rate = subprocess.run(
-            [NP, "get", "playbackRate"], capture_output=True, text=True, timeout=3
-        ).stdout.strip()
-    except Exception:
-        return False
-    try:
-        return float(rate) > 0
-    except ValueError:
-        return False
-
-
 def wal_colors():
     try:
         with open(os.path.expanduser("~/.cache/wal/colors.json")) as f:
@@ -112,7 +92,7 @@ def main():
     cpu = cyncpu.cpu_pct("cynaberii-pet")
     kbps = net_kbps()
     pct, plugged, charging = battery()
-    music = music_playing()
+    music = cynmusic.is_playing()
 
     if kbps > EAT_KBPS:
         state = "eat"

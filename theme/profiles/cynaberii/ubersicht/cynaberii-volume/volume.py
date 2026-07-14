@@ -16,9 +16,13 @@ Force-test via /tmp/cynaberii-volume-force: "VOL [MUTED] [PLAYING]"
 import json
 import os
 import subprocess
+import sys
+
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "..", "_cynshared"))
+import cynmusic  # noqa: E402  shared now-playing (reads the bar's cache)
 
 FORCE = "/tmp/cynaberii-volume-force"
-NP = "/opt/homebrew/bin/nowplaying-cli"
 
 
 def sh(cmd):
@@ -50,15 +54,6 @@ def volume_state():
     return vol, muted
 
 
-def music_playing():
-    """True only while a track is actively playing (same signal as the pet)."""
-    rate = sh([NP, "get", "playbackRate"])
-    try:
-        return float(rate) > 0
-    except ValueError:
-        return False
-
-
 def wal_colors():
     try:
         with open(os.path.expanduser("~/.cache/wal/colors.json")) as f:
@@ -83,7 +78,7 @@ def main():
             vol, muted, playing = 50, False, False
     else:
         vol, muted = volume_state()
-        playing = music_playing()
+        playing = cynmusic.is_playing()
 
     colors, special = wal_colors()
     print(json.dumps({

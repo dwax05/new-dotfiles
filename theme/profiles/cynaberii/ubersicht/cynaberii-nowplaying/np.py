@@ -1,23 +1,56 @@
 #!/usr/bin/env python3
 """Data source for the cynaberii now-playing Übersicht widget.
 
-Emits one line of JSON combining nowplaying-cli track info with the live
-pywal palette (~/.cache/wal/colors.json), so the widget recolours with the
-wallpaper. Album art is emitted as a base64 data URI — Übersicht's webview
-serves widgets over http and blocks file:// URLs, so a file path won't load.
-The (large) base64 blob is cached per-track in /tmp so we only pay the
-nowplaying-cli artwork query when the track actually changes.
+Emits one line of JSON combining current track info with the live pywal palette
+(~/.cache/wal/colors.json), so the widget recolours with the wallpaper. Album
+art is emitted as a base64 data URI — Übersicht's webview serves widgets over
+http and blocks file:// URLs, so a file path won't load.
+
+Track data is read from the shared cache at ~/.cache/cynaberii/nowplaying.json,
+published by the sketchybar music plugin — one nowplaying-cli stream feeds the
+bar item plus both desktop music widgets, and album art is fetched once per
+track there instead of once per widget. If that cache is missing or stale (bar
+not running), we fall back to querying nowplaying-cli directly.
 """
 import hashlib
 import json
 import os
 import pathlib
 import subprocess
+import time
 
 NP = "/opt/homebrew/bin/nowplaying-cli"
+SHARE = os.path.expanduser("~/.cache/cynaberii/nowplaying.json")
+SHARE_STALE = 30  # seconds; older than this -> fall back to direct query
+KEYS = ["title", "artist", "album", "duration", "elapsedTime", "playbackRate"]
+
+
+def clean(v):
+    return "" if v in ("null", None) else v.strip()
+
+
+def mime_for(b64):
+    """Guess image mime from the base64 magic prefix."""
+    if b64.startswith("iVBOR"):
+        return "image/png"
+    return "image/jpeg"  # /9j/... and most everything else
+
+
+def read_share():
+    """Return the shared track dict, or None if missing/stale/unreadable."""
+    try:
+        st = os.stat(SHARE)
+        if time.time() - st.st_mtime > SHARE_STALE:
+            return None
+        with open(SHARE) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+# ── direct nowplaying-cli fallback (used only when the shared cache is absent) ─
 ART_B64 = "/tmp/cynaberii-np-art.b64"  # cached base64 for the current track
 STATE = "/tmp/cynaberii-np-last"       # track key the cache belongs to
-KEYS = ["title", "artist", "album", "duration", "elapsedTime", "playbackRate"]
 
 
 def np_get(keys):
@@ -32,23 +65,8 @@ def np_get(keys):
     return out
 
 
-def clean(v):
-    return "" if v in ("null", None) else v.strip()
-
-
-def mime_for(b64):
-    """Guess image mime from the base64 magic prefix."""
-    if b64.startswith("iVBOR"):
-        return "image/png"
-    return "image/jpeg"  # /9j/... and most everything else
-
-
-def art_data_uri(track_key):
-    """Return a base64 data URI for the current track's art, or "".
-
-    nowplaying-cli emits base64 directly, so no decode needed. Cache it per
-    track so the ~250KB query only runs on a track change.
-    """
+def art_b64_direct(track_key):
+    """Return base64 art for the current track, cached per track (fallback)."""
     last = ""
     try:
         last = pathlib.Path(STATE).read_text()
@@ -73,12 +91,30 @@ def art_data_uri(track_key):
             b64 = pathlib.Path(ART_B64).read_text().strip()
         except Exception:
             b64 = ""
+    return b64
 
-    return f"data:{mime_for(b64)};base64,{b64}" if b64 else ""
+
+def source():
+    """Return (title, artist, album, duration, elapsed, rate, art_b64)."""
+    share = read_share()
+    if share is not None:
+        return (
+            clean(share.get("title")),
+            clean(share.get("artist")),
+            clean(share.get("album")),
+            clean(share.get("duration")),
+            clean(share.get("elapsed")),
+            clean(share.get("playbackRate")),
+            (share.get("art") or "").strip(),
+        )
+    # fallback: query nowplaying-cli ourselves
+    title, artist, album, duration, elapsed, rate = (clean(x) for x in np_get(KEYS))
+    art = art_b64_direct(f"{title}|{artist}") if title else ""
+    return title, artist, album, duration, elapsed, rate, art
 
 
 def main():
-    title, artist, album, duration, elapsed, rate = (clean(x) for x in np_get(KEYS))
+    title, artist, album, duration, elapsed, rate, art_b64 = source()
 
     try:
         playing = float(rate or 0) > 0
@@ -86,7 +122,7 @@ def main():
         playing = False
 
     track_key = f"{title}|{artist}"
-    art = art_data_uri(track_key) if title else ""
+    art = f"data:{mime_for(art_b64)};base64,{art_b64}" if (title and art_b64) else ""
     art_ver = hashlib.md5(track_key.encode()).hexdigest()[:8]
 
     colors = {}
