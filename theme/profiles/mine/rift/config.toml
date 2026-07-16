@@ -14,11 +14,12 @@ mouse_hides_on_focus = false
 auto_focus_blacklist = []
 
 # ── sketchybar integration ──
-# (rift fires events, forward them to sketchybar as custom triggers. see plugins/rift.sh)
+# (Rift appends event JSON to subscriptions. Preserve its Space/display fields so
+# SketchyBar can repaint just that display; missing fields fall back to all bars.)
 run_on_start = [
-  "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_change'",
-  "rift-cli subscribe cli --event windows_changed   --command sh --args -c --args 'sketchybar --trigger rift_workspace_change'",
-  "rift-cli subscribe cli --event window_title_changed --command sh --args -c --args 'sketchybar --trigger rift_focus_change'",
+  "rift-cli subscribe cli --event workspace_changed --command /bin/bash --args -c --args 'RIFT_SKETCHYBAR_EVENT=rift_workspace_change $HOME/.dotfiles/theme/shared/rift-sketchybar-event.sh \"$@\"' --args rift-event",
+  "rift-cli subscribe cli --event windows_changed --command /bin/bash --args -c --args 'RIFT_SKETCHYBAR_EVENT=rift_workspace_change $HOME/.dotfiles/theme/shared/rift-sketchybar-event.sh \"$@\"' --args rift-event",
+  "rift-cli subscribe cli --event window_title_changed --command /bin/bash --args -c --args 'RIFT_SKETCHYBAR_EVENT=rift_focus_change $HOME/.dotfiles/theme/shared/rift-sketchybar-event.sh \"$@\"' --args rift-event",
   # (launch borders as a child of rift so it inherits rift's accessibility trust.
   # ax_focus glow can't resolve rift's SkyLight focus otherwise.)
   "/bin/bash $HOME/.config/borders/bordersrc",
@@ -43,6 +44,15 @@ default_orientation = "perpendicular"
 
 [settings.layout.gaps.outer]
 top = 7
+left = 7
+bottom = 7
+right = 7
+
+# Sidecar has no macOS menu-bar safe area, so reserve SketchyBar's 34px height
+# in addition to the normal 7px outer gap. Other displays retain their current
+# system-provided inset and the default gaps above.
+[settings.layout.gaps.per_display."00EAC196-8107-4950-8AAA-8D0A44A9E5DE".outer]
+top = 41
 left = 7
 bottom = 7
 right = 7
@@ -78,17 +88,17 @@ app_rules = [
   { title_substring = "ollama", floating = true },
   { title_substring = "Picture-in-Picture", floating = true },
   { app_id = "com.github.wez.wezterm", title_substring = "wallpaper-picker", floating = true },
+  { app_name = "wixels", floating = true },
 
   # ── auto-assign to a workspace ──
   { app_name = "Spotify", workspace = 8 },
   { app_id = "md.obsidian", workspace = 3 },
   { app_name = "Mail", workspace = 4 },
   { app_name = "App Store", workspace = 5 },
-  { app_name = "Setapp", workspace = 5, floating = true },
+  { app_name = "Setapp", floating = true },
   { app_name = "Crossover", workspace = 6, floating = true },
   { app_name = "Prism Launcher", workspace = 6, floating = true },
   { app_name = "Lunar Client", workspace = 6, floating = true },
-  { title_substring = "Claude", workspace = 6 },
   { app_name = "Discord", workspace = 7 },
   { app_id = "ai.elementlabs.lmstudio", workspace = 8 },
 ]
@@ -133,8 +143,8 @@ comb1 = "Alt + Shift"
 "Alt + Shift + Comma" = "toggle_stack"
 
 # ── join into a column ──
-"Alt + Cmd + Left"  = { join_window = "left" }
-"Alt + Cmd + Right" = { join_window = "right" }
+"Alt + Meta + Left"  = { join_window = "left" }
+"Alt + Meta + Right" = { join_window = "right" }
 # (real Backspace isn't bindable in rift. "Delete" here = forward-delete / fn+Delete.)
 "comb1 + Delete" = "unjoin_windows"
 

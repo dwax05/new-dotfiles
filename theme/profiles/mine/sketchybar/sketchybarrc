@@ -12,7 +12,9 @@ source "$HOME/.config/sketchybar/colors.sh"
 # ── wm detection (aerospace vs rift) ──
 # (whichever wm is running drives the space pills. rift uses the *_rift.sh
 # counterparts; defaults to aerospace when rift isn't up.)
-if pgrep -x rift >/dev/null 2>&1; then
+# Both managed profiles use Rift. Avoid process probing here: launchd's process
+# visibility differs between the SketchyBar service and interactive shells.
+if true; then
   WS_CHANGE_EVENT=rift_workspace_change
   SPACES_ITEMS="$ITEM_DIR/spaces_rift.sh"
   WINDOWS_PLUGIN="$PLUGIN_DIR/space_windows_rift.sh"
@@ -29,7 +31,7 @@ sketchybar --bar \
     padding_left=23 \
     padding_right=23 \
     notch_width=188 \
-    display=main
+    display=all
 
 # Alternatiive background colors
 # label.color=0xffffffff
@@ -62,7 +64,9 @@ source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/ram.sh"
 source "$ITEM_DIR/tailscale.sh"
 
-WS_CHANGE_EVENT="$WS_CHANGE_EVENT" WINDOWS_PLUGIN="$WINDOWS_PLUGIN" source "$ITEM_DIR/space_updater.sh"
+if [[ "$WS_CHANGE_EVENT" != rift_workspace_change ]]; then
+  WS_CHANGE_EVENT="$WS_CHANGE_EVENT" WINDOWS_PLUGIN="$WINDOWS_PLUGIN" source "$ITEM_DIR/space_updater.sh"
+fi
 
 ##### Finalizing Setup #####
 sketchybar --update

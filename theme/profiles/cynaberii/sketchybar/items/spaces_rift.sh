@@ -1,26 +1,10 @@
 #!/usr/bin/env bash
-# (rift version of items/spaces.sh. rift has 9 fixed workspaces so make pills 1..9
-# unconditionally, works even before rift is running. pill N == rift index N-1.)
-source "$HOME/.cache/wal/colors-sketchybar.sh"
-RIFT=/opt/homebrew/bin/rift-cli
+# Rift items are created by the per-display renderer; keeping this dispatcher
+# hidden makes a reload and a targeted custom event follow the same path.
+sketchybar --add item rift_workspace_renderer left \
+  --set rift_workspace_renderer drawing=off script="$PLUGIN_DIR/rift_render.sh" \
+  --subscribe rift_workspace_renderer rift_workspace_change rift_focus_change rift_topology_change system_woke
 
-for sid in 1 2 3 4 5 6 7 8 9; do
-  idx=$((sid - 1))
-  sketchybar --add item space."$sid" left \
-    --subscribe space."$sid" rift_workspace_change \
-    --set space."$sid" \
-      icon="$sid" \
-      icon.align=center \
-      label="" \
-      label.drawing=off \
-      icon.color=$BLACK \
-      background.color=$DIM \
-      background.corner_radius=5 \
-      background.height=25 \
-      background.drawing=on \
-      icon.padding_left=10 \
-      icon.padding_right=5 \
-      width=30 \
-      click_script="$RIFT execute workspace switch $idx && sketchybar --trigger rift_workspace_change" \
-      script="$PLUGIN_DIR/rift.sh"
-done
+sketchybar --add item rift_topology_sync left \
+  --set rift_topology_sync drawing=off update_freq=15 script="$PLUGIN_DIR/rift_topology.sh" \
+  --subscribe rift_topology_sync rift_workspace_change system_woke

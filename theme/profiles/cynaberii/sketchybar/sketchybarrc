@@ -10,14 +10,15 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 # (pywal colours if present, else the fallback so the bar still shows)
 if [ -f "$HOME/.cache/wal/colors-sketchybar.sh" ]; then
   source "$HOME/.cache/wal/colors-sketchybar.sh"
-else
-  source "$HOME/.config/sketchybar/colors-fallback.sh"
 fi
+[[ -n "${GREEN:-}" ]] || source "$HOME/.config/sketchybar/colors-fallback.sh"
 
 # ── wm detection (aerospace vs rift) ──
 # (whichever wm is running drives the pills + glyphs. rift uses the *_rift.sh
 # counterparts, defaults to aerospace.)
-if pgrep -x rift >/dev/null 2>&1; then
+# Both managed profiles use Rift. Avoid process probing here: launchd's process
+# visibility differs between the SketchyBar service and interactive shells.
+if true; then
   WM=rift
   WS_CHANGE_EVENT=rift_workspace_change
   FOCUS_EVENT=rift_focus_change
@@ -75,29 +76,18 @@ sketchybar --add event rift_workspace_change
 sketchybar --add event rift_focus_change
 source "$SPACES_ITEMS"
 
-# (separator between workspaces and window items)
-sketchybar --add item left_sep left \
-  --set left_sep \
-    width=10 \
-    background.drawing=off \
-    icon.drawing=off \
-    label.font="JetBrainsMono Nerd Font:Regular:12.0" \
-    label.drawing=off
-
-sketchybar --add item window_tracker left \
-  --set window_tracker \
-    script="$WINDOWS_PLUGIN" \
-    drawing=off \
-  --subscribe window_tracker "$WS_CHANGE_EVENT"
-
-# Workspace HUD
-    drawing=off \
-
-sketchybar --add item window_focus_tracker left \
-  --set window_focus_tracker \
-    script="$WINDOWS_FOCUS_PLUGIN" \
-    drawing=off \
-  --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
+if [[ "$WM" != rift ]]; then
+  # (separator between workspaces and window items)
+  sketchybar --add item left_sep left \
+    --set left_sep width=10 background.drawing=off icon.drawing=off \
+      label.font="JetBrainsMono Nerd Font:Regular:12.0" label.drawing=off
+  sketchybar --add item window_tracker left \
+    --set window_tracker script="$WINDOWS_PLUGIN" drawing=off \
+    --subscribe window_tracker "$WS_CHANGE_EVENT"
+  sketchybar --add item window_focus_tracker left \
+    --set window_focus_tracker script="$WINDOWS_FOCUS_PLUGIN" drawing=off \
+    --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
+fi
 
 # Music — nowplaying-cli (any player). Polled via update_freq so non-Spotify
 # sources (YouTube, Apple Music, ...) update too; the spotify_change notification
@@ -211,17 +201,19 @@ sketchybar --add item tailscale right \
              click_script="$PLUGIN_DIR/tailscale.sh -t"
 
 # subscriptions + initial paint (after all right items exist)
-for sid in 1 2 3 4 5 6 7 8 9; do
-  sketchybar --subscribe space."$sid" "$WS_CHANGE_EVENT"
-done
-sketchybar --subscribe window_tracker "$WS_CHANGE_EVENT"
-sketchybar --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
+if [[ "$WM" != rift ]]; then
+  for sid in 1 2 3 4 5 6 7 8 9; do
+    sketchybar --subscribe space."$sid" "$WS_CHANGE_EVENT"
+  done
+  sketchybar --subscribe window_tracker "$WS_CHANGE_EVENT"
+  sketchybar --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
+fi
 
 sketchybar --update
 
 # Workspace-peek watcher (refreshes window glyphs + pills on workspace change)
 pkill -f workspacepeek_watch.sh 2>/dev/null
-pkill -f riftpeek_watch.sh 2>/dev/null         # rift counterpart watcher
+pkill -f riftpeek_watch.sh 2>/dev/null
 pkill -f stage_manager_watch.sh 2>/dev/null   # kill any leftover from the old name
 rm -f /tmp/sketchybar-window-items            # stale item registry from a previous run
-bash "$PEEK_WATCH" &
+[[ "$WM" != rift ]] && bash "$PEEK_WATCH" &

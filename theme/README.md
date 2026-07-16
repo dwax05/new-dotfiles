@@ -42,12 +42,23 @@ theme/
 
 ## Window manager
 
-- **mine** → AeroSpace (quits rift/borders, opens AeroSpace.app)
-- **cynaberii** → rift (quits AeroSpace, starts rift; rift's `run_on_start`
-  spawns borders + wires sketchybar). First switch runs
+- **both profiles** → rift (quits AeroSpace, starts the rift service; rift's
+  `run_on_start` spawns borders + wires sketchybar). Each profile ships its own
+  `rift/config.toml` (both: 9 scrolling workspaces — rift's max; mine adds its
+  app rules on top of the shared layout). Install with
   `brew install acsandmann/tap/rift` if rift is missing.
+- Legacy **AeroSpace** configs are kept under `theme/profiles/*/aerospace` as a
+  manual fallback — call `ensure_aerospace_wm` in `switch.sh` to roll back.
 
 A live WM handoff reflows windows once — expected, recoverable.
+
+### Multiple displays with Rift
+
+Rift workspaces and SketchyBar workspace pills are scoped to each display. Keep
+**Displays have separate Spaces** enabled in macOS, and arrange external displays
+vertically in **System Settings → Displays** when using Rift's scrolling layout.
+That geometry keeps scrolling windows contained on their own display; the
+dotfiles intentionally do not change macOS display arrangement for you.
 
 ## Updating cynaberii
 
