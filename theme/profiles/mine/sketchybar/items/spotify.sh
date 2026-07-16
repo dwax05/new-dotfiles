@@ -3,6 +3,7 @@
 sketchybar --add event spotify_change $SPOTIFY_EVENT \
     --add item spotify e \
     --set spotify \
+    display=main \
     icon= \
     icon.y_offset=1 \
     icon.font="$FONT_FACE:Medium:20.0" \

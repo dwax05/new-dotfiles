@@ -96,6 +96,7 @@ sketchybar --add event spotify_change "$SPOTIFY_EVENT"
 # Music sits just to the left of the notch (position q)
 sketchybar --add item music q \
            --set music \
+             display=main \
              icon.font="pixelart-icons-font:Regular:14.0" \
              icon.color=$WHITE \
              label.color=$WHITE \
