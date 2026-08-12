@@ -11,7 +11,8 @@ STATE=/tmp/sketchybar-rift-cynaberii-items
 TARGET_UUID="${RIFT_DISPLAY_UUID:-}"
 TARGET_SPACE="${RIFT_SPACE_ID:-}"
 ALL=1; [[ -n "$TARGET_UUID$TARGET_SPACE" ]] && ALL=0
-declare -A NOW
+MAX_WINDOWS=5
+declare -A NOW RKEYS
 
 add_space() { # uuid space bar workspace active occupied
   local uuid=$1 space=$2 bar=$3 ws=$4 active=$5 occupied=$6 key item idx
@@ -40,13 +41,19 @@ add_windows() { # uuid bar workspace-json
         label="$app" label.color="$fg" background.color="$bg" background.corner_radius=5 background.height=25 \
         icon.padding_left=6 icon.padding_right=2 label.padding_left=2 label.padding_right=8 drawing=on
     sketchybar --move "$item" after "$prev"; prev=$item
-  done < <(printf '%s' "$json" | "$JQ_BIN" -r '.[] | select(.is_active) | .windows | sort_by(.frame.origin.x, .frame.origin.y) | .[]? | "\(.window_server_id)\t\(.app_name)\t\(.is_focused)"')
+  done < <(printf '%s' "$json" | "$JQ_BIN" -r --argjson max "$MAX_WINDOWS" '
+    .[] | select(.is_active) | .windows
+    | map(select(.window_server_id != null and .app_name != "Python" and .app_name != "python3"))
+    | sort_by(.frame.origin.x, .frame.origin.y)
+    | .[0:$max][]
+    | "\(.window_server_id)\t\(.app_name)\t\(.is_focused)"')
 }
 
 while IFS=$'\t' read -r uuid space bar; do
   [[ $ALL == 0 && "$uuid" != "$TARGET_UUID" && "$space" != "$TARGET_SPACE" ]] && continue
   json=$(rift_query query workspaces --space-id "$space" 2>/dev/null) || continue
   [[ -n "$json" ]] || continue
+  RKEYS[$(rift_item_key "$uuid")]=1
   for ws in {1..9}; do
     active=$(printf '%s' "$json" | "$JQ_BIN" -r --arg ws "$ws" 'any(.[]; .name == $ws and .is_active)' )
     occupied=$(printf '%s' "$json" | "$JQ_BIN" -r --arg ws "$ws" 'any(.[]; .name == $ws and ((.window_count // (.windows | length)) > 0))')
@@ -55,10 +62,19 @@ while IFS=$'\t' read -r uuid space bar; do
   add_windows "$uuid" "$bar" "$json"
 done < <(rift_display_inventory 2>/dev/null)
 
-if [[ $ALL == 1 && -f $STATE ]]; then
+# Reconcile stale items. Only touch displays we actually rendered this pass
+# (RKEYS); items for other displays are preserved so a targeted event doesn't
+# wipe a bar it never looked at. This runs on every pass, not just full ones —
+# that's what evicts window items for apps that have since closed.
+declare -A KEEP
+if [[ -f $STATE ]]; then
   while read -r item; do
-    [[ -z "$item" ]] && continue
-    [[ -n ${NOW[$item]:-} ]] || sketchybar --remove "$item"
+    [[ -z "$item" || -n ${NOW[$item]:-} ]] && continue
+    rendered=0
+    for k in "${!RKEYS[@]}"; do
+      [[ "$item" == "rift_space_${k}_"* || "$item" == "rift_window_${k}_"* || "$item" == "rift_sep_${k}" ]] && { rendered=1; break; }
+    done
+    if [[ $rendered == 1 ]]; then sketchybar --remove "$item" 2>/dev/null; else KEEP[$item]=1; fi
   done < "$STATE"
 fi
-if [[ $ALL == 1 ]]; then printf '%s\n' "${!NOW[@]}" > "$STATE"; fi
+{ for i in "${!KEEP[@]}" "${!NOW[@]}"; do printf '%s\n' "$i"; done; } | sort -u > "$STATE"
