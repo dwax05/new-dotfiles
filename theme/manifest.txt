@@ -6,9 +6,9 @@
 # ~/.config (gh, git, opencode, herdr, kari, greg, ...) is left alone.
 # A profile that lacks a source for an entry means: on switch to that profile,
 # remove the managed symlink (real dirs are never deleted — see switch.sh guard).
-# rift is the WM for BOTH profiles now (each profile ships its own rift config,
-# swapped in like any other cfg). Legacy aerospace configs live under
-# theme/profiles/*/aerospace as a manual fallback (not in this manifest).
+# cynaberii uses AeroSpace floating workspaces; mine uses Rift.
+# Keep both WM configs linked to the selected profile.
+cfg   aerospace
 cfg   borders
 cfg   btop
 cfg   cava

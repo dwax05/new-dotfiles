@@ -66,7 +66,7 @@ preserve_focus_per_workspace = true
 workspace_auto_back_and_forth = false
 reapply_app_rules_on_title_change = false
 workspace_rules = []
-workspace_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+workspace_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # (ported from the old aerospace on-window-detected rules. rift workspaces are
 # 0-indexed, so workspace = N is the space labelled N+1. Spotify lived on aerospace

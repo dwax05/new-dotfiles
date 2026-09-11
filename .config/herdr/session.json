@@ -2,31 +2,53 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "w17",
+      "id": "w2A",
       "custom_name": null,
-      "identity_cwd": "/Users/dylanwax",
+      "identity_cwd": "/Users/dylanwax/Library/Application Support/Terraria",
       "public_pane_numbers": {
-        "17": 1
+        "11": 2,
+        "10": 1
       },
-      "next_public_pane_number": 2,
+      "next_public_pane_number": 5,
       "public_tab_numbers": [
-        1
+        1,
+        2
       ],
-      "next_public_tab_number": 2,
+      "next_public_tab_number": 3,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Pane": 17
+            "Pane": 10
           },
           "panes": {
-            "17": {
-              "cwd": "/Users/dylanwax"
+            "10": {
+              "cwd": "/Users/dylanwax/Library/Application Support/Terraria",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "33d84ef4-4f33-4424-bdab-a3d9314c8df4"
+              }
             }
           },
           "zoomed": false,
-          "focused": 17,
-          "root_pane": 17
+          "focused": 10,
+          "root_pane": 10
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 11
+          },
+          "panes": {
+            "11": {
+              "cwd": "/Users/dylanwax/Library/Application Support/Terraria/tModLoader/Worlds"
+            }
+          },
+          "zoomed": false,
+          "focused": 11,
+          "root_pane": 11
         }
       ],
       "active_tab": 0

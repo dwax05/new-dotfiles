@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # theme-switch: flip the themed configs (and window manager) between profiles.
 #
-#   theme-switch mine        # your setup (AeroSpace + your sketchybar)
-#   theme-switch cynaberii   # cynaberii's setup (rift + their sketchybar/borders)
+#   theme-switch mine        # your setup (rift + your sketchybar)
+#   theme-switch cynaberii   # AeroSpace floating workspaces + cynaberii's bar
 #   theme-switch status      # show active profile + link health
 #   theme-switch migrate     # one-time: move your live themed configs into
 #                            # profiles/mine and replace them with managed symlinks
@@ -76,17 +76,13 @@ link_profile() { # $1 profile
 }
 
 # ── window manager ───────────────────────────────────────────────────────
-# Both profiles now use rift as the WM (each profile ships its own theme/profiles/
-# <profile>/rift, symlinked to ~/.config/rift by the manifest). Both bars auto-
-# detect the WM (pgrep rift -> the *_rift.sh plugins, else aerospace), so we stop
-# AeroSpace and (re)start the rift service. rift's run_on_start launches borders.
+# Each profile selects its WM explicitly, matching its SketchyBar configuration.
 ensure_rift_wm() {
   say "==> window manager: rift (stopping AeroSpace if present)"
   pkill -x AeroSpace 2>/dev/null || true
   if ! command -v rift >/dev/null 2>&1; then
     warn "rift not installed — 'brew install acsandmann/tap/rift'"; return
   fi
-  # Both profiles use rift; a theme switch only re-points its config symlink.
   # If rift is already up, DON'T restart it — a restart re-tiles every window at
   # once and freezes the desktop. Leave the running WM alone; only (re)start when
   # it's actually down. (Config differences apply on the next natural rift start.)
@@ -95,6 +91,7 @@ ensure_rift_wm() {
     return
   fi
   rift service install >/dev/null 2>&1 || true
+  launchctl enable "gui/$(id -u)/git.acsandmann.rift" 2>/dev/null || true
   if rift service start >/dev/null 2>&1; then
     ok "rift service started"
   else
@@ -102,19 +99,29 @@ ensure_rift_wm() {
   fi
 }
 
-# Legacy fallback: flip a profile back to AeroSpace by calling this instead of
-# ensure_rift_wm (aerospace configs are kept under theme/profiles/*/aerospace).
 ensure_aerospace_wm() {
-  say "==> window manager: AeroSpace (stopping rift/borders if present)"
+  if [ ! -d "/Applications/AeroSpace.app" ]; then
+    err "AeroSpace.app not found — install with: brew install --cask nikitabobko/tap/aerospace"
+    return 1
+  fi
+  say "==> window manager: AeroSpace (floating workspaces)"
+  # Rift may be registered with Homebrew, its own service, or both. Stop the
+  # KeepAlive job before the process so launchd cannot immediately restart it.
+  if [ -f "$HOME/Library/LaunchAgents/homebrew.mxcl.rift.plist" ]; then
+    env -u TMUX brew services stop rift || return 1
+  fi
   rift service stop >/dev/null 2>&1 || true
-  pkill -x rift 2>/dev/null || true
-  pkill -x borders 2>/dev/null || true
+  launchctl disable "gui/$(id -u)/git.acsandmann.rift" 2>/dev/null || true
+  if pgrep -x rift >/dev/null 2>&1; then
+    err "rift is still running — cannot start AeroSpace alongside it"
+    return 1
+  fi
   if pgrep -x AeroSpace >/dev/null 2>&1; then
-    ok "AeroSpace already running"
-  elif [ -d "/Applications/AeroSpace.app" ]; then
-    open -a AeroSpace; ok "AeroSpace started"
+    aerospace reload-config || return 1
+    ok "AeroSpace config reloaded"
   else
-    warn "AeroSpace.app not found — start your WM manually"
+    open -a AeroSpace || return 1
+    ok "AeroSpace started"
   fi
 }
 
@@ -217,7 +224,7 @@ switch() { # $1 profile
   say "==> switching themed configs -> $profile"
   link_profile "$profile" || exit 1
   case "$profile" in
-    cynaberii) ensure_rift_wm; wal_watch_load ;;
+    cynaberii) ensure_aerospace_wm || return 1; wal_watch_load ;;
     mine)      ensure_rift_wm; wal_watch_load ;;
   esac
   seed_bar_colors "$profile"

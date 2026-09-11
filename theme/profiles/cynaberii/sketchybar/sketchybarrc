@@ -13,28 +13,13 @@ if [ -f "$HOME/.cache/wal/colors-sketchybar.sh" ]; then
 fi
 [[ -n "${GREEN:-}" ]] || source "$HOME/.config/sketchybar/colors-fallback.sh"
 
-# ── wm detection (aerospace vs rift) ──
-# (whichever wm is running drives the pills + glyphs. rift uses the *_rift.sh
-# counterparts, defaults to aerospace.)
-# Both managed profiles use Rift. Avoid process probing here: launchd's process
-# visibility differs between the SketchyBar service and interactive shells.
-if true; then
-  WM=rift
-  WS_CHANGE_EVENT=rift_workspace_change
-  FOCUS_EVENT=rift_focus_change
-  SPACES_ITEMS="$ITEM_DIR/spaces_rift.sh"
-  WINDOWS_PLUGIN="$PLUGIN_DIR/windows_rift.sh"
-  WINDOWS_FOCUS_PLUGIN="$PLUGIN_DIR/windows_focus_rift.sh"
-  PEEK_WATCH="$PLUGIN_DIR/riftpeek_watch.sh"
-else
-  WM=aerospace
-  WS_CHANGE_EVENT=aerospace_workspace_change
-  FOCUS_EVENT=focus_change
-  SPACES_ITEMS="$ITEM_DIR/spaces.sh"
-  WINDOWS_PLUGIN="$PLUGIN_DIR/windows.sh"
-  WINDOWS_FOCUS_PLUGIN="$PLUGIN_DIR/windows_focus.sh"
-  PEEK_WATCH="$PLUGIN_DIR/workspacepeek_watch.sh"
-fi
+# This profile uses AeroSpace for workspaces with floating windows.
+WM=aerospace
+WS_CHANGE_EVENT=aerospace_workspace_change
+FOCUS_EVENT=focus_change
+SPACES_ITEMS="$ITEM_DIR/spaces.sh"
+WINDOWS_PLUGIN="$PLUGIN_DIR/windows.sh"
+WINDOWS_FOCUS_PLUGIN="$PLUGIN_DIR/windows_focus.sh"
 
 sketchybar --bar \
   position=top \
@@ -83,7 +68,7 @@ if [[ "$WM" != rift ]]; then
       label.font="JetBrainsMono Nerd Font:Regular:12.0" label.drawing=off
   sketchybar --add item window_tracker left \
     --set window_tracker script="$WINDOWS_PLUGIN" drawing=off \
-    --subscribe window_tracker "$WS_CHANGE_EVENT"
+    --subscribe window_tracker "$WS_CHANGE_EVENT" "$FOCUS_EVENT" space_windows_change
   sketchybar --add item window_focus_tracker left \
     --set window_focus_tracker script="$WINDOWS_FOCUS_PLUGIN" drawing=off \
     --subscribe window_focus_tracker "$FOCUS_EVENT" front_app_switched
@@ -212,9 +197,8 @@ fi
 
 sketchybar --update
 
-# Workspace-peek watcher (refreshes window glyphs + pills on workspace change)
+# Stop legacy pollers. AeroSpace callbacks now refresh the bar immediately.
 pkill -f workspacepeek_watch.sh 2>/dev/null
 pkill -f riftpeek_watch.sh 2>/dev/null
 pkill -f stage_manager_watch.sh 2>/dev/null   # kill any leftover from the old name
 rm -f /tmp/sketchybar-window-items            # stale item registry from a previous run
-[[ "$WM" != rift ]] && bash "$PEEK_WATCH" &

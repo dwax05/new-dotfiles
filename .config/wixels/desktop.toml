@@ -1,0 +1,80 @@
+[colors]
+file = '~/.cache/wal/colors.json'
+
+[plugins]
+activeFolder = 'Cynaberii'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'clock'
+kind = 'clock'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'disk-snail'
+kind = 'disk-snail'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'frog'
+kind = 'frog'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'nowplaying'
+kind = 'nowplaying'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'owl'
+kind = 'owl'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'pet'
+kind = 'pet'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'plant'
+kind = 'plant'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'poster'
+kind = 'poster'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'quotes'
+kind = 'quotes'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'stats'
+kind = 'stats'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'sys'
+kind = 'sys'
+
+[[widget]]
+enabled = true
+folder = 'Cynaberii'
+id = 'weather'
+kind = 'weather'
+
+    [widget.options]
+    ipinfoToken = '8a6433b5fa4b99'

@@ -10,15 +10,15 @@
       "right": 2 // Right padding
     },
     "color": { // Override logo colors
-      "1": "#9791AE",
-      "2": "#8776AB"
+      "1": "#D08FD0",
+      "2": "#F4A4B9"
     }
   },
   "display": {
     "separator": " ", // Separator between keys and values
     "color": {
-      "keys": "#9791AE", // Key color
-      "title": "#896C9C" // Title color
+      "keys": "#D08FD0", // Key color
+      "title": "#5E89DA" // Title color
     },
     "key": {
       "width": 12, // Aligns keys to this width
@@ -34,9 +34,9 @@
     "percent": {
       "type": 9, // 1=number, 2=bar, 3=both, 9=colored number
       "color": {
-        "green": "#8776AB",
-        "yellow": "#7E81AE",
-        "red": "#896C9C"
+        "green": "#F4A4B9",
+        "yellow": "#A28DD3",
+        "red": "#5E89DA"
       }
     }
   },
@@ -49,19 +49,20 @@
       "key": " user ",
       "type": "title",
       "format": "{user-name}",
-      "keyColor": "#896C9C"
+      "keyColor": "#5E89DA"
     },
     {
       "key": "│",
-      "type": "host",
+      "type": "command",
+      "text": "system_profiler SPHardwareDataType 2>/dev/null | awk -F': ' '/Model Name/{print $2; exit}'",
       "key": " hname",
-      "keyColor": "#8776AB"
+      "keyColor": "#F4A4B9"
     },
     {
       "key": "│",
       "type": "uptime",
       "key": " uptime",
-      "keyColor": "#7E81AE"
+      "keyColor": "#A28DD3"
     },
     {
       "type": "custom",
@@ -75,25 +76,20 @@
       "key": "│",
       "type": "os",
       "key": " distro",
-      "keyColor": "#9791AE"
+      "keyColor": "#D08FD0",
+      "format": "{name} {codename} {version} {arch}"
     },
     {
       "key": "│",
       "type": "kernel",
       "key": " kernel",
-      "keyColor": "#A795D3"
+      "keyColor": "#F193CA"
     },
     {
       "key": "│",
       "type": "terminal",
       "key": " term ",
-      "keyColor": "#C0BFC5"
-    },
-    {
-      "key": "│",
-      "type": "shell",
-      "key": " shell ",
-      "keyColor": "#c4c3c9"
+      "keyColor": "#D9AAD9"
     },
     {
       "type": "custom",
@@ -107,19 +103,21 @@
       "key": "│",
       "type": "cpu",
       "key": " cpu ",
-      "keyColor": "#9791AE"
+      "keyColor": "#D08FD0"
     },
     {
       "key": "│",
       "type": "disk",
       "key": " disk ",
-      "keyColor": "#A795D3"
+      "keyColor": "#F193CA",
+      "folders": "/",
+      "format": "{size-used} / {size-total} ({size-percentage})"
     },
     {
       "key": "│",
       "type": "memory",
       "key": " memory",
-      "keyColor": "#C0BFC5"
+      "keyColor": "#D9AAD9"
     },
     {
       "type": "custom",

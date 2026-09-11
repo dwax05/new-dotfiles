@@ -4,9 +4,10 @@
 Emits system output volume + mute state + whether audio is actively playing,
 plus the pywal palette so the boombox recolours with the wallpaper.
 
-Cheap, no-sudo: `osascript` reads the volume settings; playback state reuses the
-same `nowplaying-cli get playbackRate` signal the pet uses (1 while playing,
-unparseable when paused). The eq bars only animate when playing — idle is static.
+Cheap, no-sudo: `osascript` reads the volume settings; playback state comes from
+the shared now-playing cache (cynmusic.is_playing) that the sketchybar music
+plugin publishes, so this widget spawns no nowplaying-cli of its own. The eq bars
+only animate when playing — idle is static.
 
 Force-test via /tmp/cynaberii-volume-force: "VOL [MUTED] [PLAYING]"
   e.g. "70"        → volume 70, unmuted, not playing

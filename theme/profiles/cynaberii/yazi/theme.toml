@@ -1,65 +1,65 @@
 [mgr]
-cwd = { fg = "#c4c3c9" }
-hovered = { fg = "#161027", bg = "#c4c3c9" }
-find_keyword = { fg = "#C0BFC5", italic = true }
-find_position = { fg = "#c4c3c9", bold = true, italic = true }
-marker_copied = { fg = "#161027", bg = "#C0BFC5" }
-marker_cut = { fg = "#161027", bg = "#896C9C" }
-marker_marked = { fg = "#161027", bg = "#8776AB" }
-marker_selected = { fg = "#161027", bg = "#A795D3" }
-tab_active = { fg = "#161027", bg = "#c4c3c9" }
-tab_inactive = { fg = "#896C9C", bg = "#655f75" }
-count_copied = { fg = "#161027", bg = "#C0BFC5" }
-count_cut = { fg = "#161027", bg = "#896C9C" }
-count_selected = { fg = "#161027", bg = "#A795D3" }
-border_fg = "#A795D3"
+cwd = { fg = "#c4c4cb" }
+hovered = { fg = "#141630", bg = "#c4c4cb" }
+find_keyword = { fg = "#D9AAD9", italic = true }
+find_position = { fg = "#c4c4cb", bold = true, italic = true }
+marker_copied = { fg = "#141630", bg = "#D9AAD9" }
+marker_cut = { fg = "#141630", bg = "#5E89DA" }
+marker_marked = { fg = "#141630", bg = "#F4A4B9" }
+marker_selected = { fg = "#141630", bg = "#F193CA" }
+tab_active = { fg = "#141630", bg = "#c4c4cb" }
+tab_inactive = { fg = "#5E89DA", bg = "#63657a" }
+count_copied = { fg = "#141630", bg = "#D9AAD9" }
+count_cut = { fg = "#141630", bg = "#5E89DA" }
+count_selected = { fg = "#141630", bg = "#F193CA" }
+border_fg = "#F193CA"
 
 [status]
-mode_normal = { fg = "#161027", bg = "#c4c3c9", bold = true }
-mode_select = { fg = "#161027", bg = "#8776AB", bold = true }
-mode_unset = { fg = "#161027", bg = "#896C9C", bold = true }
-progress_fg = "#c4c3c9"
-progress_bg = "#655f75"
-progress_error = { fg = "#896C9C", bg = "#161027" }
-permissions_t = "#c4c3c9"
-permissions_r = "#C0BFC5"
-permissions_w = "#896C9C"
-permissions_x = "#8776AB"
-permissions_s = "#A795D3"
+mode_normal = { fg = "#141630", bg = "#c4c4cb", bold = true }
+mode_select = { fg = "#141630", bg = "#F4A4B9", bold = true }
+mode_unset = { fg = "#141630", bg = "#5E89DA", bold = true }
+progress_fg = "#c4c4cb"
+progress_bg = "#63657a"
+progress_error = { fg = "#5E89DA", bg = "#141630" }
+permissions_t = "#c4c4cb"
+permissions_r = "#D9AAD9"
+permissions_w = "#5E89DA"
+permissions_x = "#F4A4B9"
+permissions_s = "#F193CA"
 
 [input]
-border = "#A795D3"
-selected = { fg = "#161027", bg = "#c4c3c9" }
+border = "#F193CA"
+selected = { fg = "#141630", bg = "#c4c4cb" }
 
 [select]
-border = "#A795D3"
-active = "#c4c3c9"
+border = "#F193CA"
+active = "#c4c4cb"
 
 [tasks]
-border = "#A795D3"
+border = "#F193CA"
 
 [which]
-mask_bg = "#655f75"
-cand = "#c4c3c9"
-rest = "#c4c3c9"
-desc = "#C0BFC5"
+mask_bg = "#63657a"
+cand = "#c4c4cb"
+rest = "#c4c4cb"
+desc = "#D9AAD9"
 
 [notify]
-title_info = "#c4c3c9"
-title_warn = "#C0BFC5"
-title_error = "#896C9C"
+title_info = "#c4c4cb"
+title_warn = "#D9AAD9"
+title_error = "#5E89DA"
 
 [filetype]
 rules = [
-  { mime = "image/*", fg = "#C0BFC5" },
-  { mime = "video/*", fg = "#C0BFC5" },
-  { mime = "audio/*", fg = "#C0BFC5" },
-  { mime = "application/zip", fg = "#896C9C" },
-  { mime = "application/x-tar", fg = "#896C9C" },
-  { mime = "application/x-bzip2", fg = "#896C9C" },
-  { mime = "application/x-7z-compressed", fg = "#896C9C" },
-  { mime = "application/x-rar", fg = "#896C9C" },
-  { mime = "text/*", fg = "#c4c3c9" },
-  { mime = "application/json", fg = "#8776AB" },
-  { mime = "*/", fg = "#c4c3c9" },
+  { mime = "image/*", fg = "#D9AAD9" },
+  { mime = "video/*", fg = "#D9AAD9" },
+  { mime = "audio/*", fg = "#D9AAD9" },
+  { mime = "application/zip", fg = "#5E89DA" },
+  { mime = "application/x-tar", fg = "#5E89DA" },
+  { mime = "application/x-bzip2", fg = "#5E89DA" },
+  { mime = "application/x-7z-compressed", fg = "#5E89DA" },
+  { mime = "application/x-rar", fg = "#5E89DA" },
+  { mime = "text/*", fg = "#c4c4cb" },
+  { mime = "application/json", fg = "#F4A4B9" },
+  { mime = "*/", fg = "#c4c4cb" },
 ]

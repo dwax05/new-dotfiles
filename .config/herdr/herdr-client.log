@@ -105,3 +105,104 @@
 2026-07-12T23:51:23.957925Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=51449
 2026-07-12T23:51:23.958970Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
 2026-07-12T23:51:24.083202Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T01:11:15.596641Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=61638
+2026-07-13T01:11:15.596692Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T01:11:15.832175Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T01:13:55.934889Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=68827
+2026-07-13T01:13:55.934934Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T01:13:56.176550Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T01:49:40.027896Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=37958
+2026-07-13T01:49:40.027990Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T01:49:40.101928Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T02:35:13.066724Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=31489
+2026-07-13T02:35:13.067061Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T02:35:13.215474Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T05:42:01.073987Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=63459
+2026-07-13T05:42:01.074243Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T05:42:01.282886Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T05:50:20.082551Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=91820
+2026-07-13T05:50:20.082662Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T05:50:20.115934Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T06:53:37.001913Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=55228
+2026-07-13T06:53:37.002020Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T06:53:37.067671Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T07:13:22.707231Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=48629
+2026-07-13T07:13:22.707519Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T07:13:22.952683Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T07:28:40.816344Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=83086
+2026-07-13T07:28:40.816416Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T07:28:41.022715Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T19:12:14.003007Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=9472
+2026-07-13T19:12:14.003359Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T19:12:14.164927Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T20:10:54.482948Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=55844
+2026-07-13T20:10:54.483039Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T20:10:54.529843Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-13T22:54:31.069817Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=28332
+2026-07-13T22:54:31.069881Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-13T22:54:31.248784Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-14T04:01:58.783700Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=63417
+2026-07-14T04:01:58.784066Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-14T04:01:59.034992Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-14T16:14:39.262156Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=97609
+2026-07-14T16:14:39.262272Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-14T16:14:39.488518Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-15T02:20:04.125619Z  WARN herdr::sound: sound playback failed sound=Request err=player exited with exit status: 1
+2026-07-15T06:57:44.576434Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=31075
+2026-07-15T06:57:44.576669Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-15T06:57:44.780006Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-15T07:22:40.356340Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=35524
+2026-07-15T07:22:40.356417Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-15T07:22:40.389856Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-15T19:20:19.971999Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=95460
+2026-07-15T19:20:19.972398Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-15T19:20:20.197364Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-16T03:37:18.235169Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=2853
+2026-07-16T03:37:18.235258Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-16T03:37:18.258218Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-16T05:33:00.532820Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=19999
+2026-07-16T05:33:00.532878Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-16T05:33:00.610346Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-16T08:27:04.073685Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=45481
+2026-07-16T08:27:04.073915Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-16T08:27:04.229850Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-16T21:04:06.114647Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=75280
+2026-07-16T21:04:06.114907Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-16T21:04:06.122254Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-17T18:09:34.553952Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=84480
+2026-07-17T18:09:34.554284Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-17T18:09:34.752888Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-18T05:17:59.711818Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=86938
+2026-07-18T05:17:59.712409Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-18T05:17:59.935228Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-18T07:37:09.187679Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=55829
+2026-07-18T07:37:09.188668Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-18T07:37:09.279588Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-21T19:42:39.095438Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=41014
+2026-07-21T19:42:39.096088Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-21T19:42:39.152500Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-22T08:07:51.476528Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=19486
+2026-07-22T08:07:51.477146Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-22T08:07:51.654594Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-22T08:35:24.386446Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=85966
+2026-07-22T08:35:24.386956Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-22T08:35:24.421325Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-24T05:43:34.073623Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=68191
+2026-07-24T05:43:34.073880Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-24T05:43:34.142748Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-27T05:02:11.849627Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=6995
+2026-07-27T05:02:11.850070Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-27T05:02:11.977184Z  INFO herdr::client: handshake succeeded version=16 encoding=SemanticFrame
+2026-07-27T21:02:05.598304Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=5294
+2026-07-27T21:02:05.598508Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-27T21:02:05.836274Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame
+2026-07-28T02:15:33.503388Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1
+2026-07-31T03:36:54.638488Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=76168
+2026-07-31T03:36:54.638835Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-07-31T03:36:54.660240Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame
+2026-08-05T00:35:06.575389Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=72803
+2026-08-05T00:35:06.575600Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-08-05T00:35:06.764733Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame
+2026-08-07T02:57:56.223567Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=41724
+2026-08-07T02:57:56.223879Z  INFO herdr::client: connecting to server path=/Users/dylanwax/.config/herdr/herdr-client.sock
+2026-08-07T02:57:56.260648Z  INFO herdr::client: handshake succeeded version=17 encoding=SemanticFrame

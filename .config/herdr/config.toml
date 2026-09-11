@@ -188,6 +188,7 @@ prompt_new_tab_name = false
 # accent = "cyan"
 
 # Background notification popup delivery
+agent_panel_sort = "priority"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
@@ -263,3 +264,27 @@ switch_ascii_input_source_in_prefix = true
 # Maximum scrollback buffer size in bytes retained per pane terminal.
 # Matches Ghostty's default scrollback-limit behavior.
 # scrollback_limit_bytes = 10000000
+#
+# [[keys.command]]
+# key = "ctrl+h"
+# type = "plugin_action"
+# command = "vim-herdr-navigation.left"
+# description = "navigate left (vim/herdr)"
+#
+# [[keys.command]]
+# key = "ctrl+j"
+# type = "plugin_action"
+# command = "vim-herdr-navigation.down"
+# description = "navigate down (vim/herdr)"
+#
+# [[keys.command]]
+# key = "ctrl+k"
+# type = "plugin_action"
+# command = "vim-herdr-navigation.up"
+# description = "navigate up (vim/herdr)"
+#
+# [[keys.command]]
+# key = "ctrl+l"
+# type = "plugin_action"
+# command = "vim-herdr-navigation.right"
+# description = "navigate right (vim/herdr)"

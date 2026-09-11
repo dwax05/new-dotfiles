@@ -41,6 +41,7 @@
       "material": "blur"
    },
    "favorites": [
+      "@sc0/store.raycast.antinote:pin-unpin",
       "applications:com.spotify.client",
       "applications:com.mitchellh.ghostty",
       "clipboard:history",

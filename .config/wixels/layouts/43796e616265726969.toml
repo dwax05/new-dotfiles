@@ -1,0 +1,91 @@
+# Wixels layout for Cynaberii
+# This file is generated; desktop.toml keeps enablement and options.
+
+group = "Cynaberii"
+
+[[widget]]
+id = "clock"
+anchor = "topCenter"
+offset = [0, -70]
+size = [220, 120]
+zBoost = 1
+
+[[widget]]
+id = "disk-snail"
+anchor = "topLeft"
+offset = [2, -34]
+size = [247, 173]
+zBoost = 0
+
+[[widget]]
+id = "frog"
+anchor = "topCenter"
+offset = [0, -136]
+size = [100, 200]
+zBoost = 0
+
+[[widget]]
+id = "nowplaying"
+anchor = "bottomLeft"
+offset = [12, 36]
+size = [320, 96]
+zBoost = 0
+
+[[widget]]
+id = "owl"
+anchor = "bottomRight"
+offset = [-3, 177]
+size = [90, 70]
+zBoost = 0
+
+[[widget]]
+id = "pet"
+anchor = "bottomLeft"
+offset = [224, 116]
+size = [92, 106]
+zBoost = 0
+
+[[widget]]
+id = "plant"
+anchor = "topLeft"
+offset = [40, -220]
+size = [120, 130]
+zBoost = 0
+
+[[widget]]
+id = "poster"
+anchor = "topRight"
+offset = [0, -220]
+size = [230, 460]
+zBoost = 0
+align = "trailing"
+
+[[widget]]
+id = "quotes"
+anchor = "bottomLeft"
+offset = [300, 90]
+size = [250, 150]
+zBoost = 0
+
+[[widget]]
+id = "stats"
+anchor = "bottomRight"
+offset = [0, 36]
+size = [220, 164]
+zBoost = 0
+align = "trailing"
+
+[[widget]]
+id = "sys"
+anchor = "topLeft"
+offset = [40, -60]
+size = [180, 120]
+zBoost = 0
+
+[[widget]]
+id = "weather"
+anchor = "topRight"
+offset = [0, -60]
+size = [130, 150]
+zBoost = 0
+align = "trailing"

@@ -1,15 +1,15 @@
 # theme switcher
 
-Flip the whole visual stack between **mine** (AeroSpace + my sketchybar) and
-**cynaberii** ([cynaberii/dotfiles](https://github.com/cynaberii/dotfiles), rift +
-their sketchybar/borders).
+Flip the whole visual stack between **mine** (Rift + my sketchybar) and
+**cynaberii** ([cynaberii/dotfiles](https://github.com/cynaberii/dotfiles),
+AeroSpace floating workspaces + their sketchybar/borders).
 
 ## Usage
 
 ```sh
 theme-switch status       # active profile + link health
-theme-switch cynaberii    # switch to cynaberii's look + rift
-theme-switch mine         # switch back to mine + AeroSpace
+theme-switch cynaberii    # cynaberii's look + AeroSpace floating workspaces
+theme-switch mine         # switch back to mine + Rift
 ```
 
 ## How it works (Path A: symlink flip)
@@ -42,15 +42,20 @@ theme/
 
 ## Window manager
 
-- **both profiles** → rift (quits AeroSpace, starts the rift service; rift's
-  `run_on_start` spawns borders + wires sketchybar). Each profile ships its own
-  `rift/config.toml` (both: 9 scrolling workspaces — rift's max; mine adds its
-  app rules on top of the shared layout). Install with
-  `brew install acsandmann/tap/rift` if rift is missing.
-- Legacy **AeroSpace** configs are kept under `theme/profiles/*/aerospace` as a
-  manual fallback — call `ensure_aerospace_wm` in `switch.sh` to roll back.
+- **cynaberii** → AeroSpace for virtual workspaces, with every detected window
+  floating. No tiling, resize, or float/tiling-toggle shortcuts are bound.
+  `Alt+1…9/0` switches workspace; `Alt+Shift+1…9/0` sends the focused window;
+  `Alt+Tab` returns to the previous workspace. Number-pad equivalents also work.
+  `Alt+arrows` / `Alt+H/J/K/L` changes focus among floating windows.
+  Workspace and focus callbacks update SketchyBar immediately.
+  Install with `brew install --cask nikitabobko/tap/aerospace`.
+- **mine** → Rift (quits AeroSpace and starts Rift with its existing scrolling
+  layout). Install with `brew install acsandmann/tap/rift` if Rift is missing.
 
-A live WM handoff reflows windows once — expected, recoverable.
+Both WM configs are linked by the manifest. Switching to cynaberii stops Rift's
+Homebrew service and disables its separate launch agent to prevent conflicts.
+Switching to mine re-enables Rift's agent. A WM handoff can regroup workspaces;
+workspace membership is not shared between the two managers.
 
 ### Multiple displays with Rift
 

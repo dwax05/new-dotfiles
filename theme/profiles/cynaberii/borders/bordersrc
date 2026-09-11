@@ -4,5 +4,5 @@
   width=7 \
   hidpi=off \
   ax_focus=on \
-  active_color="glow(0xff8776AB)" \
-  inactive_color=0xff8776AB
+  active_color="glow(0xffA28DD3)" \
+  inactive_color=0xffA28DD3
